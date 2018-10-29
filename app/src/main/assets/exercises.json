@@ -1,0 +1,30 @@
+
+   [
+        { 
+			"recId" : "0", 
+			"title" : "Wytrzeszczanie oczu - CIA",
+			"exerciseGroupId" : "1",
+			"exerciseTypeId" : "1",
+			"extras" : "",
+			"picName" : ""
+		},
+	    { 
+			"recId" : "1", 
+			"title" : "Patrzenie za palcem",
+			"exerciseGroupId" : "1",
+			"exerciseTypeId" : "1",
+			"extras" : "",
+			"picName" : ""
+		},
+		{ 
+			"recId" : "2", 
+			"title" : "Wkładanie palców do ust(biii!)",
+			"exerciseGroupId" : "1",
+			"exerciseTypeId" : "1",
+			"extras" : "",
+			"picName" : ""
+		}
+		
+ 
+    ]
+ 
