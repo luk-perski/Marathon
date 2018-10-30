@@ -96,6 +96,8 @@ object DatabaseHelper {
             myOutput.flush()
             myOutput.close()
             Toast.makeText(context, "Database is now avalible!", Toast.LENGTH_LONG).show()
+
+
 //        } else {
 //            Toast.makeText(context, "Database doesn't exists!", Toast.LENGTH_LONG).show()
 //        }

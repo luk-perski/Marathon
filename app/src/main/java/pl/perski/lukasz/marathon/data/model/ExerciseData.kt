@@ -2,12 +2,13 @@ package pl.perski.lukasz.marathon.data.model
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.beust.klaxon.Json
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "exercises")
-data class Exercise(
-        @ColumnInfo(name = "recId")
+data class ExerciseData(
+       @PrimaryKey
         @SerializedName("recId")
         val recId: Int,
 
@@ -28,6 +29,11 @@ data class Exercise(
         @ColumnInfo(name = "picName")
         @SerializedName("picName")
         val picName: String?)
+{
+    override fun toString(): String {
+        return "$title"
+    }
+}
 
 
 
