@@ -21,7 +21,7 @@ import android.util.Log
 object DatabaseHelper {
 
 
-    const val EXT_DATABASE_NAME = "external_DB"
+    const val EXT_DATABASE_NAME = "marathon.db"
    const val DATABASE_PATH = "marathon.db"
    var myDataBase: SQLiteDatabase? = null
     val TABLE_ACCOUNTS = "exercises"
