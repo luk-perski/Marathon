@@ -1,4 +1,4 @@
-package pl.perski.lukasz.marathon.act.main
+package pl.perski.lukasz.marathon.ui.act.main
 
 import android.content.Context
 
@@ -10,7 +10,7 @@ interface MainActivityMVP {
     }
 
     interface Presenter {
-        fun setView(view: MainActivityMVP.View)
+        fun setView(view: View)
         //TODO: kopia db i sprawdzenie uprawnienień podczas splash screenu
 //fun onFirstLunch()
         fun copyDB()

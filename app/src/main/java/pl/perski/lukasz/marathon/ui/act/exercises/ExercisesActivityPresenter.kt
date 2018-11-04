@@ -1,4 +1,4 @@
-package pl.perski.lukasz.marathon.act.exercises
+package pl.perski.lukasz.marathon.ui.act.exercises
 
 import pl.perski.lukasz.marathon.data.model.ExerciseData
 

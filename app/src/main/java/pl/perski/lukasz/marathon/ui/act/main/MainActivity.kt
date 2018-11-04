@@ -1,4 +1,4 @@
-package pl.perski.lukasz.marathon.act.main
+package pl.perski.lukasz.marathon.ui.act.main
 
 import android.Manifest
 import android.content.Context
@@ -17,8 +17,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 import pl.perski.lukasz.marathon.R
-import pl.perski.lukasz.marathon.act.exercises.ExercisesActivity
+import pl.perski.lukasz.marathon.ui.act.exercises.ExercisesActivity
 import pl.perski.lukasz.marathon.data.db.DatabaseHelper
+import pl.perski.lukasz.marathon.ui.act.training.TrainingActivity
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityMVP.View {
@@ -71,6 +72,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_camera -> {
             }
             R.id.nav_gallery -> {
+                val intent = Intent(applicationContext, TrainingActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_slideshow -> {
                 presenter.copyDB()

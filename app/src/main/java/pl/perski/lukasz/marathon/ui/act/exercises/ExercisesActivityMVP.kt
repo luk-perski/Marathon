@@ -1,4 +1,4 @@
-package pl.perski.lukasz.marathon.act.exercises
+package pl.perski.lukasz.marathon.ui.act.exercises
 
 import android.content.Context
 import pl.perski.lukasz.marathon.data.model.ExerciseData
@@ -12,7 +12,7 @@ interface ExercisesActivityMVP {
     }
 
     interface Presenter {
-        fun setView(view: ExercisesActivityMVP.View)
+        fun setView(view: View)
         fun getExercises()
     }
 

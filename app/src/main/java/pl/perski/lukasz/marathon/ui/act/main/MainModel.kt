@@ -1,4 +1,4 @@
-package pl.perski.lukasz.marathon.act.main
+package pl.perski.lukasz.marathon.ui.act.main
 
 import android.content.Context
 import pl.perski.lukasz.marathon.data.repositories.DBRepository
