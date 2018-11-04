@@ -27,7 +27,7 @@ object DatabaseHelper {
     val TABLE_ACCOUNTS = "exercises"
 
 
-
+//TODO: code cleanup && dodać sprawdzanie, czy baza już jest skopiowana
 //    private var myDataBase: SQLiteDatabase? = null
 //
 //
@@ -70,14 +70,7 @@ object DatabaseHelper {
     // empty database in the system folder
 
     fun copyDataBase(context: Context) {
-
-
-
-
-
         if (checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
-
             val file = File(context.getDatabasePath(DATABASE_PATH).path)
           //  val file = File(Environment.getExternalStorageDirectory().toString() + context.resources.getString(R.string.app_name))
             file.parentFile.mkdirs() // Will create parent directories if not exists

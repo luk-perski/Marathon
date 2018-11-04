@@ -3,7 +3,6 @@ package pl.perski.lukasz.marathon.data.model
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import com.beust.klaxon.Json
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "exercises")

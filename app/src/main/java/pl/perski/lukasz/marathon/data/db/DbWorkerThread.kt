@@ -1,4 +1,4 @@
-package pl.perski.lukasz.marathon
+package pl.perski.lukasz.marathon.data.db
 
 import android.os.Handler
 import android.os.HandlerThread

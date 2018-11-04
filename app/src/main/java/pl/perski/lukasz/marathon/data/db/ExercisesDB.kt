@@ -6,7 +6,7 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import pl.perski.lukasz.marathon.data.model.ExerciseData
 
-@Database(entities = arrayOf(ExerciseData::class), version = 1)
+@Database(entities = arrayOf(ExerciseData::class), version = 1, exportSchema = false)
 abstract class ExercisesDB : RoomDatabase() {
 
     abstract fun exerciseDataDao(): ExercisesDataDao
@@ -17,7 +17,7 @@ abstract class ExercisesDB : RoomDatabase() {
         fun getInstance(context: Context): ExercisesDB? {
             if (INSTANCE == null) {
                 synchronized(ExercisesDB::class) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,
                             ExercisesDB::class.java, "marathon.db").allowMainThreadQueries()
                             .build()
                 }
