@@ -16,6 +16,7 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         setContentView(R.layout.activity_training)
         presenter.setView(this)
         presenter.startTraining()
+        //TODO: dodać interakcję z przyciskiem
         nextFragment.setOnClickListener { presenter.showFragment() }
 
     }
@@ -32,10 +33,6 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
 //        } else {
 //           manager.popBackStack()
 //        }
-    }
-
-    override fun setNextBtn(counter: String) {
-        nextFragment.text = counter
     }
 
     override fun setToolbarTittle(title: String, subtitle: String) {

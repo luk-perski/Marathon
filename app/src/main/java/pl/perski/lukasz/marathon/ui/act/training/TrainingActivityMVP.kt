@@ -8,7 +8,6 @@ interface TrainingActivityMVP {
 
     interface View {
         fun getContext(): Context
-        fun setNextBtn(counter : String)
         fun setToolbarTittle(title : String, subtitle: String)
         fun lockNextBtn()
     }

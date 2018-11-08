@@ -11,7 +11,7 @@ object FragmentUtils {
 
 
     fun replaceFragmentToActivity(fragmentManager: FragmentManager,
-                                  frameId: Int, fragment : ExerciseBaseFragment?) {
+                                  frameId: Int, fragment : ExerciseBaseFragment) {
         checkNotNull(fragmentManager)
 
         val transaction = fragmentManager.beginTransaction()

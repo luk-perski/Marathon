@@ -33,8 +33,8 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
     fun showFragment() {
         exercise = exercisesList.get(counter)
         fragment = ExerciseBaseFragment.newInstance(exercise)
-        FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_container, fragment)
-        view.setNextBtn((++counter).toString())
+        FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_container, fragment!!)
+       ++counter
         view.setToolbarTittle(exercise.title, "$counter/$countOfExercises")
 
         if (counter >= countOfExercises) {
