@@ -2,13 +2,11 @@ package pl.perski.lukasz.marathon.ui.act.exercises
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_exercises_list.*
 import pl.perski.lukasz.marathon.R
 import pl.perski.lukasz.marathon.data.model.ExerciseData
-import pl.perski.lukasz.marathon.ui.fragments.ExerciseFragmentTypeOne
 
 class ExercisesActivity : AppCompatActivity(), ExercisesActivityMVP.View {
 

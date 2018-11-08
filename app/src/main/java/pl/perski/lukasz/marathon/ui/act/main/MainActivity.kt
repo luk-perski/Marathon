@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
@@ -16,17 +17,19 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-
 import pl.perski.lukasz.marathon.R
 import pl.perski.lukasz.marathon.ui.act.exercises.ExercisesActivity
-import pl.perski.lukasz.marathon.data.db.DatabaseHelper
 import pl.perski.lukasz.marathon.ui.act.training.TrainingActivity
+import android.view.animation.AlphaAnimation
+
+
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityMVP.View {
 
 
     var presenter = MainActivityPresenter()
+    private val buttonClick = AlphaAnimation(1f, 0.8f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        presenter.onFirstLunch()
         presenter.grantPermissions()
         btnTraining.setOnClickListener {
+            btnTraining.startAnimation(buttonClick)
             val intent = Intent(applicationContext, TrainingActivity::class.java)
             startActivity(intent) }
     }
@@ -72,26 +76,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-            }
-            R.id.nav_gallery -> {
-                val intent = Intent(applicationContext, TrainingActivity::class.java)
-                startActivity(intent)
-            }
             R.id.nav_slideshow -> {
                 //TODO: kopia db i sprawdzenie uprawnienień podczas splash screenu
                 presenter.copyDB()
             val intent = Intent(applicationContext, ExercisesActivity::class.java)
                 startActivity(intent)
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
             }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
