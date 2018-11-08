@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 @Entity(tableName = "exercises")
 data class ExerciseData(
@@ -27,11 +28,13 @@ data class ExerciseData(
         val extras: String?,
         @ColumnInfo(name = "picName")
         @SerializedName("picName")
-        val picName: String?)
+        val picName: String?) : Serializable
 {
     override fun toString(): String {
-        return "$title"
+        return title
     }
+
+
 }
 
 

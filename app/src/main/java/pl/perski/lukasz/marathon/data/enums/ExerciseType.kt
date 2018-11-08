@@ -1,17 +1,29 @@
 package pl.perski.lukasz.marathon.data.enums
 
+import android.util.Log
+import pl.perski.lukasz.marathon.R
 import java.util.*
 
-enum class AlarmType private constructor(val code: Int, val label: String) {
-    TYPE_1(1, "fragment_exercise_type_one"),
-    TYPE_2(2, "Przesunięty alarm początku pracy");
+enum class ExerciseType private constructor(val code: Int, val id: Int) {
+    TYPE_1(1, R.id.fragment_container),
+    TYPE_2(2, R.id.fragment_container),
+    TYPE_3(3, R.id.fragment_container),
+    TYPE_4(4, R.id.fragment_container),
+    TYPE_5(5, R.id.fragment_container),
+    TYPE_6(6, R.id.fragment_container),
+    TYPE_7(7, R.id.fragment_container),
+    TYPE_8(8, R.id.fragment_container),
+    TYPE_9(9, R.id.fragment_container);
+
 
 
     companion object {
 
-        fun getByCode(code: Int): String {
+        fun getByCode(code: Int): Int {
+
             val alarmTypes = ArrayList(Arrays.asList(*values()))
-            return alarmTypes[code - 1].label
+            Log.i("EXER", alarmTypes[code].id.toString())
+            return alarmTypes[code].id
         }
     }
 }

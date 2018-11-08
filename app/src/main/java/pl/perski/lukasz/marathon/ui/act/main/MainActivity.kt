@@ -15,6 +15,7 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 import pl.perski.lukasz.marathon.R
 import pl.perski.lukasz.marathon.ui.act.exercises.ExercisesActivity
@@ -25,7 +26,6 @@ import pl.perski.lukasz.marathon.ui.act.training.TrainingActivity
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityMVP.View {
 
 
-    private val  MY_PERMISSIONS_REQUEST = 322
     var presenter = MainActivityPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         presenter.setView(this)
 //        presenter.onFirstLunch()
         presenter.grantPermissions()
+        btnTraining.setOnClickListener {
+            val intent = Intent(applicationContext, TrainingActivity::class.java)
+            startActivity(intent) }
     }
 
     override fun onBackPressed() {
@@ -76,6 +79,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
             R.id.nav_slideshow -> {
+                //TODO: kopia db i sprawdzenie uprawnienień podczas splash screenu
                 presenter.copyDB()
             val intent = Intent(applicationContext, ExercisesActivity::class.java)
                 startActivity(intent)
