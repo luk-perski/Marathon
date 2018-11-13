@@ -1,4 +1,4 @@
-package pl.perski.lukasz.marathon.ui.fragments
+package pl.perski.lukasz.marathon.ui.exerciseFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

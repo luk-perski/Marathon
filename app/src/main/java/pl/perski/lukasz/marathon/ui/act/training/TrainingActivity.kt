@@ -9,6 +9,16 @@ import pl.perski.lukasz.marathon.R
 
 class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
 {
+    override fun setEvents() {
+        nextFragment.setOnClickListener {
+            nextFragment.startAnimation(buttonClick)
+            presenter.showFragment()
+        }
+    }
+
+    override fun setExercisePicker(value: Float) {
+        exercisePicker.setPickerValue(value)
+    }
 
     var presenter = TrainingActivityPresenter(supportFragmentManager)
     private val buttonClick = AlphaAnimation(1f, 0.8f)
@@ -18,11 +28,7 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         setContentView(R.layout.activity_training)
         presenter.setView(this)
         presenter.startTraining()
-        //TODO: dodać interakcję z przyciskiem
-        nextFragment.setOnClickListener {
-            nextFragment.startAnimation(buttonClick)
-            presenter.showFragment() }
-
+        setEvents()
     }
 
     override fun getContext(): Context {
@@ -48,7 +54,7 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         nextFragment.isClickable = false
     }
 
-
-
-
+    override fun setAmountQuestion(question: String) {
+        tvAmount_Qestion.text = question
+    }
 }

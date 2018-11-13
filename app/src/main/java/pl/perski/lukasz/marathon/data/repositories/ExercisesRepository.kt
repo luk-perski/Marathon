@@ -4,7 +4,7 @@ import android.content.Context
 import pl.perski.lukasz.marathon.data.db.DbWorkerThread
 import pl.perski.lukasz.marathon.data.db.ExercisesDB
 import pl.perski.lukasz.marathon.data.model.ExerciseData
-
+//TODO: Poczytaj o wzorcu Repository
 class ExercisesRepository (var context : Context){
 
     private lateinit var exercisesList : List<ExerciseData>
@@ -18,8 +18,5 @@ class ExercisesRepository (var context : Context){
         mDbWorkerThread.start()
         exercisesList = mDb?.exerciseDataDao()?.getAll()!!
         return exercisesList
-
     }
-
-
 }

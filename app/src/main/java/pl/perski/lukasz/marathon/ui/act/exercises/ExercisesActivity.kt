@@ -25,6 +25,7 @@ class ExercisesActivity : AppCompatActivity(), ExercisesActivityMVP.View {
     }
 
     override fun setExercises(exercisesList : List<ExerciseData>) {
+        //TODO: Pogrupowana, rozwijalna lista
         lvExercises.adapter =  ArrayAdapter(applicationContext, android.R.layout.simple_list_item_1, exercisesList)
     }
 

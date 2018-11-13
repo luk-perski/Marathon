@@ -1,30 +1,19 @@
 package pl.perski.lukasz.marathon.data.db
 
 
-import android.content.ContentValues.TAG
 import java.io.File
 import java.io.FileOutputStream
-
 import android.content.Context
-
 import android.widget.Toast
-import pl.perski.lukasz.marathon.R
-
 import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteDatabase
-
 import android.support.v4.content.PermissionChecker.checkSelfPermission
-import android.util.Log
-
-
 
 object DatabaseHelper {
 
 
     const val EXT_DATABASE_NAME = "marathon.db"
    const val DATABASE_PATH = "marathon.db"
-   var myDataBase: SQLiteDatabase? = null
-    val TABLE_ACCOUNTS = "exercises"
 
 
 //TODO: code cleanup && dodać sprawdzanie, czy baza już jest skopiowana

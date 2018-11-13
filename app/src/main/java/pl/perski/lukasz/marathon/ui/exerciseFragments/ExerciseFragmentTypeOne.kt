@@ -1,19 +1,30 @@
-package pl.perski.lukasz.marathon.ui.fragments
+package pl.perski.lukasz.marathon.ui.exerciseFragments
+
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_exercise_type_one.view.*
 import pl.perski.lukasz.marathon.R
+import kotlinx.android.synthetic.main.fragment_exercise_type_one.view.*
 
-class ExerciseFragmentTypeFive : ExerciseBaseFragment() {
+
+class ExerciseFragmentTypeOne:  ExerciseBaseFragment() {
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root =  inflater.inflate(R.layout.fragment_exercise_type_five,container,false)
+       val root =  inflater.inflate(R.layout.fragment_exercise_type_one,container,false)
         getDataFromArg(this)
         root.tvTitle.text = "Fragment nr ${exercise?.exerciseTypeId}"
+
         return root
     }
+
+
+
+
+
+
 }

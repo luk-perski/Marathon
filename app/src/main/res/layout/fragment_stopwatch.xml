@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.act.stopwatch.StopwatchFragment">
+
+    <com.libRG.CustomTextView
+        android:id="@+id/timerValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="181dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/timerVal"
+        android:textColor="?android:colorBackground"
+        android:textSize="70sp"
+        app:lib_setRoundedBGColor="?colorPrimary"
+        app:lib_setRadius="50dp"
+        app:lib_setRoundedBorderColor="?colorPrimary"
+        app:lib_setRoundedView="true"
+        app:lib_unCheckedDrawable="@drawable/ic_unchecked_img"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.subsub.library.BeautyButton
+        android:id="@+id/btnStartStopwatch"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_round_30dp_primary"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:text="@string/startButtonLabel"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerValue"
+        app:layout_constraintVertical_bias="0.887"
+        app:shadowColor="@color/colorDefaultShadowColor"
+        app:shadowPercentHeight="1.05"
+        app:shadowPercentWidth="0.95"
+        app:shadowRadius="40dp"
+
+        />
+
+    <com.subsub.library.BeautyButton
+        android:id="@+id/btnStopStopwatch"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/stopButtonLabel"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnResetStopwatch"
+        app:layout_constraintStart_toEndOf="@+id/btnStartStopwatch"
+        app:layout_constraintTop_toBottomOf="@+id/timerValue"
+        app:layout_constraintVertical_bias="0.887"
+        android:background="@drawable/bg_round_30dp_primary"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:textColor="@android:color/background_light"
+        app:shadowColor="@color/colorDefaultShadowColor"
+        app:shadowPercentHeight="1.05"
+        app:shadowPercentWidth="0.95"
+        app:shadowRadius="40dp"
+        />
+
+
+    <com.subsub.library.BeautyButton
+
+        android:id="@+id/btnResetStopwatch"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_round_30dp_primary"
+        android:elevation="10dp"
+        android:padding="10dp"
+        android:text="@string/resetButtonLabel"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerValue"
+        app:layout_constraintVertical_bias="0.887"
+        app:shadowColor="@color/colorDefaultShadowColor"
+        app:shadowPercentHeight="1.05"
+        app:shadowPercentWidth="0.95"
+        app:shadowRadius="40dp" />
+
+
+</android.support.constraint.ConstraintLayout>

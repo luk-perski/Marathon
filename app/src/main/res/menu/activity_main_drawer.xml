@@ -7,6 +7,13 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_mood_black_24dp"
+            android:title="@string/stopwatch" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_stopwatch"
+            android:icon="@drawable/ic_timer_black_24dp"
             android:title="@string/exercisesList" />
     </group>
 

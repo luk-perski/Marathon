@@ -26,7 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.act.exercises.ExercisesActivity" />
-        <activity android:name=".ui.act.training.TrainingActivity"></activity>
+        <activity android:name=".ui.act.training.TrainingActivity" />
+        <activity android:name="pl.perski.lukasz.marathon.ui.act.fragmentContainer.FragmentContainerActivity"></activity>
     </application>
 
 </manifest>

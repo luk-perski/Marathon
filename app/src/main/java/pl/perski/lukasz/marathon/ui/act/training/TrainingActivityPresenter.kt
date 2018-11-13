@@ -3,7 +3,7 @@ package pl.perski.lukasz.marathon.ui.act.training
 import android.support.v4.app.FragmentManager
 import pl.perski.lukasz.marathon.R
 import pl.perski.lukasz.marathon.data.model.ExerciseData
-import pl.perski.lukasz.marathon.ui.fragments.ExerciseBaseFragment
+import pl.perski.lukasz.marathon.ui.exerciseFragments.ExerciseBaseFragment
 import pl.perski.lukasz.marathon.utils.FragmentUtils
 
 
@@ -12,8 +12,6 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
     var model = TrainingModel()
     private lateinit var view: TrainingActivityMVP.View
     lateinit var exercisesList: List<ExerciseData>
-
-
     var counter = 0
     lateinit var exercise: ExerciseData
     var countOfExercises: Int = -1
@@ -22,7 +20,6 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
 
     override fun setView(view: TrainingActivityMVP.View) {
         this.view = view
-
     }
 
     override fun startTraining() {
@@ -33,12 +30,24 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
     fun showFragment() {
         exercise = exercisesList.get(counter)
         fragment = ExerciseBaseFragment.newInstance(exercise)
-        FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_container, fragment!!)
+        FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_exercise_container, fragment!!)
        ++counter
-        view.setToolbarTittle(exercise.title, "$counter/$countOfExercises")
+      setControls()
+    }
 
+    override fun setControls() {
+        view.setToolbarTittle(exercise.title, "$counter/$countOfExercises")
         if (counter >= countOfExercises) {
             view.lockNextBtn()
+        }
+
+        if (exercise.exerciseTypeId != 6){
+            view.setExercisePicker(1F)
+            view.setAmountQuestion(view.getContext().getString(R.string.amount_question))
+
+        } else {
+            view.setExercisePicker(30F)
+            view.setAmountQuestion(view.getContext().getString(R.string.time_question))
         }
     }
 
