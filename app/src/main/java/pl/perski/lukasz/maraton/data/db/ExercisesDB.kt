@@ -18,7 +18,7 @@ abstract class ExercisesDB : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(ExercisesDB::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                            ExercisesDB::class.java, "marathon.db").allowMainThreadQueries()
+                            ExercisesDB::class.java, "maraton.db").allowMainThreadQueries()
                             .build()
                 }
             }
