@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.voiceRecorder.VoiceRecFragment"
+    xmlns:aw="http://schemas.android.com/apk/res-auto">
+
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="68dp"
+        android:fontFamily="sans-serif-light"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recordProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/recordProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/recordProgressBar" />
+
+    <ProgressBar
+        android:id="@+id/recordProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="221dp"
+        android:layout_height="217dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/record_progress_bar_background"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/record_progress_bar"
+        app:layout_constraintBottom_toTopOf="@+id/btnRecord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--<org.firezenk.audiowaves.Visualizer-->
+        <!--android:id="@+id/recordVisualizer"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="188dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--aw:aw_ball_diameter="30"-->
+        <!--aw:aw_color_gradient_end="@color/Aqua"-->
+        <!--aw:aw_color_gradient_start="@color/Chocolate"-->
+        <!--aw:aw_color_is_gradient="true"-->
+        <!--aw:aw_color_uniform="?colorPrimary"-->
+        <!--aw:aw_format="vertical_lines"-->
+        <!--aw:aw_gravity="center"-->
+        <!--aw:aw_height="200"-->
+        <!--aw:aw_line_border_radius="50"-->
+        <!--aw:aw_line_height="30"-->
+        <!--aw:aw_line_min_height="30"-->
+        <!--aw:aw_line_min_with="30"-->
+        <!--aw:aw_line_spacing="10"-->
+        <!--aw:aw_line_with="30"-->
+        <!--aw:aw_num_waves="10"-->
+        <!--aw:aw_width="100" />-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_mic_white_24dp"
+        app:backgroundTint="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

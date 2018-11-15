@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pl.perski.lukasz.marathon">
+    package="pl.perski.lukasz.maraton">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.act.main.MainActivity"
+            android:name="pl.perski.lukasz.maraton.ui.act.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -25,9 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.act.exercises.ExercisesActivity" />
-        <activity android:name=".ui.act.training.TrainingActivity" />
-        <activity android:name="pl.perski.lukasz.marathon.ui.act.fragmentContainer.FragmentContainerActivity"></activity>
+        <activity android:name="pl.perski.lukasz.maraton.ui.act.exercises.ExercisesActivity" />
+        <activity android:name="pl.perski.lukasz.maraton.ui.act.training.TrainingActivity" />
+        <activity android:name="pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity"></activity>
     </application>
 
 </manifest>

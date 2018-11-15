@@ -23,7 +23,9 @@ android {
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
-
+repositories {
+    maven { url 'https://github.com/FireZenk/maven-repo/raw/master/'}
+}
 dependencies {
     kapt "android.arch.persistence.room:compiler:1.1.1"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -41,5 +43,9 @@ dependencies {
     implementation "com.subsub.libs:buttoncustomshadow:1.0.0"
     implementation 'com.github.polok:clicknumberpicker:0.1.2'
     implementation 'com.libRG:customtextview:1.6'
+    implementation 'com.super_rabbit.wheel_picker:NumberPicker:1.0.1'
+    implementation 'org.firezenk:audiowaves:1.1@aar'
+
+
 
 }

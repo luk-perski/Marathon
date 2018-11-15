@@ -7,16 +7,27 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_mood_black_24dp"
-            android:title="@string/stopwatch" />
+            android:title="@string/exercisesList" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_stopwatch"
             android:icon="@drawable/ic_timer_black_24dp"
-            android:title="@string/exercisesList" />
+            android:title="@string/stopwatch" />
     </group>
 
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_timer"
+            android:icon="@drawable/ic_av_timer_black_24dp"
+            android:title="@string/timer" />
+    </group>
 
-
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_records"
+            android:icon="@drawable/ic_mic_black_24dp"
+            android:title="@string/records" />
+    </group>
 </menu>
