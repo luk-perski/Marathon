@@ -5,7 +5,6 @@ import pl.perski.lukasz.maraton.data.model.ExerciseData
 
 interface ExercisesActivityMVP {
 
-
     interface View{
         fun setExercises(exercisesList : List<ExerciseData>)
         fun getContext(): Context

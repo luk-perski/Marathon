@@ -21,5 +21,4 @@ interface MainActivityMVP {
     {
         fun copyDB(context : Context)
     }
-
 }

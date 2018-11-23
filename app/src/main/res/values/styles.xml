@@ -19,4 +19,28 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="TEST" parent="AppTheme" >
+        <item name="android:windowBackground">@color/fbutton_color_midnight_blue</item>
+        <item name="android:colorBackground">@color/fbutton_color_midnight_blue</item>
+        <item name="colorPrimaryDark">@color/fbutton_color_pomegranate</item>
+        <item name="colorPrimary">@color/fbutton_color_alizarin</item>
+        <item name="android:navigationBarColor">@color/Black</item>
+        <item name="android:statusBarColor">@color/fbutton_color_pomegranate</item>
+        <item name="android:colorForeground">@color/AliceBlue</item>
+        <item name="android:textColorPrimary">@color/Azure</item>
+        <item name="android:textColorPrimaryInverse">@color/Silver</item>
+        <item name="colorAccent">@color/White</item>
+        <item name="android:textColorSecondary">@color/White</item>
+        <item name="android:textColorSecondaryInverse">@color/Azure</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.TEST" parent="AppTheme.NoActionBar" >
+        <item name="colorPrimary">@color/fbutton_color_alizarin</item>
+        <item name="colorPrimaryDark">@color/fbutton_color_pomegranate</item>
+        <item name="android:colorBackground">@color/fbutton_color_midnight_blue</item>
+        <item name="colorAccent">@color/White</item>
+        <item name="android:statusBarColor">@color/fbutton_color_pomegranate</item>
+        <item name="android:navigationBarColor">@color/Black</item>
+    </style>
+
 </resources>

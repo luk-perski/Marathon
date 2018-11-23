@@ -14,7 +14,6 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
     private val  MY_PERMISSIONS_REQUEST = 322
     private lateinit var _context : Context
 
-
 //    override fun onFirstLunch() {
 //        //TODO: sprawdzanie booleana 'firstlunch' z sharedpref
 //      getPermissions()
@@ -46,6 +45,4 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
 
     override fun copyDB()
     { model.copyDB(_context)}
-
-
 }

@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,17 +17,22 @@ import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.exercises.ExercisesActivity
 import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
 import android.view.animation.AlphaAnimation
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
+import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityMVP.View {
-
 
     var presenter = MainActivityPresenter()
     val STOPWATCH = "stopwatch"
     val TIMER = "timer"
     val RECORDS = "records"
+    val CALENDAR = "calendar"
+    val FRAGMENT = "fragment"
     private val buttonClick = AlphaAnimation(1f, 0.8f)
+    private  val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +52,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(intent) }
     }
 
+    override fun onStart() {
+        super.onStart()
+        //TODO: Przenieś to do presentera
+        if (auth.currentUser == null) {
+            finish()
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+        else
+            Log.e("uId", auth.uid)
+    }
+
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -56,13 +73,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
+        menu.findItem(R.id.action_logout).isVisible = auth.currentUser != null
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
+
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            R.id.action_logout -> {
+                auth.signOut()
+                Toast.makeText(this, "Nastąpiło wylogowanie.", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -76,18 +102,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_stopwatch -> {
                 val intent = Intent(applicationContext, FragmentContainerActivity::class.java)
-                intent.putExtra("fragment", STOPWATCH)
+                intent.putExtra(FRAGMENT, STOPWATCH)
                 startActivity(intent)
             }
 
             R.id.nav_timer -> {
                 val intent = Intent(applicationContext, FragmentContainerActivity::class.java)
-                intent.putExtra("fragment", TIMER)
+                intent.putExtra(FRAGMENT, TIMER)
                 startActivity(intent)
             }
             R.id.nav_records -> {
                 val intent = Intent(applicationContext, FragmentContainerActivity::class.java)
-                intent.putExtra("fragment", RECORDS)
+                intent.putExtra(FRAGMENT, RECORDS)
+                startActivity(intent)
+            }
+            R.id.nav_calendar -> {
+                val intent = Intent(applicationContext, FragmentContainerActivity::class.java)
+                intent.putExtra(FRAGMENT, CALENDAR)
+                startActivity(intent)
+            }
+            R.id.nav_login -> {
+                val intent = Intent(applicationContext, LoginActivity::class.java)
                 startActivity(intent)
             }
         }

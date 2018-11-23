@@ -4,9 +4,10 @@ package pl.perski.lukasz.maraton.ui.fragments.exerciseFragments
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import pl.perski.lukasz.maraton.data.model.ExerciseData
+import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 import java.io.Serializable
 
- open class ExerciseBaseFragment : Fragment() {
+ abstract class ExerciseBaseFragment : Fragment()  {
 
      //TODO: companion?
      companion object {
@@ -39,4 +40,6 @@ import java.io.Serializable
              }
          }
      }
+
+     abstract fun getData() : ExerciseDoneData
 }

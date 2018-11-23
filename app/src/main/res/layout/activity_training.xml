@@ -4,21 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical"
     tools:context=".ui.act.training.TrainingActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+   android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_skip_white_48dp"/>
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_exercise_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="6" />
 
 
     <com.libRG.CustomTextView
         android:id="@+id/tvAmount_Qestion"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
@@ -34,11 +53,12 @@
         app:lib_setRoundedBorderColor="?colorPrimary"
         app:lib_setRoundedView="true"
         app:lib_unCheckedDrawable="@drawable/ic_unchecked_img"
-        android:padding="10dp"/>
+        android:padding="10dp"
+       />
 
     <pl.polak.clicknumberpicker.ClickNumberPickerView
         android:id="@+id/exercisePicker"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
@@ -55,25 +75,58 @@
         app:value_text_size="10sp"
         />
 
-    <com.subsub.library.BeautyButton
-        android:id="@+id/nextFragment"
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/bg_round_30dp_primary"
-        android:elevation="10dp"
-        android:padding="10dp"
-        android:textSize="15sp"
-        android:text="@string/next"
-        android:textColor="@android:color/background_light"
-        app:shadowColor="@color/colorDefaultShadowColor"
-        app:shadowPercentHeight="1"
-        app:shadowPercentWidth="0.95"
-        app:shadowRadius="40dp"
-        app:shadowYOffset="5"
-        />
+        android:layout_marginBottom="32dp">
+
+        <com.subsub.library.BeautyButton
+            android:id="@+id/btnNextFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_30dp_primary"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:text="@string/next"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadowColor="@color/colorDefaultShadowColor"
+            app:shadowPercentHeight="1"
+            app:shadowPercentWidth="0.95"
+            app:shadowRadius="40dp"
+            app:shadowYOffset="5" />
+
+        <com.subsub.library.BeautyButton
+            android:id="@+id/btnEndTraining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_30dp_primary"
+            android:elevation="10dp"
+            android:padding="10dp"
+            android:text="@string/end"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadowColor="@color/colorDefaultShadowColor"
+            app:shadowPercentHeight="1"
+            app:shadowPercentWidth="0.95"
+            app:shadowRadius="40dp"
+            app:shadowYOffset="5" />
+    </android.support.constraint.ConstraintLayout>
+
+
+
 
 </LinearLayout>

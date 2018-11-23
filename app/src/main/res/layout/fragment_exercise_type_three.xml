@@ -8,18 +8,22 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:background="@drawable/tv_backgroud_primary"
+        android:text="@string/exercise_title"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="?colorAccent"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.libRG.CustomTextView
         android:id="@+id/tvMax_Qestion"
@@ -35,7 +39,7 @@
         android:textColor="?android:colorBackground"
         android:textSize="15sp"
         app:autoSizeMinTextSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/crowPicker"
+        app:layout_constraintBottom_toTopOf="@+id/pickerMaxRep"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +52,7 @@
         app:lib_unCheckedDrawable="@drawable/ic_unchecked_img" />
 
     <pl.polak.clicknumberpicker.ClickNumberPickerView
-        android:id="@+id/crowPicker"
+        android:id="@+id/pickerMaxRep"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginStart="64dp"

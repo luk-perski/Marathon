@@ -7,7 +7,8 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_mood_black_24dp"
-            android:title="@string/exercisesList" />
+            android:title="@string/exercisesList"
+            />
     </group>
 
     <group android:checkableBehavior="single">
@@ -29,5 +30,19 @@
             android:id="@+id/nav_records"
             android:icon="@drawable/ic_mic_black_24dp"
             android:title="@string/records" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_today_black_24dp"
+            android:title="@string/calendar" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_assignment_ind_green_24dp"
+            android:title="@string/login" />
     </group>
 </menu>

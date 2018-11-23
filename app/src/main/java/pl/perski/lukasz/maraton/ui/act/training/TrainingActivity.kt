@@ -3,16 +3,29 @@ package pl.perski.lukasz.maraton.ui.act.training
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.animation.AlphaAnimation
 import kotlinx.android.synthetic.main.activity_training.*
 import pl.perski.lukasz.maraton.R
 
 class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
 {
+    override fun unlockEndBtn() {
+            btnEndTraining.visibility = View.VISIBLE
+        btnEndTraining.isClickable = true
+    }
+
     override fun setEvents() {
-        nextFragment.setOnClickListener {
-            nextFragment.startAnimation(buttonClick)
-            presenter.showFragment()
+        btnNextFragment.setOnClickListener {
+            btnNextFragment.startAnimation(buttonClick)
+           presenter.displayFragment()
+        }
+
+        btnEndTraining.setOnClickListener {
+            btnNextFragment.startAnimation(buttonClick)
+            presenter.endTraining()
+            //TODO: Przejście gdzieś indziej
+            btnEndTraining.isClickable = false
         }
     }
 
@@ -51,10 +64,12 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
     }
 
     override fun lockNextBtn() {
-        nextFragment.isClickable = false
+        btnNextFragment.isClickable = false
+        btnNextFragment.visibility = View.INVISIBLE
     }
 
     override fun setAmountQuestion(question: String) {
         tvAmount_Qestion.text = question
     }
+
 }

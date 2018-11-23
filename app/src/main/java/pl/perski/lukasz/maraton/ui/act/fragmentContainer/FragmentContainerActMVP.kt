@@ -5,7 +5,6 @@ import android.content.Context
 class FragmentContainerActMVP {
     interface View {
         fun getContext(): Context
-
     }
 
     interface Presenter {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pl.perski.lukasz.maraton.R
+import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 import pl.perski.lukasz.maraton.ui.fragments.timer.TimerFragment
 
 class ExerciseFragmentTypeSix : ExerciseBaseFragment(){
@@ -18,5 +19,18 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saved
         val childFragment = TimerFragment()
         val transaction = childFragmentManager.beginTransaction()
         transaction.replace(R.id.child_fragment_container, childFragment).commit()
+    }
+    override fun getData(): ExerciseDoneData {
+        return ExerciseDoneData(
+                exercise!!.recId,
+                exercise!!.title,
+                exercise!!.exerciseGroupId,
+                exercise!!.exerciseTypeId,
+                false,
+                null,
+                null,
+                null,
+                null
+        )
     }
 }

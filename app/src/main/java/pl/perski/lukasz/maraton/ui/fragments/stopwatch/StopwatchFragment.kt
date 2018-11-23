@@ -21,6 +21,7 @@ class StopwatchFragment : Fragment(), StopwatchFragmentMVP.View {
                               savedInstanceState: Bundle?): View? {
         currentView = inflater.inflate(R.layout.fragment_stopwatch, container, false)
         presenter.setView(this)
+        //presenter.setControls()
         setEvents()
         return currentView
     }

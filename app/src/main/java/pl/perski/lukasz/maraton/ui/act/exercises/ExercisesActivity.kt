@@ -10,7 +10,6 @@ import pl.perski.lukasz.maraton.data.model.ExerciseData
 
 class ExercisesActivity : AppCompatActivity(), ExercisesActivityMVP.View {
 
-
     var presenter = ExercisesActivityPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +25,7 @@ class ExercisesActivity : AppCompatActivity(), ExercisesActivityMVP.View {
 
     override fun setExercises(exercisesList : List<ExerciseData>) {
         //TODO: Pogrupowana, rozwijalna lista
-        lvExercises.adapter =  ArrayAdapter(applicationContext, android.R.layout.simple_list_item_1, exercisesList)
+        lvExercises.adapter =  ArrayAdapter(applicationContext, R.layout.custom_list_item, exercisesList)
     }
 
 

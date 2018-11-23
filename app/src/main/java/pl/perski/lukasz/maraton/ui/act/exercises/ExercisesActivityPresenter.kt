@@ -15,7 +15,6 @@ class ExercisesActivityPresenter : ExercisesActivityMVP.Presenter {
     override fun getExercises(){
 
         exercisesList = model.getExercisesFromDB(view.getContext())
-
         if (exercisesList != null) {
             view.setExercises(exercisesList)
         }

@@ -12,20 +12,20 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="181dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="32dp"
+        android:padding="10dp"
         android:text="@string/timerVal"
         android:textColor="?android:colorBackground"
         android:textSize="70sp"
-        app:lib_setRoundedBGColor="?colorPrimary"
-        app:lib_setRadius="50dp"
-        app:lib_setRoundedBorderColor="?colorPrimary"
-        app:lib_setRoundedView="true"
-        app:lib_unCheckedDrawable="@drawable/ic_unchecked_img"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lib_setRadius="50dp"
+        app:lib_setRoundedBGColor="?colorPrimary"
+        app:lib_setRoundedBorderColor="?colorPrimary"
+        app:lib_setRoundedView="true"
+        app:lib_unCheckedDrawable="@drawable/ic_unchecked_img" />
 
 
     <com.subsub.library.BeautyButton

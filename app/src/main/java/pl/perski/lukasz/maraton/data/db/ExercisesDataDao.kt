@@ -17,5 +17,4 @@ interface ExercisesDataDao {
 
     @Query("DELETE from exercises")
     fun deleteAll()
-
 }

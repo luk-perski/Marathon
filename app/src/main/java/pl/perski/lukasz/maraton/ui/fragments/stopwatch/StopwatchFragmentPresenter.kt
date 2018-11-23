@@ -5,12 +5,12 @@ import android.os.SystemClock
 
 class StopwatchFragmentPresenter : StopwatchFragmentMVP.Presenter {
 
+    private lateinit var view: StopwatchFragmentMVP.View
     private var startTime = 0L
     private val customHandler = Handler()
     internal var timeInMilliseconds = 0L
     internal var timeTemp = 0L
     internal var updatedTime = 0L
-
 
     override fun startStopwatch() {
         view.changeStartState(false)
@@ -21,7 +21,6 @@ class StopwatchFragmentPresenter : StopwatchFragmentMVP.Presenter {
         view.changeStopColor(true)
         startTime = SystemClock.uptimeMillis()
         customHandler.postDelayed(updateTimerThread, 0)
-
     }
 
     override fun stopStopwatch() {
@@ -50,16 +49,12 @@ class StopwatchFragmentPresenter : StopwatchFragmentMVP.Presenter {
         customHandler.removeCallbacks(updateTimerThread)
     }
 
-
-    private lateinit var view: StopwatchFragmentMVP.View
-
-
     override fun setView(view: StopwatchFragmentMVP.View) {
         this.view = view
     }
 
     override fun setControls() {
-
+        view.setToolbarTittle("Stoper", "")
     }
 
     private val updateTimerThread = object : Runnable {

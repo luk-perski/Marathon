@@ -7,8 +7,14 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
     defaultConfig {
-        applicationId "pl.perski.lukasz.marathon"
+        applicationId "pl.perski.lukasz.maraton"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
@@ -24,7 +30,11 @@ android {
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 repositories {
-    maven { url 'https://github.com/FireZenk/maven-repo/raw/master/'}
+    maven { url 'https://github.com/FireZenk/maven-repo/raw/master/' }
+    maven {
+        url "https://jitpack.io"
+    }
+
 }
 dependencies {
     kapt "android.arch.persistence.room:compiler:1.1.1"
@@ -45,7 +55,10 @@ dependencies {
     implementation 'com.libRG:customtextview:1.6'
     implementation 'com.super_rabbit.wheel_picker:NumberPicker:1.0.1'
     implementation 'org.firezenk:audiowaves:1.1@aar'
-
-
-
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-firestore:17.1.3'
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
 }
+apply plugin: 'com.google.gms.google-services'
+

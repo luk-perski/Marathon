@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pl.perski.lukasz.maraton.R
+import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 
 class ExerciseFragmentTypeFour : ExerciseBaseFragment() {
 
@@ -14,5 +15,19 @@ class ExerciseFragmentTypeFour : ExerciseBaseFragment() {
         getDataFromArg(this)
 
         return root
+    }
+
+    override fun getData(): ExerciseDoneData {
+        return ExerciseDoneData(
+                exercise!!.recId,
+                exercise!!.title,
+                exercise!!.exerciseGroupId,
+                exercise!!.exerciseTypeId,
+                false,
+                null,
+                null,
+                null,
+                null
+        )
     }
 }

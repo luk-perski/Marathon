@@ -17,9 +17,7 @@ enum class ExerciseType private constructor(val code: Int, val id: Int) {
 
 
     companion object {
-
         fun getByCode(code: Int): Int {
-
             val alarmTypes = ArrayList(Arrays.asList(*values()))
             Log.i("EXER", alarmTypes[code].id.toString())
             return alarmTypes[code].id

@@ -11,8 +11,8 @@ import android.support.v4.content.PermissionChecker.checkSelfPermission
 object DatabaseHelper {
 
 
-    const val EXT_DATABASE_NAME = "maraton.db"
-   const val DATABASE_PATH = "maraton.db"
+    const val EXT_DATABASE_NAME = "marathon.db"
+   const val DATABASE_PATH = "marathon.db"
 
 
 //TODO: code cleanup && dodać sprawdzanie, czy baza już jest skopiowana

@@ -7,17 +7,13 @@ import pl.perski.lukasz.maraton.R
 
 class FragmentContainerActivity : AppCompatActivity(), FragmentContainerActMVP.View {
 
-
-
     var presenter = FragmentContainerActPresenter(supportFragmentManager)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment_container)
         presenter.setView(this)
         presenter.showFragment(intent.getStringExtra("fragment"))
-
     }
 
     override fun getContext(): Context {
