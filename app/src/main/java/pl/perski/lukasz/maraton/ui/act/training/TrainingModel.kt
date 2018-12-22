@@ -29,6 +29,7 @@ class TrainingModel : TrainingActivityMVP.Model {
         val cal = Calendar.getInstance()
         val time = cal.time
         val date = SimpleDateFormat("dd-M-yy").format(time)
+        val month = SimpleDateFormat("M-yy").format(time)
 //TODO: popraw ścieżkę
         auth.uid?.let {
             colRefExercise = db.document("users/$it/exercises/$date")
@@ -36,12 +37,12 @@ class TrainingModel : TrainingActivityMVP.Model {
 
         val dummy = HashMap<String, Any>()
         dummy.put("dummy", "dummy")
-        colRefExercise.set(dummy!!)
+        colRefExercise.set(dummy)
 
 
         //zapis ćwiczeń do dokumentów
         for (x in listToSave) {
-            colRefExercise.collection(x.recId.toString()).add(x)
+            colRefExercise.collection(month).document(x.recId.toString()).set(x)
         }
 
         //odczytywanie z bazy wszystkich dokumentów

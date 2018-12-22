@@ -21,6 +21,7 @@ class StopwatchFragment : Fragment(), StopwatchFragmentMVP.View {
                               savedInstanceState: Bundle?): View? {
         currentView = inflater.inflate(R.layout.fragment_stopwatch, container, false)
         presenter.setView(this)
+        //TODO: czemu zakomentowane?
         //presenter.setControls()
         setEvents()
         return currentView
@@ -63,7 +64,7 @@ class StopwatchFragment : Fragment(), StopwatchFragmentMVP.View {
     }
 
     override fun setTimerValue(value: String) {
-        currentView.timerValue.text = value
+        currentView.stopwatchValue.text = value
     }
 
     override fun getContext(): Context {

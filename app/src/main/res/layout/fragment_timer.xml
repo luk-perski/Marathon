@@ -15,7 +15,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="19dp"
         android:padding="10dp"
-        android:text="@string/timerTime"
+        android:text=""
         android:textColor="@color/White"
         android:textSize="64sp"
         android:elevation="10dp"
@@ -116,7 +116,7 @@
         app:wrapSelectorWheel="true" />
 
     <com.subsub.library.BeautyButton
-        android:id="@+id/btnStartStopwatch"
+        android:id="@+id/btnStartTimer"
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:layout_marginStart="147dp"
