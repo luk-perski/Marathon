@@ -10,6 +10,7 @@ import pl.perski.lukasz.maraton.R
 
 class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
 {
+
     override fun unlockEndBtn() {
             btnEndTraining.visibility = View.VISIBLE
         btnEndTraining.isClickable = true

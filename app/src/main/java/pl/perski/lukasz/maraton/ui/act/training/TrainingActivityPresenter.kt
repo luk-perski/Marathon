@@ -1,7 +1,9 @@
 package pl.perski.lukasz.maraton.ui.act.training
 
+import android.app.Activity
 import android.support.v4.app.FragmentManager
 import android.util.Log
+import android.widget.Toast
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData

@@ -28,8 +28,8 @@ class TrainingModel : TrainingActivityMVP.Model {
 
         val cal = Calendar.getInstance()
         val time = cal.time
-        val date = SimpleDateFormat("dd-M-yy").format(time)
-        val month = SimpleDateFormat("M-yy").format(time)
+        val date = SimpleDateFormat("dd-M-yy", Locale.GERMANY).format(time)
+        val month = SimpleDateFormat("M-yy", Locale.GERMANY).format(time)
 //TODO: popraw ścieżkę
         auth.uid?.let {
             colRefExercise = db.document("users/$it/exercises/$date")
