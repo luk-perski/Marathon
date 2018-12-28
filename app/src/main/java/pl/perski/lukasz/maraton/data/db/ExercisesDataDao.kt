@@ -9,8 +9,17 @@ import pl.perski.lukasz.maraton.data.model.ExerciseData
 @Dao
 interface ExercisesDataDao {
 
-    @Query("SELECT * from exercises")
+    @Query(value = "SELECT * from exercises")
     fun getAll(): List<ExerciseData>
+
+    @Query(value = "SELECT DISTINCT exerciseGroupId FROM exercises")
+    fun getGroupType() : MutableList<Int>
+
+    @Query(value = "SELECT *  FROM exercises WHERE exerciseGroupId = (:groupId)")
+    fun getGroup(groupId : Int) : MutableList<ExerciseData>
+
+    @Query(value = "SELECT title  FROM exercises WHERE exerciseGroupId = (:groupId)")
+    fun getTitlesGroup(groupId : Int) : MutableList<String>
 
     @Insert(onConflict = REPLACE)
     fun insert(weatherData: ExerciseData)

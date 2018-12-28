@@ -65,7 +65,7 @@ class VoiceRecFragment : Fragment(), VoiceRecFragmentMVP.View {
     }
 
     override fun setEvents() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") //To change titles of created functions use File | Settings | File Templates.
     }
 
 
