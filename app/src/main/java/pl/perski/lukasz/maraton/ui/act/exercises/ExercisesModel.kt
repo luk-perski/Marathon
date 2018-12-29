@@ -4,16 +4,14 @@ import android.content.Context
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository
 
-class ExercisesModel   : ExercisesActivityMVP.Model
+class ExercisesModel : ExercisesActivityMVP.Model {
 
-{
-    lateinit var repository : ExercisesRepository
+    lateinit var repository: ExercisesRepository
 
     override fun getExerciseTitlesGroupFromDB(context: Context, groupId: Int): MutableList<String>? {
         repository = ExercisesRepository(context)
         return repository.getExerciseTitlesGroup(groupId)
     }
-
 
     override fun getExercisesGroupFromDB(context: Context, groupId: Int): MutableList<ExerciseData>? {
         repository = ExercisesRepository(context)
@@ -26,14 +24,8 @@ class ExercisesModel   : ExercisesActivityMVP.Model
     }
 
 
-
-
-    override fun getExercisesFromDB(context : Context): List<ExerciseData> {
-         repository = ExercisesRepository(context)
+    override fun getExercisesFromDB(context: Context): List<ExerciseData> {
+        repository = ExercisesRepository(context)
         return repository.getExercises()
     }
-
-
-
-
 }

@@ -10,9 +10,24 @@ import pl.perski.lukasz.maraton.R
 
 class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
 {
+    override fun setExerciseTitle(exerciseTitle: String) {
+        tvTitle.text = exerciseTitle
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_training)
+        presenter.setView(this)
+        presenter.startTraining()
+        setEvents()
+    }
+
+    override fun getContext(): Context {
+        return this
+    }
 
     override fun unlockEndBtn() {
-            btnEndTraining.visibility = View.VISIBLE
+        btnEndTraining.visibility = View.VISIBLE
         btnEndTraining.isClickable = true
     }
 
@@ -37,31 +52,8 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
     var presenter = TrainingActivityPresenter(supportFragmentManager)
     private val buttonClick = AlphaAnimation(1f, 0.8f)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_training)
-        presenter.setView(this)
-        presenter.startTraining()
-        setEvents()
-    }
-
-    override fun getContext(): Context {
-        return this
-    }
-
-    override fun onBackPressed() {
-//        odkomentowane, jeżeli ma istnieć możliwość do poprzedniego fragmentu
-//        val count = manager.backStackEntryCount
-//        if (count <2) {
-           this.finish()
-//        } else {
-//           manager.popBackStack()
-//        }
-    }
-
-    override fun setToolbarTittle(title: String, subtitle: String) {
+    override fun setToolbarTittle(title: String) {
         supportActionBar?.title = title
-        supportActionBar?.subtitle = subtitle
     }
 
     override fun lockNextBtn() {
@@ -73,4 +65,15 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         tvAmount_Qestion.text = question
     }
 
+    override fun onBackPressed() {
+//        odkomentowane, jeżeli ma istnieć możliwość do poprzedniego fragmentu
+//        val count = manager.backStackEntryCount
+//        if (count <2) {
+        this.finish()
+//        } else {
+//           manager.popBackStack()
+//        }
+    }
+
 }
+

@@ -17,7 +17,6 @@ enum class ExerciseGroup constructor(val code: Int, val group: String) {
     TYPE_10(10, "Masaże"),
     TYPE_11(11, "Czytanie&Inne");
 
-
     companion object {
         fun getByCode(code: Int): String {
             val exerciseGroup = ArrayList(Arrays.asList(*values()))

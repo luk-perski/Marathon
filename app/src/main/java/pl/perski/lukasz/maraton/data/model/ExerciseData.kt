@@ -46,10 +46,6 @@ data class ExerciseData(
     override fun toString(): String {
         return title
     }
-
-
-
-
 }
 
 

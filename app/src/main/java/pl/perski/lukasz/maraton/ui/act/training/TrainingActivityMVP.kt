@@ -8,12 +8,13 @@ interface TrainingActivityMVP {
 
     interface View {
         fun getContext(): Context
-        fun setToolbarTittle(title : String, subtitle: String)
+        fun setToolbarTittle(title : String)
         fun lockNextBtn()
         fun unlockEndBtn()
         fun setExercisePicker(value : Float)
         fun setAmountQuestion(question : String)
         fun setEvents()
+        fun setExerciseTitle(exerciseTitle : String)
     }
 
 

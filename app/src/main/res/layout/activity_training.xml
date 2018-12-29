@@ -4,29 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="32dp"
     android:orientation="vertical"
     tools:context=".ui.act.training.TrainingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-   android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
+        android:layout_height="140dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="?colorPrimary"
+        android:orientation="vertical">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_skip_white_48dp"/>
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.subsub.library.BeautyButton
+                android:id="@+id/btnSkip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_round_30dp_primary_white"
+                android:text="@string/skip"
+                android:textColor="#FF2C3E50"
+                android:textSize="15sp"
+                app:shadowColor="@color/colorDefaultShadowColor"
+                app:shadowPercentHeight="1"
+                app:shadowPercentWidth="0.95"
+                app:shadowRadius="40dp"
+                app:shadowYOffset="5" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/exercise_title"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="?colorAccent"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!-- android:background="@drawable/tv_backgroud_primary" -->
     </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/fragment_exercise_container"
@@ -43,18 +80,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="8dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
+        android:padding="10dp"
         android:text="@string/amount_question"
-        android:textColor="?android:colorBackground"
-        app:lib_setRoundedBGColor="?colorPrimary"
+        android:textAlignment="center"
+        android:textColor="?colorAccent"
+        android:textSize="15sp"
         app:autoSizeMinTextSize="30sp"
         app:lib_setRadius="30dp"
+        app:lib_setRoundedBGColor="?colorPrimary"
         app:lib_setRoundedBorderColor="?colorPrimary"
         app:lib_setRoundedView="true"
-        app:lib_unCheckedDrawable="@drawable/ic_unchecked_img"
-        android:padding="10dp"
-       />
+        app:lib_unCheckedDrawable="@drawable/ic_unchecked_img" />
 
     <pl.polak.clicknumberpicker.ClickNumberPickerView
         android:id="@+id/exercisePicker"
@@ -71,9 +107,8 @@
         app:value_animation_down="true"
         app:value_animation_up="true"
         app:value_background_color="?colorPrimaryDark"
-        app:value_text_color="?android:colorBackground"
-        app:value_text_size="10sp"
-        />
+        app:value_text_color="?colorAccent"
+        app:value_text_size="10sp" />
 
 
     <android.support.constraint.ConstraintLayout
@@ -92,7 +127,7 @@
             android:elevation="10dp"
             android:padding="10dp"
             android:text="@string/next"
-            android:textColor="@android:color/background_light"
+            android:textColor="?colorAccent"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +147,7 @@
             android:elevation="10dp"
             android:padding="10dp"
             android:text="@string/end"
-            android:textColor="@android:color/background_light"
+            android:textColor="?colorAccent"
             android:textSize="15sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -125,8 +160,6 @@
             app:shadowRadius="40dp"
             app:shadowYOffset="5" />
     </android.support.constraint.ConstraintLayout>
-
-
 
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
 import android.arch.persistence.room.Query
 import pl.perski.lukasz.maraton.data.model.ExerciseData
+import pl.perski.lukasz.maraton.data.model.RhymesData
 
 @Dao
 interface ExercisesDataDao {
@@ -26,4 +27,14 @@ interface ExercisesDataDao {
 
     @Query("DELETE from exercises")
     fun deleteAll()
+
+    //TODO: utwórz osobne DAO na inne tabele
+    @Query(value = "SELECT body  FROM rhymes WHERE exerciseRecId = (:recId)")
+    fun getRhyme(recId : Int) : String
+
+    @Query(value = "SELECT body from consonantsCombination")
+    fun getAllTwoVowelsWords(): List<String>
+
+    @Query(value = "SELECT body from twoVowelsWords")
+    fun getAllConstCombWords(): List<String>
 }

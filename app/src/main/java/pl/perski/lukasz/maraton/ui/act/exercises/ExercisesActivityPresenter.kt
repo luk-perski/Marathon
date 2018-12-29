@@ -1,5 +1,4 @@
 package pl.perski.lukasz.maraton.ui.act.exercises
-
 import pl.perski.lukasz.maraton.data.enums.ExerciseGroup
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 
@@ -18,25 +17,20 @@ class ExercisesActivityPresenter : ExercisesActivityMVP.Presenter {
 
     override fun setExpandableLV() {
         getExercises()
-
         groupsCodes.forEach{
            groups.add(ExerciseGroup.getByCode(it))
-            //groups.add(it.toString())
         }
         view.setExercises(groups, titles)
     }
-
 
     override fun getExercisesGroup(groupId: Int): MutableList<ExerciseData> {
 return model.getExercisesGroupFromDB(view.getContext(), groupId)!!
     }
 
-
     override fun getExercisesGroupId() :MutableList<Int> {
         //TODO: tak niezbyt tutaj z tym not-null...
         return model.getExercisesGroupIdFromDB(view.getContext())!!
     }
-
 
     override fun setView(view: ExercisesActivityMVP.View) {
        this.view = view
@@ -48,6 +42,5 @@ return model.getExercisesGroupFromDB(view.getContext(), groupId)!!
             titles.add(getExerciseTitlesGroup(it))
         }
     }
-
 }
 

@@ -47,12 +47,14 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
 
     override fun setControls() {
         ++counter
-        view.setToolbarTittle(exercise.title, "$counter/$countOfExercises")
+        view.setToolbarTittle("$counter/$countOfExercises")
+        view.setExerciseTitle(exercise.title)
 
         if (counter >= countOfExercises) {
             view.lockNextBtn()
             view.unlockEndBtn()
         }
+
 
         if (exercise.exerciseTypeId != 6) {
             view.setExercisePicker(1F)

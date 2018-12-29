@@ -26,5 +26,4 @@ interface ExercisesActivityMVP {
         fun getExerciseTitlesGroupFromDB(context :Context, groupId : Int) : MutableList<String>?
         fun getExercisesGroupFromDB(context :Context, groupId : Int) : MutableList<ExerciseData>?
     }
-
 }

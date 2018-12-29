@@ -17,7 +17,7 @@
         android:padding="10dp"
         android:text=""
         android:textColor="@color/White"
-        android:textSize="64sp"
+        android:textSize="48sp"
         android:elevation="10dp"
         app:layout_constraintBottom_toTopOf="@+id/tvMinutes"
         app:layout_constraintEnd_toEndOf="parent"
