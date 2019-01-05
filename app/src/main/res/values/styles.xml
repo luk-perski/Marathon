@@ -19,7 +19,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="TEST" parent="AppTheme" >
+    <style name="TEST" parent="AppTheme">
         <item name="android:windowBackground">@color/fbutton_color_midnight_blue</item>
         <item name="android:colorBackground">@color/fbutton_color_midnight_blue</item>
         <item name="colorPrimaryDark">@color/fbutton_color_pomegranate</item>
@@ -34,13 +34,38 @@
         <item name="android:textColorSecondaryInverse">@color/Azure</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.TEST" parent="AppTheme.NoActionBar" >
+    <style name="AppTheme.NoActionBar.TEST" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/fbutton_color_alizarin</item>
         <item name="colorPrimaryDark">@color/fbutton_color_pomegranate</item>
         <item name="android:colorBackground">@color/fbutton_color_midnight_blue</item>
         <item name="colorAccent">@color/White</item>
         <item name="android:statusBarColor">@color/fbutton_color_pomegranate</item>
         <item name="android:navigationBarColor">@color/Black</item>
+    </style>
+
+    <style name="TEST.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TEST.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="TEST.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="AlertDialogCustom" parent="TEST">
+
+
+        <item name="android:textColorPrimary">@color/White</item> <!-- nagłówek -->
+        <item name="android:textColorSecondary">@color/fbutton_color_pomegranate</item> <!-- ramki checkboxów -->
+        <item name="android:background">@color/fbutton_color_midnight_blue</item> <!-- tło -->
+        <item name="colorAccent">@android:color/white</item> <!-- przyciski -->
+        <item name="textColorAlertDialogListItem">@color/White</item>
+        <item name="android:textAppearance">@layout/list_item</item>
+        <item name="android:textColor">@color/fbutton_color_pomegranate</item> <!-- nagłówek i przyciski-->
+
+
+
     </style>
 
 </resources>

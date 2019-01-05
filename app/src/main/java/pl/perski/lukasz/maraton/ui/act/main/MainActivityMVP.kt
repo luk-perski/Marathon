@@ -7,18 +7,19 @@ interface MainActivityMVP {
     interface View{
 
         fun getContext(): Context
+        fun startIntroActivity()
+        fun startTraining(exercisesTitles : Array<String>)
+        fun reloadActivity()
     }
 
     interface Presenter {
         fun setView(view: View)
-        //TODO: kopia db i sprawdzenie uprawnienień podczas splash screenu
-//fun onFirstLunch()
-        fun copyDB()
-        fun grantPermissions()
+        fun onFirstLaunch()
+        fun MorningTraining()
+        fun EveningTraining()
+        fun chooser(mode : Int)
     }
 
     interface Model
-    {
-        fun copyDB(context : Context)
-    }
+    {}
 }

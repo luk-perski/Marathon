@@ -3,18 +3,21 @@ package pl.perski.lukasz.maraton.ui.act.training
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class TrainingModel : TrainingActivityMVP.Model {
+
 
 
     lateinit var repository: ExercisesRepository
@@ -62,6 +65,17 @@ class TrainingModel : TrainingActivityMVP.Model {
 //            }
 //        }
     }
+
+    override fun getExercisesFromDBByTitles(context: Context, intent : Intent): List<ExerciseData>? {
+        repository = ExercisesRepository(context)
+        val titles = intent.getStringArrayExtra(CONST_STRINGS.TRAINING_ENTER_DATA)
+        val exercises = mutableListOf<ExerciseData>()
+        titles.forEach {
+            exercises.add(repository.getExerciseByTitle(it))
+        }
+        return exercises
+    }
+
 
     override fun getExercisesFromDB(context: Context): List<ExerciseData> {
         repository = ExercisesRepository(context)

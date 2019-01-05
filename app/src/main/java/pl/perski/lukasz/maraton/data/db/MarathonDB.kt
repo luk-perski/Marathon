@@ -14,7 +14,7 @@ import pl.perski.lukasz.maraton.data.model.TwoVowelsWordsData
     RhymesData::class,
     ConsonantsCombinationData::class,
     TwoVowelsWordsData::class],
-        version = 1,
+        version = 2,
         exportSchema = false)
 abstract class MarathonDB : RoomDatabase() {
 

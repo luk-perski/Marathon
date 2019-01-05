@@ -18,7 +18,7 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
         presenter.setView(this)
-        presenter.startTraining()
+        presenter.startTraining(intent)
         setEvents()
     }
 

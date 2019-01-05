@@ -1,9 +1,8 @@
 package pl.perski.lukasz.maraton.ui.act.training
 
-import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.support.v4.app.FragmentManager
-import android.util.Log
-import android.widget.Toast
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
@@ -16,6 +15,7 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
     var model = TrainingModel()
     private lateinit var view: TrainingActivityMVP.View
     lateinit var exercisesList: List<ExerciseData>
+    private lateinit var _context : Context
     var counter = 0
     lateinit var exercise: ExerciseData
     var countOfExercises: Int = -1
@@ -24,10 +24,11 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
 
     override fun setView(view: TrainingActivityMVP.View) {
         this.view = view
+        _context = view.getContext()
     }
 
-    override fun startTraining() {
-        getMorningExercises()
+    override fun startTraining(intent: Intent) {
+        getExercises(intent)
         displayFragment()
     }
 
@@ -71,14 +72,13 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
         model.saveToDB(exerciseDoneList)
     }
 
-    override fun getMorningExercises() {
+    override fun getExercises(intent: Intent) {
 
-        try {
-            exercisesList = model.getExercisesFromDB(view.getContext())
+//        try {
+              exercisesList = model.getExercisesFromDBByTitles(_context, intent )!!
+            //exercisesList = model.getExercisesFromDB(view.getContext())
             countOfExercises = exercisesList.count()
-        } catch (e: Exception) {
-            //TODO: ogarnij try/catche
-        }
+//        } catch (e: Exception) {}
     }
 
 }

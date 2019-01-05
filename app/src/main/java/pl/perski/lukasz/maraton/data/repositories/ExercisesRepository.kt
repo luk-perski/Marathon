@@ -13,6 +13,11 @@ class ExercisesRepository (var context : Context) : BaseRepository() {
         return mDb?.marathonDataDao()?.getAll()!!
     }
 
+    fun getExerciseByTitle(title : String): ExerciseData {
+        prepareDbWorker(context)
+        return mDb?.marathonDataDao()?.getExerciseByTitle(title)!!
+    }
+
     fun getExercisesGroupId(): MutableList<Int> {
         prepareDbWorker(context)
         return mDb?.marathonDataDao()?.getGroupType()!!

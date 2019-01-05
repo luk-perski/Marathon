@@ -56,4 +56,21 @@
     <string name="toast_recording_finish">Nagranie zapisane do</string>
     <string name="record">Nagranie</string>
     <string name="skip">Pomiń</string>
+    <string name="title_activity_intro">IntroActivity</string>
+    <string name="ok">Ok</string>
+    <string name="chose_exercises">Wybierz ćwiczenia</string>
+    <string name="welcome">Witaj w aplikacji</string>
+    <string name="permission_needed">Aby aplikacja mogła działać potrzebuje paru uprawnień</string>
+    <string name="persmission_to_storage">Uprawnień do pamięci,
+        aby przechowywać ćwiczenia</string>
+    <string name="persmission_to_voice">Uprawnień do nagrywania dźwięku,
+        aby nagrywać ćwiczenia (tylko, kiedy użytkownik włączy nagrywanie)</string>
+    <string name="login_successful">Logowanie się powiodło.</string>
+    <string name="register_successful">Rejestracja się powiodła.</string>
+    <string name="chose_trening_dialog">Musisz najpierw wybrać zestaw ćwiczeń</string>
+    <string name="you_have_chosen">Wybrałeś:</string>
+    <string name="chooseEvening">Zmień wieczorne ćwiczenia</string>
+    <string name="chooseMorning">Zmień poranne ćwiczenia </string>
+    <string name="logut_successful">Nastąpiło wylogowanie.</string>
+    <string name="grant">Przyznaj</string>
 </resources>

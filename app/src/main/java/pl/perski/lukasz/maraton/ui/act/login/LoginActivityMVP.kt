@@ -24,9 +24,10 @@ interface LoginActivityMVP {
         fun setControls()
         fun registerUser()
         fun loginUser()
-        //fun validateEntries() : Boolean
     }
 
     interface Model
-    {}
+    {
+
+    }
 }

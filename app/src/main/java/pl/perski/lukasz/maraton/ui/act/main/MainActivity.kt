@@ -15,13 +15,14 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.exercises.ExercisesActivity
-import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
 import android.view.animation.AlphaAnimation
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
-
+import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityMVP.View {
 
@@ -32,60 +33,67 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     val CALENDAR = "calendar"
     val FRAGMENT = "fragment"
     private val buttonClick = AlphaAnimation(1f, 0.8f)
-    private  val auth = FirebaseAuth.getInstance()
+    private val auth = FirebaseAuth.getInstance()
+    lateinit var r: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        presenter.setView(this)
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-        presenter.setView(this)
-//        presenter.onFirstLunch()
-        presenter.grantPermissions()
+
+        //ĆWICZENIA PORANNE
+        //TODO: Dialog informujący o konieczności wyboru
         btnMorningTraining.setOnClickListener {
             btnMorningTraining.startAnimation(buttonClick)
-            val intent = Intent(applicationContext, TrainingActivity::class.java)
-            startActivity(intent) }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        //TODO: Przenieś to do presentera
-        if (auth.currentUser == null) {
-            finish()
-            startActivity(Intent(this, LoginActivity::class.java))
+            presenter.MorningTraining()
         }
-        else
-            Log.e("uId", auth.uid)
-    }
 
-    override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
+        //ĆWICZENIA WIECZORNE
+        btnEveningTraining.setOnClickListener {
+            btnEveningTraining.startAnimation(buttonClick)
+            presenter.EveningTraining()
         }
     }
+
+    override fun getContext(): Context {
+        return this
+    }
+
+    override fun startTraining(exercisesTitles: Array<String>) {
+        val intent = Intent(applicationContext, TrainingActivity::class.java)
+        intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
+        startActivity(intent)
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-        menu.findItem(R.id.action_logout).isVisible = auth.currentUser != null
+        menu.findItem(R.id.miLogout).isVisible = auth.currentUser != null
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
-            R.id.action_settings -> true
-            R.id.action_logout -> {
+            R.id.miLogout -> {
                 auth.signOut()
-                Toast.makeText(this, "Nastąpiło wylogowanie.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.logut_successful, Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
+                true
+            }
+            R.id.miChooseMorning -> {
+       presenter.chooser(3)
+                true
+            }
+            R.id.miChooseEvening -> {
+                presenter.chooser(4)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -94,9 +102,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_slideshow -> {
+            R.id.nav_exercises -> {
                 //TODO: kopia db i sprawdzenie uprawnienień podczas splash screenu
-                presenter.copyDB()
                 val intent = Intent(applicationContext, ExercisesActivity::class.java)
                 startActivity(intent)
             }
@@ -130,7 +137,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    override fun getContext(): Context {
-        return this
+    override fun onStart() {
+        super.onStart()
+        //TODO: Przenieś to do presentera
+        if (auth.currentUser == null) {
+            finish()
+            startActivity(Intent(this, LoginActivity::class.java))
+        } else {
+            Log.e("uId", auth.uid)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun reloadActivity() {
+        finish()
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    override fun startIntroActivity() {
+        val intent = Intent(this, IntroActivity::class.java)
+        startActivity(intent)
     }
 }

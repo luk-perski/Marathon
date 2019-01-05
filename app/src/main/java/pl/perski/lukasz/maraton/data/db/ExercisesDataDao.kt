@@ -19,6 +19,9 @@ interface ExercisesDataDao {
     @Query(value = "SELECT *  FROM exercises WHERE exerciseGroupId = (:groupId)")
     fun getGroup(groupId : Int) : MutableList<ExerciseData>
 
+    @Query(value = "SELECT *  FROM exercises WHERE title = (:title)")
+    fun getExerciseByTitle(title : String) : ExerciseData
+
     @Query(value = "SELECT title  FROM exercises WHERE exerciseGroupId = (:groupId)")
     fun getTitlesGroup(groupId : Int) : MutableList<String>
 
