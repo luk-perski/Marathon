@@ -4,7 +4,6 @@ package pl.perski.lukasz.maraton.ui.act.training
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import pl.perski.lukasz.maraton.data.model.ExerciseData
@@ -31,11 +30,11 @@ class TrainingModel : TrainingActivityMVP.Model {
 
         val cal = Calendar.getInstance()
         val time = cal.time
-        val date = SimpleDateFormat("dd-M-yy", Locale.GERMANY).format(time)
+        val day = SimpleDateFormat("dd-M-yy", Locale.GERMANY).format(time)
         val month = SimpleDateFormat("M-yy", Locale.GERMANY).format(time)
 //TODO: popraw ścieżkę
         auth.uid?.let {
-            colRefExercise = db.document("users/$it/exercises/$date")
+            colRefExercise = db.document("users/$it/exercises/$month")
         }
 
         val dummy = HashMap<String, Any>()
@@ -45,7 +44,7 @@ class TrainingModel : TrainingActivityMVP.Model {
 
         //zapis ćwiczeń do dokumentów
         for (x in listToSave) {
-            colRefExercise.collection(month).document(x.recId.toString()).set(x)
+            colRefExercise.collection(day).document(x.recId.toString()).set(x)
         }
 
         //odczytywanie z bazy wszystkich dokumentów
