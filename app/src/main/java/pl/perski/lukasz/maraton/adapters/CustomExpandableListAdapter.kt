@@ -1,14 +1,15 @@
 package pl.perski.lukasz.maraton.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseExpandableListAdapter
-import android.widget.ExpandableListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import pl.perski.lukasz.maraton.R
+import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS
 
 
 class CustomExpandableListAdapter(var context: Context, var expandableListView : ExpandableListView, var header : MutableList<String>, var body : MutableList<MutableList<String>>) : BaseExpandableListAdapter(){
@@ -30,6 +31,14 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
             val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = inflater.inflate(R.layout.layout_group,null)
         }
+
+        ///////START CUSTOM TRAINING
+        val btnStartCustomTraining = convertView!!.findViewById(R.id.btnStartCustomTraining) as Button
+        btnStartCustomTraining.setOnClickListener {
+            Toast.makeText(context, getGroup(groupPosition),Toast.LENGTH_SHORT).show()
+            startTraining(body[groupPosition].toTypedArray())
+        }
+        ////////////////////
         val title = convertView?.findViewById<TextView>(R.id.tv_title)
         title?.text = getGroup(groupPosition)
         title?.setOnClickListener {
@@ -75,5 +84,12 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
     override fun getGroupCount(): Int {
         return header.size
     }
+
+    fun startTraining(exercisesTitles: Array<String>) {
+        val intent = Intent(context , TrainingActivity::class.java)
+        intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
+        context.startActivity(intent)
+    }
+
 
 }

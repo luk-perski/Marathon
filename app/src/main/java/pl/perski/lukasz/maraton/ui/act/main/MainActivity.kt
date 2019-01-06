@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.ui.act.exercises.ExercisesActivity
+import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import android.view.animation.AlphaAnimation
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_exercises -> {
                 //TODO: kopia db i sprawdzenie uprawnienień podczas splash screenu
-                val intent = Intent(applicationContext, ExercisesActivity::class.java)
+                val intent = Intent(applicationContext, ExercisesListActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_stopwatch -> {

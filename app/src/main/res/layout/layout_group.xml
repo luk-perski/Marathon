@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tv_title"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingEnd="10dp"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp"
-    android:paddingStart="?android:attr/expandableListPreferredItemPaddingLeft"
-    android:textColor="@color/White"/>
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:paddingStart="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:text="TEST test TEST est"
+        android:textColor="@color/White"
+        android:textSize="20sp" />
+
+
+
+
+    <Button
+        android:id="@+id/btnStartCustomTraining"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_play_arrow_pomegranate_24dp"
+        android:layout_marginRight="10dp"/>
+
+
+</LinearLayout>

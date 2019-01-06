@@ -32,7 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.act.exercises.ExercisesActivity" />
+        <activity android:name=".ui.act.exercisesList.ExercisesListActivity" />
         <activity android:name=".ui.act.training.TrainingActivity" />
         <activity android:name=".ui.act.fragmentContainer.FragmentContainerActivity" />
         <activity android:name=".ui.act.MyOnboardingActivity" />

@@ -18,7 +18,7 @@ import pl.perski.lukasz.maraton.data.model.TwoVowelsWordsData
         exportSchema = false)
 abstract class MarathonDB : RoomDatabase() {
 
-    abstract fun marathonDataDao(): ExercisesDataDao
+    abstract fun marathonDataDao(): MaratonDataDao
 
     companion object {
         private var INSTANCE: MarathonDB? = null

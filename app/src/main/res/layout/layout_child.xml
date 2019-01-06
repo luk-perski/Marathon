@@ -7,4 +7,5 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp"
     android:paddingStart="?android:attr/expandableListPreferredItemPaddingLeft"
-    android:textColor="@color/White"/>
+    android:textColor="@color/fbutton_color_pomegranate"
+    android:textStyle="bold"/>

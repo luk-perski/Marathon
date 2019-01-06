@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="next">Następny</string>
     <string name="NN">\???</string>
-    <string name="exercise_title">EXERCISE_TITLE</string>
+    <string name="actExerciseList_title">Ćwiczenia</string>
     <string name="amount_question">Liczba wykonanych powtórzeń ćwiczenia:</string>
     <string name="time_question">Poświęcony na ćwiczenie czas[min]:</string>
     <string name="crow_question">Rekord liczby wypowiedzanych wron:</string>
@@ -73,4 +73,8 @@
     <string name="chooseMorning">Zmień poranne ćwiczenia </string>
     <string name="logut_successful">Nastąpiło wylogowanie.</string>
     <string name="grant">Przyznaj</string>
+    <string name="define_your_own_exercises_group">Dodaj własną grupę ćwiczeń\n+</string>
+    <string name="chooseTitle">Wybierz tytuł grupy</string>
+    <string name="title_hint">Wprowadź tytuł</string>
+    <string name="next_step">Przejdź dalej</string>
 </resources>
