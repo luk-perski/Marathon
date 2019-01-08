@@ -12,6 +12,14 @@ import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 
 class LoginActivity : AppCompatActivity(), LoginActivityMVP.View {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+        presenter.setView(this)
+        setEvents()
+    }
+
+
     var presenter = LoginActivityPresenter()
     private val buttonClick = AlphaAnimation(1f, 0.8f)
 
@@ -86,11 +94,5 @@ return etEmail.text.toString().trim()
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        presenter.setView(this)
-        setEvents()
-    }
 
 }

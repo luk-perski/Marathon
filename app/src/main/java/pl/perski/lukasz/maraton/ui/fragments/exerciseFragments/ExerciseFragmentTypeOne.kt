@@ -12,7 +12,7 @@ import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 
 class ExerciseFragmentTypeOne:  ExerciseBaseFragment() {
 
-    override fun getData(): ExerciseDoneData {
+    override fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData {
         return ExerciseDoneData(
                 exercise!!.recId,
                 exercise!!.title,

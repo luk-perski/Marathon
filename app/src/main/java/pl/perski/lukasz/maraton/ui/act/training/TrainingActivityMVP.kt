@@ -9,13 +9,16 @@ interface TrainingActivityMVP {
 
     interface View {
         fun getContext(): Context
-        fun setToolbarTittle(title : String)
+        fun setToolbarTittle(title: String)
         fun lockNextBtn()
+        fun lockSkipBtn()
         fun unlockEndBtn()
-        fun setExercisePicker(value : Float)
-        fun setAmountQuestion(question : String)
+        fun setExercisePicker(value: Float)
+        fun setAmountQuestion(question: String)
         fun setEvents()
-        fun setExerciseTitle(exerciseTitle : String)
+        fun setExerciseTitle(exerciseTitle: String)
+        fun getExerciseAmount(): Int
+        fun finishAct()
     }
 
 
@@ -24,6 +27,8 @@ interface TrainingActivityMVP {
         fun setControls()
         fun startTraining(intent: Intent)
         fun getExercises(intent: Intent)
+        fun skipExercise()
+        fun showAlertDialog()
     }
 
 
@@ -31,5 +36,6 @@ interface TrainingActivityMVP {
     {
         fun getExercisesFromDB(context : Context) : List<ExerciseData>?
         fun getExercisesFromDBByTitles(context: Context, intent: Intent): List<ExerciseData>?
+        fun getTrainingEnd(intent: Intent): Int
     }
 }

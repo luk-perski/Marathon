@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".ui.act.training.TrainingActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
@@ -65,12 +66,18 @@
     </LinearLayout>
 
 
-    <FrameLayout
-        android:id="@+id/fragment_exercise_container"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6" />
+        android:layout_height="match_parent"
+        android:layout_weight="6" >
 
+        <FrameLayout
+            android:id="@+id/fragment_exercise_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </android.support.constraint.ConstraintLayout>
 
     <com.libRG.CustomTextView
         android:id="@+id/tvAmount_Qestion"
@@ -119,6 +126,7 @@
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="32dp">
 
+
         <com.subsub.library.BeautyButton
             android:id="@+id/btnNextFragment"
             android:layout_width="match_parent"
@@ -146,7 +154,7 @@
             android:background="@drawable/bg_round_30dp_primary"
             android:elevation="10dp"
             android:padding="10dp"
-            android:text="@string/end"
+            android:text="@string/end_training"
             android:textColor="?colorAccent"
             android:textSize="15sp"
             android:visibility="invisible"
@@ -160,6 +168,7 @@
             app:shadowRadius="40dp"
             app:shadowYOffset="5" />
     </android.support.constraint.ConstraintLayout>
+
 
 
 </LinearLayout>

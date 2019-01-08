@@ -52,7 +52,7 @@
     <string name="password">Hasło</string>
     <string name="email">E-mail</string>
     <string name="calendar">Kalendarz</string>
-    <string name="end">Zakończ trening</string>
+    <string name="end_training">Zakończ trening</string>
     <string name="toast_recording_finish">Nagranie zapisane do</string>
     <string name="record">Nagranie</string>
     <string name="skip">Pomiń</string>
@@ -77,4 +77,19 @@
     <string name="chooseTitle">Wybierz tytuł grupy</string>
     <string name="title_hint">Wprowadź tytuł</string>
     <string name="next_step">Przejdź dalej</string>
+    <string name="no_training_this_day">Brak porannych/wieczornych ćwiczeń tego dnia.</string>
+    <string name="tap_info">Wybierz datę</string>
+    <string name="mood_question">Jak Ci się dzisiaj mówiło?</string>
+    <string name="no_mood_selected">Wybierz buźkę.</string>
+    <string name="no_exercises_chosen">Musisz wybrać min. jedno ćwiczenie.</string>
+    <string name="chooser_info_message">Wybierz ćwiczenia, które będziesz wykonywać</string>
+    <string name="atMorning">rano.</string>
+    <string name="atEvening">wieczorem.</string>
+    <string name="lets_begin">Zaczynamy</string>
+    <string name="end_training_question">Czy chcesz zakończyć?</string>
+    <string name="cancel">Anuluj</string>
+    <string name="end">Zakończ</string>
+    <string name="end_and_save_training_question">Czy chcesz zakończyć i zapisać ćwiczenia?</string>
+    <string name="save">Zapisz</string>
+    <string name="only_end">Tylko zakończ</string>
 </resources>

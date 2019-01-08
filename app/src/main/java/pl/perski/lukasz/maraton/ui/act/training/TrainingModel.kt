@@ -16,7 +16,9 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class TrainingModel : TrainingActivityMVP.Model {
-
+    override fun getTrainingEnd(intent: Intent): Int {
+        return intent.getIntExtra(CONST_STRINGS.TRAINING_END, 0)
+    }
 
 
     lateinit var repository: ExercisesRepository
@@ -30,8 +32,8 @@ class TrainingModel : TrainingActivityMVP.Model {
 
         val cal = Calendar.getInstance()
         val time = cal.time
-        val day = SimpleDateFormat("dd-M-yy", Locale.GERMANY).format(time)
-        val month = SimpleDateFormat("M-yy", Locale.GERMANY).format(time)
+        val day = SimpleDateFormat("d-M-yyyy", Locale.GERMANY).format(time)
+        val month = SimpleDateFormat("M-yyyy", Locale.GERMANY).format(time)
 //TODO: popraw ścieżkę
         auth.uid?.let {
             colRefExercise = db.document("users/$it/exercises/$month")

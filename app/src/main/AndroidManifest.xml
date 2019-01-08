@@ -42,7 +42,8 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".ui.act.login.LoginActivity" />
         <activity android:name=".ui.act.exercisePicker.ExercisePicker" />
-        <activity android:name=".ui.act.exercisePicker.exercisePickerActivity"></activity>
+        <activity android:name=".ui.act.exercisePicker.exercisePickerActivity" />
+        <activity android:name=".ui.act.calendar.CalendarActivity"></activity>
     </application>
 
 </manifest>

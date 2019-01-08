@@ -41,5 +41,5 @@ import java.io.Serializable
          }
      }
 
-     abstract fun getData() : ExerciseDoneData
+     abstract  fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData
 }

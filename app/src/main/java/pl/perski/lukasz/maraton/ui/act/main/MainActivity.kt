@@ -18,6 +18,7 @@ import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import android.view.animation.AlphaAnimation
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import pl.perski.lukasz.maraton.ui.act.calendar.CalendarActivity
 import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
@@ -65,10 +66,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return this
     }
 
-    override fun startTraining(exercisesTitles: Array<String>) {
+    override fun startTraining(exercisesTitles: Array<String>, mode : Int) {
         val intent = Intent(applicationContext, TrainingActivity::class.java)
         intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
+        intent.putExtra(CONST_STRINGS.TRAINING_END, mode)
         startActivity(intent)
+        finish()
     }
 
 
@@ -89,11 +92,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 true
             }
             R.id.miChooseMorning -> {
-       presenter.chooser(3)
+       presenter.chooser(2)
                 true
             }
             R.id.miChooseEvening -> {
-                presenter.chooser(4)
+                presenter.chooser(3)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -103,7 +106,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_exercises -> {
-                //TODO: kopia db i sprawdzenie uprawnienień podczas splash screenu
                 val intent = Intent(applicationContext, ExercisesListActivity::class.java)
                 startActivity(intent)
             }
@@ -124,8 +126,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
             R.id.nav_calendar -> {
-                val intent = Intent(applicationContext, FragmentContainerActivity::class.java)
-                intent.putExtra(FRAGMENT, CALENDAR)
+                val intent = Intent(applicationContext, CalendarActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_login -> {
@@ -159,7 +160,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun reloadActivity() {
         finish()
         val intent = Intent(applicationContext, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
+        overridePendingTransition(0,0)
     }
 
 

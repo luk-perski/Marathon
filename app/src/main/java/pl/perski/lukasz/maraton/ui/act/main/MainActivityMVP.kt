@@ -8,7 +8,7 @@ interface MainActivityMVP {
 
         fun getContext(): Context
         fun startIntroActivity()
-        fun startTraining(exercisesTitles : Array<String>)
+        fun startTraining(exercisesTitles : Array<String>, mode : Int)
         fun reloadActivity()
     }
 

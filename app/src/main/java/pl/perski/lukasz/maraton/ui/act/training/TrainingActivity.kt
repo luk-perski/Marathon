@@ -1,15 +1,28 @@
 package pl.perski.lukasz.maraton.ui.act.training
 
+
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import kotlinx.android.synthetic.main.activity_training.*
 import pl.perski.lukasz.maraton.R
+import pl.perski.lukasz.maraton.adapters.FragmentDialog
+import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
+import pl.perski.lukasz.maraton.ui.act.main.MainActivity
 
 class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
 {
+    override fun lockSkipBtn() {
+        btnSkip.visibility = View.INVISIBLE
+    }
+
+
+    override fun getExerciseAmount(): Int {return exercisePicker.value.toInt()}
+
     override fun setExerciseTitle(exerciseTitle: String) {
         tvTitle.text = exerciseTitle
     }
@@ -34,7 +47,7 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
     override fun setEvents() {
         btnNextFragment.setOnClickListener {
             btnNextFragment.startAnimation(buttonClick)
-           presenter.displayFragment()
+           presenter.displayFragment(true)
         }
 
         btnEndTraining.setOnClickListener {
@@ -42,6 +55,11 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
             presenter.endTraining()
             //TODO: Przejście gdzieś indziej
             btnEndTraining.isClickable = false
+        }
+
+        btnSkip.setOnClickListener {
+            btnSkip.startAnimation(buttonClick)
+            presenter.skipExercise()
         }
     }
 
@@ -65,15 +83,22 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         tvAmount_Qestion.text = question
     }
 
+
+
     override fun onBackPressed() {
-//        odkomentowane, jeżeli ma istnieć możliwość do poprzedniego fragmentu
-//        val count = manager.backStackEntryCount
-//        if (count <2) {
-        this.finish()
-//        } else {
-//           manager.popBackStack()
-//        }
+presenter.showAlertDialog()
     }
+
+
+    override fun finishAct()
+    {
+        finish()
+    }
+
+fun saveDataAndFinish(mood : Int)
+{
+    presenter.saveDataAndFinish(mood)
+}
 
 }
 

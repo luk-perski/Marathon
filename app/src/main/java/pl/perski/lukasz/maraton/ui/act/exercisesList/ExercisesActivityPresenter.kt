@@ -85,7 +85,7 @@ return model.getExercisesGroupFromDB(view.getContext(), groupId)!!
         val repository = ExercisesRepository(context)
         val items = repository.getExercises().map { it.toString() }.toTypedArray()
         val selectedList = java.util.ArrayList<Int>()
-        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.AlertDialogCustom))
+        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.DialogTheme))
         val selectedStrings = java.util.ArrayList<String>()
 
         builder.setTitle(R.string.chose_exercises)
@@ -119,7 +119,7 @@ return model.getExercisesGroupFromDB(view.getContext(), groupId)!!
 
     private fun showInputDialog ()
     {
-        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.AlertDialogCustom))
+        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.DialogTheme))
         val inflater = LayoutInflater.from(context)
         builder.setTitle(context.resources.getString(R.string.chooseTitle))
         val dialogLayout = inflater.inflate(R.layout.alert_dialog_edit_text, null)

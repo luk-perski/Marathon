@@ -19,15 +19,15 @@ class ExerciseFragmentTypeThree : ExerciseBaseFragment() {
     }
 
 
-    override fun getData(): ExerciseDoneData {
+    override fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData {
         return ExerciseDoneData(
                 exercise!!.recId,
                 exercise!!.title,
                 exercise!!.exerciseGroupId,
                 exercise!!.exerciseTypeId,
-                false,
-                null,
-                null,
+                isDone,
+                repeatAmount,
+                timeAmount,
                 pickerMaxRep.value.toInt(),
                 null
         )
