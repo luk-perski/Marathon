@@ -18,6 +18,29 @@ import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 import pl.perski.lukasz.maraton.ui.fragments.calendar.CalendarFragmentPresenter
 
 class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
+
+    var presenter = CalendarActivityPresenter()
+    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_calendar)
+        presenter.setView(this)
+        setEvents()
+    }
+
+    override fun getContext(): Context {
+        return this
+    }
+
+    override fun setList(exerciseDoneList: ArrayList<ExerciseDoneData>) {
+
+        var  adapter = ExerciseDoneListAdapter(this, exerciseDoneList)
+
+        lvCalendar?.adapter = adapter
+        adapter?.notifyDataSetChanged()
+    }
+
     override fun changeLvExercisesState(state: Boolean) {
         if (state) {
             lvCalendar.visibility = View.VISIBLE
@@ -38,35 +61,6 @@ class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
     }
 }
 
-    override fun setList(exerciseDoneList: ArrayList<ExerciseDoneData>) {
-
-      var  adapter = ExerciseDoneListAdapter(this, exerciseDoneList)
-
-        lvCalendar?.adapter = adapter
-        adapter?.notifyDataSetChanged()
-    }
-
-
-    var presenter = CalendarActivityPresenter()
-    val auth = FirebaseAuth.getInstance()
-    lateinit var colRefExercise: CollectionReference
-    lateinit var currentView: View
-    lateinit var myListOfDocuments: List<DocumentSnapshot>
-    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calendar)
-        presenter.setView(this)
-        setEvents()
-    }
-
-
-    override fun getContext(): Context {
-        return this
-    }
-
     fun setEvents() {
         this.calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
             var normalizedMonth = month + 1
@@ -74,8 +68,6 @@ class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
             Log.e("siemano", msg)
             presenter.getExercises("$normalizedMonth-$year","$dayOfMonth-$normalizedMonth-$year")
         }
-
-
     }
 
 }

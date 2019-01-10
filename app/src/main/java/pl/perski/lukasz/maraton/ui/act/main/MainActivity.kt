@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,25 +15,21 @@ import kotlinx.android.synthetic.main.content_main.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import android.view.animation.AlphaAnimation
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import pl.perski.lukasz.maraton.ui.act.calendar.CalendarActivity
 import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
 import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.FRAGMENT
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.RECORDS
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.STOPWATCH
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.TIMER
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainActivityMVP.View {
 
     var presenter = MainActivityPresenter()
-    val STOPWATCH = "stopwatch"
-    val TIMER = "timer"
-    val RECORDS = "records"
-    val CALENDAR = "calendar"
-    val FRAGMENT = "fragment"
     private val buttonClick = AlphaAnimation(1f, 0.8f)
-    private val auth = FirebaseAuth.getInstance()
     lateinit var r: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,13 +47,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //TODO: Dialog informujący o konieczności wyboru
         btnMorningTraining.setOnClickListener {
             btnMorningTraining.startAnimation(buttonClick)
-            presenter.MorningTraining()
+            presenter.morningTraining()
         }
 
         //ĆWICZENIA WIECZORNE
         btnEveningTraining.setOnClickListener {
             btnEveningTraining.startAnimation(buttonClick)
-            presenter.EveningTraining()
+            presenter.eveningTraining()
         }
     }
 
@@ -66,18 +61,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return this
     }
 
-    override fun startTraining(exercisesTitles: Array<String>, mode : Int) {
-        val intent = Intent(applicationContext, TrainingActivity::class.java)
-        intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
-        intent.putExtra(CONST_STRINGS.TRAINING_END, mode)
-        startActivity(intent)
-        finish()
-    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-        menu.findItem(R.id.miLogout).isVisible = auth.currentUser != null
+        menu.findItem(R.id.miLogout).isVisible = presenter.checkAuth()
         return true
     }
 
@@ -85,18 +73,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         return when (item.itemId) {
             R.id.miLogout -> {
-                auth.signOut()
-                Toast.makeText(this, R.string.logut_successful, Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
+             presenter.logoutUser()
                 true
             }
             R.id.miChooseMorning -> {
-       presenter.chooser(2)
+       presenter.chooser(3)
                 true
             }
             R.id.miChooseEvening -> {
-                presenter.chooser(3)
+                presenter.chooser(4)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -141,11 +126,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onStart() {
         super.onStart()
         //TODO: Przenieś to do presentera
-        if (auth.currentUser == null) {
+        if ( !presenter.checkAuth()) {
             finish()
             startActivity(Intent(this, LoginActivity::class.java))
-        } else {
-            Log.e("uId", auth.uid)
         }
     }
 
@@ -169,5 +152,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun startIntroActivity() {
         val intent = Intent(this, IntroActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun finishAct()
+    {
+        finish()
     }
 }

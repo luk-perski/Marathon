@@ -2,14 +2,20 @@ package pl.perski.lukasz.maraton.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.support.v4.app.FragmentContainer
 import android.support.v4.content.ContextCompat.startActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import pl.perski.lukasz.maraton.R
+import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
 import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE_TITLE
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.FRAGMENT
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.TRAINING_ENTER_DATA
 
 
 class CustomExpandableListAdapter(var context: Context, var expandableListView : ExpandableListView, var header : MutableList<String>, var body : MutableList<MutableList<String>>) : BaseExpandableListAdapter(){
@@ -35,7 +41,6 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
         ///////START CUSTOM TRAINING
         val btnStartCustomTraining = convertView!!.findViewById(R.id.btnStartCustomTraining) as Button
         btnStartCustomTraining.setOnClickListener {
-            Toast.makeText(context, getGroup(groupPosition),Toast.LENGTH_SHORT).show()
             startTraining(body[groupPosition].toTypedArray())
         }
         ////////////////////
@@ -71,7 +76,9 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
         }
         val title = convertView?.findViewById<TextView>(R.id.tv_title)
         title?.text = getChild(groupPosition,childPosition)
+        ///////START SINGLE EXERCISE
         title?.setOnClickListener {
+            startSingleExercise(getChild(groupPosition,childPosition))
             Toast.makeText(context, getChild(groupPosition,childPosition),Toast.LENGTH_SHORT).show()
         }
         return convertView
@@ -85,11 +92,21 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
         return header.size
     }
 
-    fun startTraining(exercisesTitles: Array<String>) {
+    private fun startTraining(exercisesTitles: Array<String>) {
         val intent = Intent(context , TrainingActivity::class.java)
-        intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
+        intent.putExtra(TRAINING_ENTER_DATA, exercisesTitles)
         context.startActivity(intent)
     }
+
+    private fun startSingleExercise(exercisesTitle : String)
+    {
+        val intent = Intent(context , FragmentContainerActivity::class.java)
+        intent.putExtra(EXERCISE_TITLE, exercisesTitle)
+        intent.putExtra(FRAGMENT, EXERCISE)
+        context.startActivity(intent)
+    }
+
+
 
 
 }

@@ -8,9 +8,13 @@ import android.support.v7.view.ContextThemeWrapper
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository
+import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
+import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS
 import spencerstudios.com.fab_toast.FabToast
 import java.util.*
 
@@ -19,6 +23,9 @@ import java.util.*
 
 class MainActivityPresenter : MainActivityMVP.Presenter {
 
+
+
+
     var model = MainModel()
     private lateinit var view: MainActivityMVP.View
     private lateinit var context: Context
@@ -26,14 +33,16 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
     lateinit var exercisesMorningTitles: Array<String>
     lateinit var exercisesTitles: Array<String>
     lateinit var exercisesEveningTitles: Array<String>
+    private lateinit var auth : FirebaseAuth
 
     override fun setView(view: MainActivityMVP.View) {
         this.view = view
         context = view.getContext()
         sharedPrefHelper = SharedPrefHelper(context)
+         auth = FirebaseAuth.getInstance()
     }
 
-    override fun chooser(mode: Int) {
+    override fun  chooser(mode: Int) {
         val repository = ExercisesRepository(context)
         val items = repository.getExercises().map { it.toString() }.toTypedArray()
         val selectedList = ArrayList<Int>()
@@ -55,29 +64,22 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
             }
             if (selectedStrings.isNotEmpty()) {
                 when (mode) {
-                    0 -> {
-                        sharedPrefHelper.morningExercises = selectedStrings.toMutableSet()
-                        exercisesMorningTitles = selectedStrings.toTypedArray()
-                        sharedPrefHelper.firstMorning = false
-                        view.startTraining(exercisesMorningTitles, 1)
-                    }
                     1 -> {
-                        sharedPrefHelper.eveningExercises = selectedStrings.toMutableSet()
-                        exercisesEveningTitles = selectedStrings.toTypedArray()
-                        sharedPrefHelper.firstEvening = false
-                        view.startTraining(exercisesEveningTitles, 2)
+                        exercisesMorningTitles = selectedStrings.toTypedArray()
+                        startTraining(exercisesMorningTitles, mode)
                     }
                     2 -> {
-                        sharedPrefHelper.morningExercises = selectedStrings.toMutableSet()
-                        view.reloadActivity()
+                        exercisesEveningTitles = selectedStrings.toTypedArray()
+                        startTraining(exercisesEveningTitles, mode)
                     }
-                    3 -> {
-                        sharedPrefHelper.eveningExercises = selectedStrings.toMutableSet()
+                    3,4 -> {
                         view.reloadActivity()
                     }
                 }
+                model.saveChoise(selectedStrings, mode,  sharedPrefHelper)
             } else {
-                FabToast.makeText(context, context.resources.getString(R.string.no_exercises_chosen), FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_TOP).show()
+                FabToast.makeText(context, context.resources.getString(R.string.no_exercises_chosen),
+                        FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_TOP).show()
 
                 builder.show()
             }
@@ -101,21 +103,20 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
         }
     }
 
-    //TODO: alert dialog, że można kiedyś zmienić
-    override fun MorningTraining() {
+    override fun morningTraining() {
         if (sharedPrefHelper.firstMorning) {
-            showInfoDialog(context.resources.getString(R.string.atMorning), 0)
+            showInfoDialog(context.resources.getString(R.string.atMorning), 1)
 
         } else {
-            view.startTraining(sharedPrefHelper.morningExercises.toTypedArray(), 0)
+            startTraining(sharedPrefHelper.morningExercises.toTypedArray(), 1)
         }
     }
 
-    override fun EveningTraining() {
+    override fun eveningTraining() {
         if (sharedPrefHelper.firstEvening) {
-            showInfoDialog(context.resources.getString(R.string.atEvening), 1)
+            showInfoDialog(context.resources.getString(R.string.atEvening), 2)
         } else {
-            view.startTraining(sharedPrefHelper.eveningExercises.toTypedArray(), 2)
+            startTraining(sharedPrefHelper.eveningExercises.toTypedArray(), 2)
         }
     }
 
@@ -123,6 +124,28 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
         if (sharedPrefHelper.firstLaunch) {
             view.startIntroActivity()
         }
+    }
+
+    override fun checkAuth() :Boolean{
+        return auth.currentUser != null
+    }
+
+    override fun logoutUser()  {
+        auth.signOut()
+        FabToast.makeText(context, context.resources.getString(R.string.logout_successful),
+                FabToast.LENGTH_LONG, FabToast.INFORMATION, FabToast.POSITION_CENTER).show()
+        val intent = Intent(context , LoginActivity::class.java)
+        context.startActivity(intent)
+        view.finishAct()
+    }
+
+    private fun startTraining (exercisesTitles: Array<String>, mode : Int)
+    {
+        val intent = Intent(context, TrainingActivity::class.java)
+        intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
+        intent.putExtra(CONST_STRINGS.TRAINING_END, mode)
+        context.startActivity(intent)
+        view.finishAct()
     }
 }
 

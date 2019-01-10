@@ -34,12 +34,12 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="action_sign_in">Zaloguj lub zarejestruj.</string>
+    <string name="action_sign_in_short">Zaloguj się</string>
+    <string name="error_invalid_email">Podany adres email jest nieprawidłowy.</string>
+    <string name="error_invalid_password">Podane hasło jest zbyt krótkie.</string>
+    <string name="error_incorrect_password">Podane hasło jest nieprawidłowe.</string>
+    <string name="error_field_required">To pole jest obowiązkowe.</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -66,6 +66,7 @@
     <string name="persmission_to_voice">Uprawnień do nagrywania dźwięku,
         aby nagrywać ćwiczenia (tylko, kiedy użytkownik włączy nagrywanie)</string>
     <string name="login_successful">Logowanie się powiodło.</string>
+    <string name="logout_successful">Wylogowanie się powiodło.</string>
     <string name="register_successful">Rejestracja się powiodła.</string>
     <string name="chose_trening_dialog">Musisz najpierw wybrać zestaw ćwiczeń</string>
     <string name="you_have_chosen">Wybrałeś:</string>
@@ -92,4 +93,14 @@
     <string name="end_and_save_training_question">Czy chcesz zakończyć i zapisać ćwiczenia?</string>
     <string name="save">Zapisz</string>
     <string name="only_end">Tylko zakończ</string>
+    <string name="prepare_app_success">Aplikacja została przygotowana do użycia.</string>
+    <string name="prepare_app_failed">Wystąpił błąd przy konfiguracji aplikacji.</string>
+    <string name="end_exercise">Zakończ ćwiczenie</string>
+    <string name="ResetPasswordQuestion">Zapomniałeś/łaś hasła do konta?</string>
+    <string name="reset_password">Resetowanie hasła</string>
+    <string name="reset_password_email_question">Podaj adres email, na który zostało zarejestrowane konto, a zostanie na niego wysłana instrukcja dotycząca resetowania hasła do konta.</string>
+    <string name="send">Wyślij</string>
+    <string name="enter_email">Wprowadź email</string>
+    <string name="email_send">Email został wysłany. Sprawdź skrzynkę pocztową.</string>
+    Nie jest zalecane jej używanie - spróbuj zainstalować ponownie.
 </resources>

@@ -21,13 +21,13 @@ interface LoginActivityMVP {
 
     interface Presenter {
         fun setView(view: LoginActivityMVP.View)
-        fun setControls()
         fun registerUser()
         fun loginUser()
+        fun resetPassword()
     }
 
     interface Model
     {
-
+        fun resetPassword(emailAddress : String)
     }
 }

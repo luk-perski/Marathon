@@ -79,6 +79,7 @@ return etEmail.text.toString().trim()
             btnSignIn.startAnimation(buttonClick)
             presenter.loginUser()
         }
+
         tvLoginQuestion.setOnClickListener {
             if (tvLoginQuestion.text == this.getString(R.string.changeToSingUp)) {
                 setToolbarTittle(getString(R.string.signUp))
@@ -91,6 +92,10 @@ return etEmail.text.toString().trim()
                 btnSignUp.visibility = View.INVISIBLE
                 tvLoginQuestion.text = this.getString(R.string.changeToSingUp)
             }
+        }
+
+        tvResetPassword.setOnClickListener{
+            presenter.resetPassword()
         }
     }
 

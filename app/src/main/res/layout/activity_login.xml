@@ -92,6 +92,16 @@ tools:context=".ui.act.login.LoginActivity">
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="?android:colorBackground"  />
 
+        <TextView
+            android:id="@+id/tvResetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/ResetPasswordQuestion"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="?android:colorBackground"  />
+
 
     </LinearLayout>
 
