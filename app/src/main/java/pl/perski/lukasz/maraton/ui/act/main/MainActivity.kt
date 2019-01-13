@@ -19,8 +19,7 @@ import pl.perski.lukasz.maraton.ui.act.calendar.CalendarActivity
 import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
-import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS
+import pl.perski.lukasz.maraton.ui.reminder.ReminderActivity
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.FRAGMENT
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.RECORDS
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.STOPWATCH
@@ -30,21 +29,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     var presenter = MainActivityPresenter()
     private val buttonClick = AlphaAnimation(1f, 0.8f)
-    lateinit var r: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter.setView(this)
+        setControls()
+        setEvents()
+    }
+
+    fun setControls() {
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    fun setEvents() {
 
         //ĆWICZENIA PORANNE
-        //TODO: Dialog informujący o konieczności wyboru
         btnMorningTraining.setOnClickListener {
             btnMorningTraining.startAnimation(buttonClick)
             presenter.morningTraining()
@@ -61,8 +66,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return this
     }
 
-
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         menu.findItem(R.id.miLogout).isVisible = presenter.checkAuth()
@@ -73,11 +76,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         return when (item.itemId) {
             R.id.miLogout -> {
-             presenter.logoutUser()
+                presenter.logoutUser()
                 true
             }
             R.id.miChooseMorning -> {
-       presenter.chooser(3)
+                presenter.chooser(3)
                 true
             }
             R.id.miChooseEvening -> {
@@ -114,8 +117,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(applicationContext, CalendarActivity::class.java)
                 startActivity(intent)
             }
-            R.id.nav_login -> {
-                val intent = Intent(applicationContext, LoginActivity::class.java)
+            R.id.nav_reminder -> {
+                val intent = Intent(applicationContext, ReminderActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -126,7 +129,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onStart() {
         super.onStart()
         //TODO: Przenieś to do presentera
-        if ( !presenter.checkAuth()) {
+        if (!presenter.checkAuth()) {
             finish()
             startActivity(Intent(this, LoginActivity::class.java))
         }
@@ -145,7 +148,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val intent = Intent(applicationContext, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
-        overridePendingTransition(0,0)
+        overridePendingTransition(0, 0)
     }
 
 
@@ -154,8 +157,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         startActivity(intent)
     }
 
-    override fun finishAct()
-    {
+    override fun finishAct() {
         finish()
     }
 }

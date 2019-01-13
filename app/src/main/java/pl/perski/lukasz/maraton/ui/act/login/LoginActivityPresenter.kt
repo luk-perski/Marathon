@@ -26,7 +26,7 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
     private val auth = FirebaseAuth.getInstance()
     private lateinit var context: Context
     var model = LoginModel()
-    lateinit var sharedPrefHelper : SharedPrefHelper
+    lateinit var sharedPrefHelper: SharedPrefHelper
 
     override fun setView(view: LoginActivityMVP.View) {
         this.view = view
@@ -49,10 +49,7 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
 
             val emailAddress = editText.text.toString()
             if (emailAddress.isEmpty() or !Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()) {
-                resetPassword()
-                //TODO: zmień toast na alertdialog
-                FabToast.makeText(context, context.resources.getString(R.string.error_invalid_email),
-                        FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_CENTER).show()
+                showAlertDialog(null, context.resources.getString(R.string.error_invalid_email), true)
             } else {
                 auth.sendPasswordResetEmail(emailAddress)
                         .addOnCompleteListener { task ->
@@ -60,9 +57,7 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
                                 FabToast.makeText(context, context.resources.getString(R.string.email_send),
                                         FabToast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_CENTER).show()
                             } else {
-                                //TODO: zmień toast na alertdialog
-                                FabToast.makeText(context, task.exception?.message,
-                                        FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_CENTER).show()
+                                task.exception?.message?.let { showAlertDialog(context.resources.getString(R.string.reset_password_error), it, false) }
                             }
                         }
             }
@@ -79,9 +74,8 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
                     FabToast.makeText(context, context.resources.getString(R.string.login_successful),
                             FabToast.LENGTH_LONG, FabToast.INFORMATION, FabToast.POSITION_DEFAULT).show()
                     showMainActivity()
-
                 } else {
-                    Toast.makeText(view.getContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
+                    task.exception?.message?.let { showAlertDialog(context.resources.getString(R.string.login_error), it, false) }
                 }
             }
         }
@@ -93,11 +87,9 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
             auth.createUserWithEmailAndPassword(view.getUserEmail(), view.getUserPassword()).addOnCompleteListener { task: Task<AuthResult> ->
                 view.manageProgressBar(View.GONE)
                 if (task.isSuccessful) {
-                    Toast.makeText(view.getContext(), R.string.register_successful,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(view.getContext(), R.string.register_successful, Toast.LENGTH_SHORT).show()
                     showMainActivity()
                 } else {
-                    //przechwycenie wyjątku
-                    //if (task.exception is FirebaseAuthUserCollisionException ) {}
                     Toast.makeText(view.getContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -118,11 +110,26 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
     private fun showMainActivity() {
         if (sharedPrefHelper.firstLaunch) {
             context.startActivity(Intent(context, IntroActivity::class.java))
-        }
-        else{
-        context.startActivity(Intent(context, MainActivity::class.java))
+        } else {
+            context.startActivity(Intent(context, MainActivity::class.java))
         }
         view.finishActivity()
     }
 
+    fun showAlertDialog(title: String?, message: String, startFunciotn: Boolean) {
+        val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.DialogTheme))
+        with(builder)
+        {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(context.resources.getString(R.string.ok)) { dialogInterface, i ->
+                run {
+                    if (startFunciotn) {
+                        resetPassword()
+                    }
+                }
+            }
+            show()
+        }
+    }
 }

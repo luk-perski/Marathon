@@ -9,10 +9,10 @@ class CONST_STRINGS {
         const val STOPWATCH = "stopwatch"
         const val TIMER = "timer"
         const val RECORDS = "records"
-        const val CALENDAR = "calendar"
         const val FRAGMENT = "fragment"
         const val EXERCISE = "exercise"
         const val EXERCISE_TITLE = "exercise_title"
+        const val ALARM_STATE = "alarm_state"
     }
 
 }

@@ -3,19 +3,15 @@ package pl.perski.lukasz.maraton.ui.act.calendar
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_calendar.*
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.R.id.calendarView
 import pl.perski.lukasz.maraton.adapters.ExerciseDoneListAdapter
-import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
-import pl.perski.lukasz.maraton.ui.fragments.calendar.CalendarFragmentPresenter
+import spencerstudios.com.fab_toast.FabToast
 
 class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
 
@@ -27,18 +23,56 @@ class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
         setContentView(R.layout.activity_calendar)
         presenter.setView(this)
         setEvents()
+        setControls()
     }
+
+    fun setControls() {
+        setSupportActionBar(toolbarCalendar)
+
+        // Now get the support action bar
+        val actionBar = supportActionBar
+
+        // Set toolbar title/app
+        actionBar!!.title = resources.getString(R.string.calendar)
+
+        // Set action bar/toolbar sub title
+        //actionBar.subtitle = resources.getString(R.string.tap_menu_to_generate_card)
+
+        // Set action bar elevation
+        actionBar.elevation = 4.0F
+
+        // Display the app icon in action bar/toolbar
+        actionBar.setDisplayShowHomeEnabled(true)
+    }
+
 
     override fun getContext(): Context {
         return this
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu to use in the action bar
+        val inflater = menuInflater
+        inflater.inflate(R.menu.calendar_toolbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar menu items
+        when (item.itemId) {
+            R.id.generate_pdf -> {
+                presenter.generateExerciseSheet(calendarView.currentDate)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun setList(exerciseDoneList: ArrayList<ExerciseDoneData>) {
-
-        var  adapter = ExerciseDoneListAdapter(this, exerciseDoneList)
-
+        val adapter = ExerciseDoneListAdapter(this, exerciseDoneList)
         lvCalendar?.adapter = adapter
-        adapter?.notifyDataSetChanged()
+        //TODO: clear listy
+        adapter.notifyDataSetChanged()
     }
 
     override fun changeLvExercisesState(state: Boolean) {
@@ -55,19 +89,20 @@ class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
 
     override fun changeTvTapInfo(state: Boolean) {
         if (state) {
-        tvTapInfo.visibility = View.VISIBLE
-    } else {
-        tvTapInfo.visibility = View.INVISIBLE
-    }
-}
-
-    fun setEvents() {
-        this.calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            var normalizedMonth = month + 1
-            val msg = "Selected date is " + dayOfMonth + "/" + (month + 1) + "/" + year
-            Log.e("siemano", msg)
-            presenter.getExercises("$normalizedMonth-$year","$dayOfMonth-$normalizedMonth-$year")
+            tvTapInfo.visibility = View.VISIBLE
+        } else {
+            tvTapInfo.visibility = View.INVISIBLE
         }
     }
 
+    fun setEvents() {
+
+        this.calendarView.setOnDateChangedListener { widget, date, selected ->
+            val normalizedMonth = date.month + 1
+            presenter.getExercises("$normalizedMonth-${date.year}", "${date.day}-$normalizedMonth-${date.year}")
+
+        }
+    }
 }
+
+

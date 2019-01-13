@@ -13,15 +13,15 @@ import pl.perski.lukasz.maraton.data.repositories.HintsRepository
 class ExerciseFragmentTypeFive : ExerciseBaseFragment() {
 
 
-    private lateinit var root : View
+    private lateinit var root: View
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        root =  inflater.inflate(R.layout.fragment_exercise_type_five,container,false)
+        root = inflater.inflate(R.layout.fragment_exercise_type_five, container, false)
         getDataFromArg(this)
         setControls()
         return root
     }
 
-    override fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData {
+    override fun getData(isDone: Boolean, repeatAmount: Int?, timeAmount: Int?): ExerciseDoneData {
         return ExerciseDoneData(
                 exercise!!.recId,
                 exercise!!.title,
@@ -35,11 +35,10 @@ class ExerciseFragmentTypeFive : ExerciseBaseFragment() {
         )
     }
 
-    fun setControls()
-    {
+    fun setControls() {
         val repository = HintsRepository(activity!!.applicationContext)
         root.lvHints.adapter = ArrayAdapter(
-                activity!!.applicationContext ,
+                activity!!.applicationContext,
                 R.layout.list_item,
                 repository.getAll(exercise!!.recId))
 

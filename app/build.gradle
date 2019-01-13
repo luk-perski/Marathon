@@ -61,5 +61,7 @@ dependencies {
     implementation 'ru.superjob:kotlin-permissions:1.0.3'
     implementation 'com.github.Binary-Finery:FabToast:1.0'
     implementation 'com.github.GoodieBag:HorizontalPicker:v1.0'
+    implementation 'com.itextpdf:itextpdf:5.5.13'
+    implementation 'com.github.prolificinteractive:material-calendarview:v1.4.0'
 }
 apply plugin: 'com.google.gms.google-services'

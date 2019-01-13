@@ -15,6 +15,26 @@ import pl.perski.lukasz.maraton.R
 
 class VoiceRecFragment : Fragment(), VoiceRecFragmentMVP.View {
 
+    var presenter = VoiceRecFragmentPresenter()
+    private var mStartRecording = false
+    lateinit var currentView: View
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+
+        currentView = inflater.inflate(R.layout.fragment_voice_recorder, container, false)
+        presenter.setView(this)
+        currentView.btnRecord.setOnClickListener {
+            mStartRecording = !mStartRecording
+            presenter.onRecord(mStartRecording)
+
+        }
+        return currentView
+    }
+
+    override fun changeBtnVisibility() {
+        currentView.btnRecord.hide()
+    }
 
     override fun changeBtnIcon(state: Boolean) {
         if (!state) {
@@ -35,11 +55,6 @@ class VoiceRecFragment : Fragment(), VoiceRecFragmentMVP.View {
         }
     }
 
-
-    var presenter = VoiceRecFragmentPresenter()
-    private var mStartRecording = false
-
-
     override fun getContext(): Context {
         return activity!!.applicationContext
     }
@@ -47,25 +62,6 @@ class VoiceRecFragment : Fragment(), VoiceRecFragmentMVP.View {
     override fun setToolbarTittle(title: String, subtitle: String) {
         (activity as AppCompatActivity).supportActionBar!!.subtitle = subtitle
         (activity as AppCompatActivity).supportActionBar!!.title = title
-    }
-
-    override fun setEvents() {
-        TODO("not implemented") //To change titles of created functions use File | Settings | File Templates.
-    }
-
-
-    lateinit var currentView: View
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        currentView = inflater.inflate(R.layout.fragment_voice_recorder, container, false)
-        presenter.setView(this)
-        currentView.btnRecord.setOnClickListener {
-            mStartRecording = !mStartRecording
-            presenter.onRecord(mStartRecording)
-
-        }
-        return currentView
     }
 }
 

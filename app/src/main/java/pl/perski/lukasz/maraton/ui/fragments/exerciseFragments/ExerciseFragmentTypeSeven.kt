@@ -10,12 +10,12 @@ import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 
 class ExerciseFragmentTypeSeven : ExerciseBaseFragment() {
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_exercise_type_seven, container, false)
         getDataFromArg(this)
         return root
     }
+
     override fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData {
         return ExerciseDoneData(
                 exercise!!.recId,
@@ -23,8 +23,8 @@ class ExerciseFragmentTypeSeven : ExerciseBaseFragment() {
                 exercise!!.exerciseGroupId,
                 exercise!!.exerciseTypeId,
                 isDone,
-                repeatAmount,
-                timeAmount,
+                null,
+                null,
                 null,
                 null
         )

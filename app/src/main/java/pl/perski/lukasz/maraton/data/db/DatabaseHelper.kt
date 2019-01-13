@@ -29,7 +29,6 @@ object DatabaseHelper {
 //        return checkDB
 //    }
 
-
     fun copyDataBase(context: Context) {
         if (checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
@@ -53,7 +52,6 @@ object DatabaseHelper {
                 myOutput.close()
 
                 FabToast.makeText(context, context.resources.getString(R.string.prepare_app_success), FabToast.LENGTH_SHORT, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show()
-
 
             } catch (e: Exception) {
                 Log.e("ERROR", e.toString())

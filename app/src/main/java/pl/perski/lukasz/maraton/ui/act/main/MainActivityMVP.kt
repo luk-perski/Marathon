@@ -22,11 +22,10 @@ interface MainActivityMVP {
         fun chooser(mode : Int)
         fun checkAuth() : Boolean
         fun logoutUser()
-
     }
 
     interface Model
     {
-        fun saveChoise(titles : ArrayList<String>, mode : Int, sharedPrefHelper: SharedPrefHelper)
+        fun saveChoice(titles : ArrayList<String>, mode : Int, sharedPrefHelper: SharedPrefHelper)
     }
 }

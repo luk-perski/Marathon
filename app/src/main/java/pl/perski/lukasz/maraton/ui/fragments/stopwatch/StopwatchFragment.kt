@@ -21,8 +21,6 @@ class StopwatchFragment : Fragment(), StopwatchFragmentMVP.View {
                               savedInstanceState: Bundle?): View? {
         currentView = inflater.inflate(R.layout.fragment_stopwatch, container, false)
         presenter.setView(this)
-        //TODO: czemu zakomentowane?
-        //presenter.setControls()
         setEvents()
         return currentView
     }
@@ -35,6 +33,7 @@ class StopwatchFragment : Fragment(), StopwatchFragmentMVP.View {
         }
 
     }
+
     override fun changeStartColor(state: Boolean) {
         if (state) {
             currentView.btnStartStopwatch.background = currentView.context.getDrawable(R.drawable.bg_round_30dp_primary)

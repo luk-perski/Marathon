@@ -16,7 +16,6 @@ class ExerciseFragmentTypeFour : ExerciseBaseFragment() {
         root =  inflater.inflate(R.layout.fragment_exercise_type_four,container,false)
         getDataFromArg(this)
         setControls()
-
         return root
     }
 

@@ -9,7 +9,6 @@ import java.io.Serializable
 @Entity(tableName = "exercises")
 data class ExerciseData(
 
-
        @PrimaryKey
         @SerializedName("recId")
         val recId: Int,

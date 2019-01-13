@@ -12,8 +12,6 @@ import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.FRAGMENT
 
 class FragmentContainerActivity : AppCompatActivity(), FragmentContainerActMVP.View {
 
-
-
     var presenter = FragmentContainerActPresenter(supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {

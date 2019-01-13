@@ -14,18 +14,10 @@ import pl.perski.lukasz.maraton.adapters.FragmentDialog
 import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import pl.perski.lukasz.maraton.ui.act.main.MainActivity
 
-class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
-{
-    override fun lockSkipBtn() {
-        btnSkip.visibility = View.INVISIBLE
-    }
+class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View {
 
-
-    override fun getExerciseAmount(): Int {return exercisePicker.value.toInt()}
-
-    override fun setExerciseTitle(exerciseTitle: String) {
-        tvTitle.text = exerciseTitle
-    }
+    var presenter = TrainingActivityPresenter(supportFragmentManager)
+    private val buttonClick = AlphaAnimation(1f, 0.8f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +25,18 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         presenter.setView(this)
         presenter.startTraining(intent)
         setEvents()
+    }
+
+    override fun lockSkipBtn() {
+        btnSkip.visibility = View.INVISIBLE
+    }
+
+    override fun getExerciseAmount(): Int {
+        return exercisePicker.value.toInt()
+    }
+
+    override fun setExerciseTitle(exerciseTitle: String) {
+        tvTitle.text = exerciseTitle
     }
 
     override fun getContext(): Context {
@@ -47,28 +51,24 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
     override fun setEvents() {
         btnNextFragment.setOnClickListener {
             btnNextFragment.startAnimation(buttonClick)
-           presenter.displayFragment(true)
+            presenter.displayFragment(false)
         }
 
         btnEndTraining.setOnClickListener {
             btnNextFragment.startAnimation(buttonClick)
             presenter.endTraining()
-            //TODO: Przejście gdzieś indziej
             btnEndTraining.isClickable = false
         }
 
         btnSkip.setOnClickListener {
             btnSkip.startAnimation(buttonClick)
-            presenter.skipExercise()
+            presenter.displayFragment(true)
         }
     }
 
     override fun setExercisePicker(value: Float) {
         exercisePicker.setPickerValue(value)
     }
-
-    var presenter = TrainingActivityPresenter(supportFragmentManager)
-    private val buttonClick = AlphaAnimation(1f, 0.8f)
 
     override fun setToolbarTittle(title: String) {
         supportActionBar?.title = title
@@ -83,22 +83,17 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View
         tvAmount_Qestion.text = question
     }
 
-
-
     override fun onBackPressed() {
-presenter.showAlertDialog()
+        presenter.showAlertDialog()
     }
 
-
-    override fun finishAct()
-    {
+    override fun finishAct() {
         finish()
     }
 
-fun saveDataAndFinish(mood : Int)
-{
-    presenter.saveDataAndFinish(mood)
-}
+    fun saveDataAndFinish(mood: Int) {
+        presenter.saveDataAndFinish(mood)
+    }
 
 }
 

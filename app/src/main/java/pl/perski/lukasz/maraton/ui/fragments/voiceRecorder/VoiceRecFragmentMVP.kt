@@ -8,9 +8,9 @@ interface VoiceRecFragmentMVP {
     interface View {
         fun getContext(): Context
         fun setToolbarTittle(title: String, subtitle: String)
-        fun setEvents()
         fun changeChronometerState(state: Boolean)
         fun changeBtnIcon(state : Boolean)
+        fun changeBtnVisibility()
     }
 
     interface Presenter {
@@ -20,6 +20,7 @@ interface VoiceRecFragmentMVP {
         fun  startRecording()
         fun setFileNameAndPath()
         fun stopRecording()
+        fun getPatchSet() : String
     }
 
     interface Model{}

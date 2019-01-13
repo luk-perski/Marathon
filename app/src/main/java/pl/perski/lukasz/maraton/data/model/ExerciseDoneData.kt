@@ -5,7 +5,7 @@ data class ExerciseDoneData(
         val title: String ="",
         val exerciseGroupId : Int = -1,
         val exerciseTypeId: Int = -1,
-        val isDone : Boolean = false,
+        val done : Boolean = false,
         val repeatAmount : Int? = null,
         val timeAmount : Int? = null,
         val maxAmount : Int? = null,

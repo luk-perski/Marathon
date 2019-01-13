@@ -11,7 +11,6 @@ data class TwoVowelsWordsData(
         @PrimaryKey
         @SerializedName("recId")
         val recId: Int,
-
         @ColumnInfo(name = "body")
         @SerializedName("body")
         val body: String)

@@ -8,16 +8,37 @@
     tools:context=".ui.act.calendar.CalendarActivity">
 
 
-    <CalendarView
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="#fff"
+        app:subtitleTextColor="#f5fbff"
+        android:padding="1dp"
+        android:theme="@style/AppTheme.NoActionBar.TEST"
+        app:popupTheme="@style/PopUpMenu"
+        />
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        app:mcv_showOtherDates="out_of_range"
+        app:mcv_selectionColor="@color/pomegranate"
+        app:mcv_tileHeight="40dp"
+        app:mcv_arrowColor="@color/pomegranate"
+        app:mcv_dateTextAppearance="@color/White"
+        app:mcv_weekDayTextAppearance="@color/pomegranate"
+        app:mcv_headerTextAppearance="@color/pomegranate" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="7 ">
+        android:layout_weight="7 "
+        >
 
         <TextView
             android:id="@+id/tvTapInfo"

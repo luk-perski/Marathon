@@ -14,6 +14,9 @@ class SharedPrefHelper (context: Context) {
         const val EVENING_EXERCISES = "evening_exercises"
         const val CUSTOM_TRAINING_NAMES = "custom_exercises_titles"
         const val CUSTOM_EXERCISES_SET = "custom_exercises"
+        const val REMINDER_DAILY = "rminder_daily"
+        const val REMINDER_HOUR = "reminder_hour"
+        const val REMINDER_MINUTE = "reminder_minute"
 
     }
 
@@ -39,5 +42,21 @@ class SharedPrefHelper (context: Context) {
 
      var firstEvening = preferences.getBoolean(FIRST_EVENING_KEY, true)
         set(value) = preferences.edit().putBoolean(FIRST_EVENING_KEY,value).apply()
+
+    var reminderDaily = preferences.getBoolean(REMINDER_DAILY, false)
+        set(value) = preferences.edit().putBoolean(REMINDER_DAILY,value).apply()
+
+    var reminderHour = preferences.getInt(REMINDER_HOUR, -1)
+        set(value) = preferences.edit().putInt(REMINDER_HOUR,value).apply()
+
+    var reminderMinute = preferences.getInt(REMINDER_MINUTE, -1)
+        set(value) = preferences.edit().putInt(REMINDER_MINUTE,value).apply()
+
+
+    fun checkIfExists(name : String) : Boolean
+    {
+        return    preferences.contains(name)
+    }
+
 
 }

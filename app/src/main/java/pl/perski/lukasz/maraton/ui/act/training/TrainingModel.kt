@@ -1,7 +1,5 @@
 package pl.perski.lukasz.maraton.ui.act.training
 
-
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
@@ -16,67 +14,57 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class TrainingModel : TrainingActivityMVP.Model {
+
+    lateinit var repository: ExercisesRepository
+    lateinit var colRefExercises: DocumentReference
+    lateinit var colRefExercisesSheet: DocumentReference
+    private val auth = FirebaseAuth.getInstance()
+    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
     override fun getTrainingEnd(intent: Intent): Int {
         return intent.getIntExtra(CONST_STRINGS.TRAINING_END, 0)
     }
 
-
-    lateinit var repository: ExercisesRepository
-    var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private val auth = FirebaseAuth.getInstance()
-    lateinit var colRefExercise: DocumentReference
-
-
-    @SuppressLint("SimpleDateFormat")
-    fun saveToDB(listToSave : ArrayList<ExerciseDoneData>) {
+    fun saveToDB(listToSave: ArrayList<ExerciseDoneData>) {
 
         val cal = Calendar.getInstance()
         val time = cal.time
-        val day = SimpleDateFormat("d-M-yyyy", Locale.GERMANY).format(time)
-        val month = SimpleDateFormat("M-yyyy", Locale.GERMANY).format(time)
-//TODO: popraw ścieżkę
+        val dayMonthYear = SimpleDateFormat("d-M-yyyy", Locale.GERMANY).format(time)
+        val monthYear = SimpleDateFormat("M-yyyy", Locale.GERMANY).format(time)
+        val month = SimpleDateFormat("M", Locale.GERMANY).format(time)
+        val year = SimpleDateFormat("yyyy", Locale.GERMANY).format(time)
+        val day = SimpleDateFormat("d", Locale.GERMANY).format(time)
+
         auth.uid?.let {
-            colRefExercise = db.document("users/$it/exercises/$month")
+            colRefExercises = db.document("users/$it/exercises/$monthYear")
+            colRefExercisesSheet = db.document("users/$it/exercisesCard/$year/$month/$day")
         }
 
         val dummy = HashMap<String, Any>()
         dummy.put("dummy", "dummy")
-        colRefExercise.set(dummy)
+        colRefExercises.set(dummy)
 
 
+        //TODO: dodaj onSucced listenery i daj fabtoasty
         //zapis ćwiczeń do dokumentów
-        for (x in listToSave) {
-            colRefExercise.collection(day).document(x.recId.toString()).set(x)
+        for (eDD in listToSave) {
+            val exerciseSheet = HashMap<String, Any>()
+            exerciseSheet.put(eDD.recId.toString(), eDD.done)
+            colRefExercisesSheet.update(exerciseSheet)
+            colRefExercises.collection(dayMonthYear).document(eDD.recId.toString()).set(eDD)
+            exerciseSheet.clear()
         }
-
-        //odczytywanie z bazy wszystkich dokumentów
-//        colRefExercise.get().addOnCompleteListener { task ->
-//            if (task.isSuccessful){
-//                val myListOfDocuments = task.result?.documents
-//            }
-//        }
-
-        //odczytywanie z bazy jednego dokumentu
-//        colRefExercise.document("0").get().addOnCompleteListener { task ->
-//            if (task.isSuccessful) {
-//                val document = task.result
-//                if (document != null) {
-//                    //Log.i("siemano", "kolano ${document}")
-//                }
-//            }
-//        }
     }
 
-    override fun getExercisesFromDBByTitles(context: Context, intent : Intent): List<ExerciseData>? {
+    override fun getExercisesFromDBByTitles(context: Context, intent: Intent): List<ExerciseData>? {
         repository = ExercisesRepository(context)
         val titles = intent.getStringArrayExtra(CONST_STRINGS.TRAINING_ENTER_DATA)
         val exercises = mutableListOf<ExerciseData>()
         titles.forEach {
-            exercises.add(repository.getExerciseByTitle(it))
+            repository.getExerciseByTitle(it)?.let { it1 -> exercises.add(it1) }
         }
         return exercises
     }
-
 
     override fun getExercisesFromDB(context: Context): List<ExerciseData> {
         repository = ExercisesRepository(context)

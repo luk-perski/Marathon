@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="pl.perski.lukasz.maraton">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,14 +19,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/TEST">
+        android:theme="@style/TEST"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".ui.act.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar.TEST">
-
-            <!-- android:theme="@style/AppTheme" -->
-            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -42,7 +41,13 @@
         <activity android:name=".ui.act.login.LoginActivity" />
         <activity android:name=".ui.act.exercisePicker.ExercisePicker" />
         <activity android:name=".ui.act.exercisePicker.exercisePickerActivity" />
-        <activity android:name=".ui.act.calendar.CalendarActivity"></activity>
+        <activity android:name=".ui.act.calendar.CalendarActivity"
+            android:theme="@style/AppTheme.NoActionBar.TEST"/>
+        <activity android:name=".ui.reminder.ReminderActivity" />
+        <receiver android:name=".services.ReminderReceiver" />
+        <service
+            android:name=".services.RingtoneSevice"
+            android:enabled="false" />
     </application>
 
 </manifest>

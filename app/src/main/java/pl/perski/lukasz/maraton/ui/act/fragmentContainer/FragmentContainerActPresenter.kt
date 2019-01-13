@@ -7,13 +7,11 @@ import android.support.v4.app.FragmentManager
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository
-import pl.perski.lukasz.maraton.ui.fragments.calendar.CalendarFragment
 import pl.perski.lukasz.maraton.ui.fragments.exerciseFragments.ExerciseBaseFragment
 import pl.perski.lukasz.maraton.ui.fragments.stopwatch.StopwatchFragment
 import pl.perski.lukasz.maraton.ui.fragments.timer.TimerFragment
 import pl.perski.lukasz.maraton.ui.fragments.voiceRecorder.VoiceRecFragment
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.CALENDAR
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE_TITLE
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.RECORDS
@@ -41,16 +39,15 @@ class FragmentContainerActPresenter(var manager : FragmentManager)  : FragmentCo
         {
             view.setBtnEndExercise(true)
             repository = ExercisesRepository(context)
-            exercise = repository.getExerciseByTitle(exerciseTitle)
+            exercise = repository.getExerciseByTitle(exerciseTitle)!!
         }
         when (intent.getStringExtra(CONST_STRINGS.FRAGMENT)){
             STOPWATCH -> fragment = StopwatchFragment()
             TIMER -> fragment = TimerFragment()
             RECORDS -> fragment = VoiceRecFragment()
-            CALENDAR -> fragment = CalendarFragment()
             EXERCISE -> fragment =  ExerciseBaseFragment.newInstance(exercise)
-
         }
+
         FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_container, fragment!!)
     }
 

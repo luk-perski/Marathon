@@ -5,7 +5,7 @@ import java.util.ArrayList
 
 class MainModel : MainActivityMVP.Model {
 
-    override fun saveChoise(titles: ArrayList<String>, mode: Int, sharedPrefHelper: SharedPrefHelper) {
+    override fun saveChoice(titles: ArrayList<String>, mode: Int, sharedPrefHelper: SharedPrefHelper) {
         when (mode) {
             1 -> {
                 sharedPrefHelper.morningExercises = titles.toMutableSet()

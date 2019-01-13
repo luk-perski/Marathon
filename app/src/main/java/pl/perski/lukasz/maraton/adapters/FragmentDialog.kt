@@ -69,14 +69,7 @@ class FragmentDialog : DialogFragment() {
         return view
     }
 
-
     companion object {
-
-
-        /**
-         * Create a new instance of CustomDialogFragment, providing "num" as an
-         * argument.
-         */
         fun newInstance(): FragmentDialog {
             val f = FragmentDialog()
 
@@ -88,5 +81,4 @@ class FragmentDialog : DialogFragment() {
             return f
         }
     }
-
 }

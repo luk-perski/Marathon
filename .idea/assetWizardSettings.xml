@@ -52,7 +52,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/Android/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_sentiment_dissatisfied_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/D:/Android/plugins/android/lib/android.jar!/images/material_design_icons/toggle/ic_indeterminate_check_box_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -64,7 +64,7 @@
                           <map>
                             <entry key="color" value="cc0000" />
                             <entry key="height" value="64" />
-                            <entry key="outputName" value="ic_mood_red_64dp" />
+                            <entry key="outputName" value="ic_exercise_no_done_red_64dp" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Lukasz" />
                             <entry key="width" value="64" />

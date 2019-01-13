@@ -27,7 +27,6 @@ interface TrainingActivityMVP {
         fun setControls()
         fun startTraining(intent: Intent)
         fun getExercises(intent: Intent)
-        fun skipExercise()
         fun showAlertDialog()
     }
 

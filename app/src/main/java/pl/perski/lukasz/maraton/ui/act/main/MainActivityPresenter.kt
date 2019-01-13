@@ -1,13 +1,9 @@
 package pl.perski.lukasz.maraton.ui.act.main
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.app.AlertDialog
 import android.support.v7.view.ContextThemeWrapper
-import android.view.View
-import android.widget.LinearLayout
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
@@ -18,31 +14,24 @@ import pl.perski.lukasz.maraton.utils.CONST_STRINGS
 import spencerstudios.com.fab_toast.FabToast
 import java.util.*
 
-
-
-
 class MainActivityPresenter : MainActivityMVP.Presenter {
-
-
-
 
     var model = MainModel()
     private lateinit var view: MainActivityMVP.View
     private lateinit var context: Context
     lateinit var sharedPrefHelper: SharedPrefHelper
     lateinit var exercisesMorningTitles: Array<String>
-    lateinit var exercisesTitles: Array<String>
     lateinit var exercisesEveningTitles: Array<String>
-    private lateinit var auth : FirebaseAuth
+    private lateinit var auth: FirebaseAuth
 
     override fun setView(view: MainActivityMVP.View) {
         this.view = view
         context = view.getContext()
         sharedPrefHelper = SharedPrefHelper(context)
-         auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
     }
 
-    override fun  chooser(mode: Int) {
+    override fun chooser(mode: Int) {
         val repository = ExercisesRepository(context)
         val items = repository.getExercises().map { it.toString() }.toTypedArray()
         val selectedList = ArrayList<Int>()
@@ -72,11 +61,11 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
                         exercisesEveningTitles = selectedStrings.toTypedArray()
                         startTraining(exercisesEveningTitles, mode)
                     }
-                    3,4 -> {
+                    3, 4 -> {
                         view.reloadActivity()
                     }
                 }
-                model.saveChoise(selectedStrings, mode,  sharedPrefHelper)
+                model.saveChoice(selectedStrings, mode, sharedPrefHelper)
             } else {
                 FabToast.makeText(context, context.resources.getString(R.string.no_exercises_chosen),
                         FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_TOP).show()
@@ -104,7 +93,7 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
     }
 
     override fun morningTraining() {
-        if (sharedPrefHelper.firstMorning) {
+        if (sharedPrefHelper.firstMorning && !sharedPrefHelper.checkIfExists(SharedPrefHelper.MORNING_EXERCISES)) {
             showInfoDialog(context.resources.getString(R.string.atMorning), 1)
 
         } else {
@@ -113,7 +102,7 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
     }
 
     override fun eveningTraining() {
-        if (sharedPrefHelper.firstEvening) {
+        if (sharedPrefHelper.firstEvening && !sharedPrefHelper.checkIfExists(SharedPrefHelper.EVENING_EXERCISES)) {
             showInfoDialog(context.resources.getString(R.string.atEvening), 2)
         } else {
             startTraining(sharedPrefHelper.eveningExercises.toTypedArray(), 2)
@@ -126,21 +115,20 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
         }
     }
 
-    override fun checkAuth() :Boolean{
+    override fun checkAuth(): Boolean {
         return auth.currentUser != null
     }
 
-    override fun logoutUser()  {
+    override fun logoutUser() {
         auth.signOut()
         FabToast.makeText(context, context.resources.getString(R.string.logout_successful),
                 FabToast.LENGTH_LONG, FabToast.INFORMATION, FabToast.POSITION_CENTER).show()
-        val intent = Intent(context , LoginActivity::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         context.startActivity(intent)
         view.finishAct()
     }
 
-    private fun startTraining (exercisesTitles: Array<String>, mode : Int)
-    {
+    private fun startTraining(exercisesTitles: Array<String>, mode: Int) {
         val intent = Intent(context, TrainingActivity::class.java)
         intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
         intent.putExtra(CONST_STRINGS.TRAINING_END, mode)

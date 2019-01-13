@@ -18,9 +18,9 @@ class ExerciseFragmentTypeOne:  ExerciseBaseFragment() {
                 exercise!!.title,
                 exercise!!.exerciseGroupId,
                 exercise!!.exerciseTypeId,
-                false,
-                null,
-                null,
+                isDone,
+                repeatAmount,
+                timeAmount,
                 null,
                 null
         )

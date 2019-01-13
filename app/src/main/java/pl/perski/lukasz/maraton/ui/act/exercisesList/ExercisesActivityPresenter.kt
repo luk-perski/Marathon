@@ -97,7 +97,6 @@ return model.getExercisesGroupFromDB(view.getContext(), groupId)!!
                 selectedList.remove(Integer.valueOf(which))
             }
         }
-        //TODO: zabezpiecz przed tym, jak ktoś nie wybierze nic
         builder.setPositiveButton(R.string.ok) { dialogInterface, i ->
 
             for (j in selectedList.indices) {

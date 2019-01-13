@@ -11,18 +11,14 @@ class LoginModel : LoginActivityMVP.Model {
 
     override fun resetPassword(emailAddress: String) {
         try {
-
-
             auth.sendPasswordResetEmail(emailAddress)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Log.d("EMAIL", task.result.toString())
                         } else {
-                            // Log.d("EMAIL", task.result.toString())
                         }
-
                     }
-        } catch (e : com.google.firebase.auth.FirebaseAuthInvalidCredentialsException) {
+        } catch (e: com.google.firebase.auth.FirebaseAuthInvalidCredentialsException) {
             Log.d("EMAIL", e.message)
         }
     }

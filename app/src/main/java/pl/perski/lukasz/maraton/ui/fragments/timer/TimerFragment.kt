@@ -16,6 +16,16 @@ import pl.perski.lukasz.maraton.R
 
 
 class TimerFragment : Fragment(), TimerFragmentMVP.View {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+
+        currentView = inflater.inflate(R.layout.fragment_timer, container, false)
+        presenter.setView(this)
+        setEvents()
+        return currentView
+    }
+
     override fun getMinuteValue(): Long {
         return java.lang.Long.parseLong(currentView.minutePicker.getCurrentItem())
     }
@@ -33,7 +43,6 @@ class TimerFragment : Fragment(), TimerFragmentMVP.View {
             currentView.btnStartTimer.background = currentView.context.getDrawable(R.drawable.bg_round_30dp_primary)
         } else {
             currentView.btnStartTimer.background = currentView.context.getDrawable(R.drawable.bg_round_30dp_primary_dark)
-
         }
     }
 
@@ -51,7 +60,7 @@ class TimerFragment : Fragment(), TimerFragmentMVP.View {
     }
 
     override fun setEvents() {
-        currentView.btnStartTimer.setOnClickListener{
+        currentView.btnStartTimer.setOnClickListener {
             currentView.btnStartTimer.startAnimation(buttonClick)
             presenter.startTimer()
         }
@@ -60,17 +69,5 @@ class TimerFragment : Fragment(), TimerFragmentMVP.View {
     lateinit var currentView: View
     private val buttonClick = AlphaAnimation(1f, 0.8f)
     var presenter = TimerFragmentPresenter()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        currentView = inflater.inflate(R.layout.fragment_timer, container, false)
-        presenter.setView(this)
-        //TODO: czemu zakomentowane?
-        //presenter.setControls()
-        setEvents()
-        return currentView
-    }
-
 
 }

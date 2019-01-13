@@ -12,6 +12,10 @@ import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 
 class LoginActivity : AppCompatActivity(), LoginActivityMVP.View {
 
+
+    var presenter = LoginActivityPresenter()
+    private val buttonClick = AlphaAnimation(1f, 0.8f)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -19,9 +23,9 @@ class LoginActivity : AppCompatActivity(), LoginActivityMVP.View {
         setEvents()
     }
 
-
-    var presenter = LoginActivityPresenter()
-    private val buttonClick = AlphaAnimation(1f, 0.8f)
+    override fun getContext(): Context {
+        return this
+    }
 
     override fun finishActivity() {
         finish()
@@ -33,7 +37,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityMVP.View {
     }
 
     override fun setPasswordError() {
-    etPassword.error = "Hasło powinno zawierać min. 6 znaków"
+        etPassword.error = "Hasło powinno zawierać min. 6 znaków"
         etPassword.requestFocus()
     }
 
@@ -54,20 +58,15 @@ class LoginActivity : AppCompatActivity(), LoginActivityMVP.View {
     }
 
     override fun getUserEmail(): String {
-return etEmail.text.toString().trim()
+        return etEmail.text.toString().trim()
     }
 
     override fun getUserPassword(): String {
-        return etPassword.text.toString().trim()     }
-
-
-    override fun getContext(): Context {
-        return this
+        return etPassword.text.toString().trim()
     }
 
-    override fun setToolbarTittle(tittle : String) {
+    override fun setToolbarTittle(tittle: String) {
         supportActionBar?.title = getString(R.string.signIn)
-        //supportActionBar?.subtitle = subtitle
     }
 
     override fun setEvents() {
@@ -94,10 +93,8 @@ return etEmail.text.toString().trim()
             }
         }
 
-        tvResetPassword.setOnClickListener{
+        tvResetPassword.setOnClickListener {
             presenter.resetPassword()
         }
     }
-
-
 }

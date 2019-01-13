@@ -15,11 +15,22 @@ class ExerciseDoneListAdapter(private var activity: Activity, private var items:
 
     private class ViewHolder(row: View?) {
         var tvTitle: TextView? = null
+        var tvAmountQue : TextView? = null
+        var tvAmountAns: TextView? = null
+        var tvMaxQue : TextView? = null
+        var tvMaxAns : TextView? = null
+        var tvSkipped : TextView? = null
         var ivDone: ImageView? = null
 
         init {
             this.tvTitle = row?.findViewById<TextView>(R.id.tvTitleItem)
+            this.tvAmountQue = row?.findViewById<TextView>(R.id.tvAmountQue)
+            this.tvAmountAns = row?.findViewById<TextView>(R.id.tvAmountAns)
+            this.tvMaxQue = row?.findViewById<TextView>(R.id.tvMaxQue)
+            this.tvMaxAns = row?.findViewById<TextView>(R.id.tvMaxAns)
+            this.tvSkipped = row?.findViewById(R.id.tvExerciseWasSkipped)
             this.ivDone = row?.findViewById<ImageView>(R.id.ivDone)
+
         }
     }
 
@@ -36,8 +47,47 @@ class ExerciseDoneListAdapter(private var activity: Activity, private var items:
             viewHolder = view.tag as ViewHolder
         }
 
-        var exerciseDoneData = items[position]
+        val exerciseDoneData = items[position]
+
         viewHolder.tvTitle?.text = exerciseDoneData.title
+
+        if (exerciseDoneData.done) {
+            viewHolder.tvSkipped!!.visibility = View.INVISIBLE
+             viewHolder.ivDone!!.setBackgroundResource(( R.drawable.ic_exercise_done_green_64p))
+
+            if (exerciseDoneData.repeatAmount != null)
+            {
+                viewHolder.tvAmountQue!!.visibility = View.VISIBLE
+                viewHolder.tvAmountAns!!.visibility = View.VISIBLE
+                viewHolder.tvAmountQue!!.text = view!!.resources.getString(R.string.amount_question)
+                viewHolder.tvAmountAns?.text = exerciseDoneData.repeatAmount.toString()
+            }
+            else if (exerciseDoneData.timeAmount != null){
+                viewHolder.tvAmountQue!!.text = view!!.resources.getString(R.string.time_question)
+                viewHolder.tvAmountAns?.text = exerciseDoneData.timeAmount.toString()
+            }
+
+            if (exerciseDoneData.maxAmount != null)
+            {
+                viewHolder.tvMaxQue!!.visibility = View.VISIBLE
+                viewHolder.tvMaxAns!!.visibility = View.VISIBLE
+                viewHolder.tvMaxAns!!.text = exerciseDoneData.maxAmount.toString()
+            }
+
+            else{
+                viewHolder.tvMaxQue!!.visibility = View.INVISIBLE
+                viewHolder.tvMaxAns!!.visibility = View.INVISIBLE
+            }
+        }
+
+        else{
+            viewHolder.ivDone!!.setBackgroundResource(( R.drawable.ic_exercise_no_done_red_64dp))
+            viewHolder.tvAmountQue!!.visibility = View.INVISIBLE
+            viewHolder.tvAmountAns!!.visibility = View.INVISIBLE
+            viewHolder.tvMaxQue!!.visibility = View.INVISIBLE
+            viewHolder.tvMaxAns!!.visibility = View.INVISIBLE
+            viewHolder.tvSkipped!!.visibility = View.VISIBLE
+        }
 
         return view as View
     }

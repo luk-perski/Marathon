@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_exercises"
-            android:icon="@drawable/ic_mood_black_24dp"
+            android:icon="@drawable/ic_exercises_white_24dp"
             android:title="@string/exercisesList"
             />
     </group>
@@ -14,35 +14,35 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_stopwatch"
-            android:icon="@drawable/ic_timer_black_24dp"
+            android:icon="@drawable/ic_stopwatch_white_24dp"
             android:title="@string/stopwatch" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_timer"
-            android:icon="@drawable/ic_av_timer_black_24dp"
+            android:icon="@drawable/ic_timer_white_24dp"
             android:title="@string/timer" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_records"
-            android:icon="@drawable/ic_mic_black_24dp"
+            android:icon="@drawable/ic_records_white_24dp"
             android:title="@string/records" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_calendar"
-            android:icon="@drawable/ic_today_black_24dp"
+            android:icon="@drawable/ic_calendar_white_24dp"
             android:title="@string/calendar" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_login"
-            android:icon="@drawable/ic_assignment_ind_green_24dp"
-            android:title="@string/login" />
+            android:id="@+id/nav_reminder"
+            android:icon="@drawable/ic_alarm_white_24dp"
+            android:title="@string/alarm" />
     </group>
 </menu>

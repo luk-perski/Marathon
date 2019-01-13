@@ -11,7 +11,6 @@ import java.io.Serializable
 
      //TODO: companion?
      companion object {
-
          val EXERCISE = "exercise"
          var exercise: ExerciseData? = null
          fun newInstance(exercise: ExerciseData): ExerciseBaseFragment {

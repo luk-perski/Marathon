@@ -1,6 +1,7 @@
 package pl.perski.lukasz.maraton.ui.act.calendar
 
 import android.content.Context
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 
@@ -20,7 +21,10 @@ interface View{
     interface Presenter {
         fun setView(view: CalendarActivityMVP.View)
         fun getExercises(month: String, day : String)
+        fun generateExerciseSheet(date : CalendarDay)
     }
 
-    interface Model{}
+    interface Model{
+        fun getExercisesFromDB(context: Context): List<ExerciseData>
+    }
 }

@@ -19,11 +19,6 @@ import pl.perski.lukasz.maraton.utils.FragmentUtils
 
 class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivityMVP.Presenter {
 
-
-    override fun skipExercise() {
-        displayFragment(true)
-    }
-
     var model = TrainingModel()
     private lateinit var view: TrainingActivityMVP.View
     lateinit var exercisesList: List<ExerciseData>
@@ -66,10 +61,7 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
         } else {
             exerciseDoneList.add(fragment!!.getData(true, view.getExerciseAmount(), null))
         }
-
-
     }
-
 
     private fun getDataFromSkippedFragment() {
 
@@ -78,8 +70,6 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
         } else {
             exerciseDoneList.add(fragment!!.getData(false, 0, null))
         }
-
-
     }
 
     override fun showAlertDialog() {
@@ -89,7 +79,6 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
             with(builder)
             {
                 setTitle(context.resources.getString(R.string.end_training_question))
-                //setMessage(context.resources.getString(R.string.chooser_info_message))
                 setPositiveButton(context.resources.getString(R.string.end)) { dialogInterface, i ->
                     run {
                         endTraining()
@@ -121,8 +110,6 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
         }
     }
 
-
-
     override fun setControls() {
         ++counter
         view.setToolbarTittle("$counter/$countOfExercises")
@@ -133,7 +120,6 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
             view.lockSkipBtn()
             view.unlockEndBtn()
         }
-
 
         if (exercise.exerciseTypeId != 6) {
             view.setExercisePicker(1F)
@@ -157,10 +143,10 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
             }
 
             2 -> {
-                 showMoodDialog()
+                showMoodDialog()
             }
 
-            3->{
+            3 -> {
                 startMainAct()
             }
         }
@@ -170,13 +156,11 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
         exercisesList = model.getExercisesFromDBByTitles(context, intent)!!
         trainingEndMode = model.getTrainingEnd(intent)
         countOfExercises = exercisesList.count()
-
     }
 
-    fun startMainAct()
-    {
-       view.finishAct()
-        val intent = Intent(context , MainActivity::class.java)
+    fun startMainAct() {
+        view.finishAct()
+        val intent = Intent(context, MainActivity::class.java)
         context.startActivity(intent)
     }
 
@@ -184,19 +168,18 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
         getDataFromFragment()
         model.saveToDB(exerciseDoneList)
         view.finishAct()
-       startMainAct()
+        startMainAct()
     }
 
-    fun saveDataAndFinish(mood : Int){
-        exerciseDoneList.add(ExerciseDoneData(-100, CONST_STRINGS.MOOD,-100, -100, false, mood))
+    fun saveDataAndFinish(mood: Int) {
+        exerciseDoneList.add(ExerciseDoneData(-100, CONST_STRINGS.MOOD, mood))
         saveDataAndFinish()
     }
 
 
-    fun showMoodDialog(){
+    fun showMoodDialog() {
         val ft = manager.beginTransaction()
         val newFragment = FragmentDialog.newInstance()
         newFragment.show(ft, "dialog")
     }
-
 }

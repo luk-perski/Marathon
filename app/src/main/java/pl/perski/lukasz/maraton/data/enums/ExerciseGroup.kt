@@ -4,7 +4,7 @@ import android.util.Log
 import java.util.*
 
 enum class ExerciseGroup constructor(val code: Int, val group: String) {
-    //TODO: Zmień na R.id.string
+
     TYPE_1(1, "Oczy"),
     TYPE_2(2, "Usta i twarz"),
     TYPE_3(3, "Naprężające"),

@@ -102,5 +102,33 @@
     <string name="send">Wyślij</string>
     <string name="enter_email">Wprowadź email</string>
     <string name="email_send">Email został wysłany. Sprawdź skrzynkę pocztową.</string>
+    <string name="alarm">Przypomnienie</string>
+    <string name="maraton_app">Aplikacja Maraton</string>
+    <string name="author">Autor:</string>
+    <string name="author_name">Łukasz Perski</string>
+    <string name="author_email">lukasz.perski.dev@gmail.com</string>
+    <string name="max_question">Rekord w danym ćwiczeniu</string>
+    <string name="exercise_was_skipped">Ćwiczenie zostało pominięte</string>
+    <string name="skipAndEnd">Pomiń i zakończ</string>
+    <string name="skip_and_end">Pomiń i zakończ</string>
+    <string name="reset_password_error">Wystąpił błąd podczas resetowania hasła:</string>
+    <string name="login_error">Wystąpił błąd podczas logowania:</string>
+    <string name="set_reminder">Ustaw\nprzypomnienie</string>
+    <string name="delete_reminder">Usuń\nprzypomnienie</string>
+    <string name="actually_alarm_info">Aktualnie masz ustawiony alarm na godzinę</string>
+    <string name="default_notification_channel_id">channel_id</string>
+    <string name="default_notification_channel_title">channel_1</string>
+    <string name="evening_exercises_reminder">Przypomnienie o wieczornych ćwiczeniach</string>
+    <string name="tap_to_start">Dotknij, aby otworzyć aplikację</string>
+    <string name="bad_mood">Swoją jakość mowy z tego dnia oceniłeś jako ZŁĄ.</string>
+    <string name="fair_mood">Swoją jakość mowy z tego dnia oceniłeś jako ŚREDNIĄ.</string>
+    <string name="good_mood">Swoją jakość mowy z tego dnia oceniłeś jako DOBRĄ.</string>
+    <string name="reminder_set">Przypomnienie ustawione.</string>
+    <string name="generate_pdf">Wygenereuj kartę ćwiczeń</string>
+    <string name="exercises_sheets">Karty ćwiczeń</string>
+    <string name="exercises_sheet">Karta ćwiczeń</string>
+    <string name="exercise_sheet_save">Karta ćwiczeń została wygenerowana. Sprawdź folder Maraton</string>
+    <string name="exercise_title">Tytuł ćwiczenia</string>
+    <string name="timer_end">Czas minął.</string>
     Nie jest zalecane jej używanie - spróbuj zainstalować ponownie.
 </resources>

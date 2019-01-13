@@ -5,7 +5,6 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
 import android.arch.persistence.room.Query
 import pl.perski.lukasz.maraton.data.model.ExerciseData
-import pl.perski.lukasz.maraton.data.model.RhymesData
 
 @Dao
 interface MaratonDataDao {
@@ -31,7 +30,6 @@ interface MaratonDataDao {
     @Query("DELETE from exercises")
     fun deleteAll()
 
-    //TODO: utwórz osobne DAO na inne tabele
     @Query(value = "SELECT body  FROM rhymes WHERE exerciseRecId = (:recId)")
     fun getRhyme(recId : Int) : String
 

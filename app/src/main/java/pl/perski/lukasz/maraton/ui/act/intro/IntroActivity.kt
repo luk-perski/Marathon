@@ -20,7 +20,7 @@ class IntroActivity : OnboarderActivity(), IntroActivityMVP.View {
 
 
         val onboarderPage1 = OnboarderPage(resources.getString(R.string.welcome), resources.getString(R.string.permission_needed),R.drawable.logo_lp)
-        val onboarderPage2 = OnboarderPage("", resources.getString(R.string.persmission_to_voice) + resources.getString(R.string.persmission_to_storage), R.drawable.logo_lp)
+        val onboarderPage2 = OnboarderPage("", resources.getString(R.string.persmission_to_voice) + "\n\n" + resources.getString(R.string.persmission_to_storage), R.drawable.logo_lp)
 
         // You can define title and description colors (by default white)
 //        onboarderPage1.setTitleColor(R.color.black)

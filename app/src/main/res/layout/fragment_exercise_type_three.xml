@@ -6,24 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvRhyme"
+        android:layout_width="match_parent"
+        android:layout_height="346dp"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:textColor="@color/White"
+        android:textIsSelectable="true"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
 
     <com.libRG.CustomTextView
         android:id="@+id/tvMax_Qestion"
-        android:layout_width="match_parent"
+        android:layout_width="256dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="75dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
         android:layout_marginBottom="8dp"
         android:padding="10dp"
         android:text="@string/crow_question"
         android:textAlignment="center"
-        android:textColor="?android:colorBackground"
+        android:textColor="@color/White"
         android:textSize="15sp"
         app:autoSizeMinTextSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/pickerMaxRep"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -35,14 +44,12 @@
 
     <pl.polak.clicknumberpicker.ClickNumberPickerView
         android:id="@+id/pickerMaxRep"
-        android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_width="256dp"
+        android:layout_marginStart="75dp"
         android:layout_marginBottom="8dp"
         app:integer_priority="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:picker_corner_radius="60"
         app:pickers_background_color="?colorPrimary"
@@ -50,6 +57,8 @@
         app:value_animation_down="true"
         app:value_animation_up="true"
         app:value_background_color="?colorPrimaryDark"
-        app:value_text_color="?android:colorBackground"
-        app:value_text_size="10sp" />
+        app:value_text_color="@color/White"
+        app:value_text_size="10sp"
+        app:min_value="1"
+        app:max_value="99"/>
 </android.support.constraint.ConstraintLayout>

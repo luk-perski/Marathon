@@ -4,7 +4,8 @@ import android.util.Log
 import pl.perski.lukasz.maraton.R
 import java.util.*
 
-enum class ExerciseType private constructor(val code: Int, val id: Int) {
+enum class ExerciseType  constructor(val code: Int, val id: Int) {
+
     TYPE_1(1, R.id.fragment_exercise_container),
     TYPE_2(2, R.id.fragment_exercise_container),
     TYPE_3(3, R.id.fragment_exercise_container),

@@ -13,9 +13,9 @@ class ExercisesRepository (var context : Context) : BaseRepository() {
         return mDb?.marathonDataDao()?.getAll()!!
     }
 
-    fun getExerciseByTitle(title : String): ExerciseData {
+    fun getExerciseByTitle(title : String): ExerciseData? {
         prepareDbWorker(context)
-        return mDb?.marathonDataDao()?.getExerciseByTitle(title)!!
+        return mDb?.marathonDataDao()?.getExerciseByTitle(title)
     }
 
     fun getExercisesGroupId(): MutableList<Int> {
