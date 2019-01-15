@@ -16,12 +16,27 @@
                             <entry key="launcher">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="67" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="C:\Users\Lukasz\Pictures\Grafika\Logo_png.png" />
+                                      <entry key="foregroundImage" value="D:\aaaStudia\inz_Perski\Ikonka\icons_with_background_pome.png" />
                                       <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="logo_LP" />
+                                      <entry key="outputName" value="marathon_logo" />
                                     </map>
                                   </option>
                                 </PersistentState>

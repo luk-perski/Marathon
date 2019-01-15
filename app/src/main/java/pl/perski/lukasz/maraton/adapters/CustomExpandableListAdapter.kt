@@ -105,8 +105,4 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
         intent.putExtra(FRAGMENT, EXERCISE)
         context.startActivity(intent)
     }
-
-
-
-
 }

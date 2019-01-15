@@ -38,7 +38,8 @@
         <activity
             android:name=".ui.act.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".ui.act.login.LoginActivity" />
+        <activity android:name=".ui.act.login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar.TEST"/>
         <activity android:name=".ui.act.exercisePicker.ExercisePicker" />
         <activity android:name=".ui.act.exercisePicker.exercisePickerActivity" />
         <activity android:name=".ui.act.calendar.CalendarActivity"

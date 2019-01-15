@@ -15,13 +15,12 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
-import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 import pl.perski.lukasz.maraton.ui.act.main.MainActivity
 import spencerstudios.com.fab_toast.FabToast
 
 class LoginActivityPresenter :LoginActivityMVP.Presenter {
 
-
+//TODO: przechwyć co tu się dzieje podczas błędu z Firestore
     private lateinit var view: LoginActivityMVP.View
     private val auth = FirebaseAuth.getInstance()
     private lateinit var context: Context
@@ -57,6 +56,7 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
                                 FabToast.makeText(context, context.resources.getString(R.string.email_send),
                                         FabToast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_CENTER).show()
                             } else {
+                                //TODO: show alert dialog
                                 task.exception?.message?.let { showAlertDialog(context.resources.getString(R.string.reset_password_error), it, false) }
                             }
                         }
@@ -68,11 +68,12 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
     override fun loginUser() {
         if (validateEntries()) {
             view.manageProgressBar(View.VISIBLE)
-            auth.signInWithEmailAndPassword(view.getUserEmail(), view.getUserPassword()).addOnCompleteListener { task: Task<AuthResult> ->
+            auth.signInWithEmailAndPassword(view.getUserEmail(), view.getUserPassword())
+                    .addOnCompleteListener { task: Task<AuthResult> ->
                 view.manageProgressBar(View.GONE)
                 if (task.isSuccessful) {
                     FabToast.makeText(context, context.resources.getString(R.string.login_successful),
-                            FabToast.LENGTH_LONG, FabToast.INFORMATION, FabToast.POSITION_DEFAULT).show()
+                            FabToast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show()
                     showMainActivity()
                 } else {
                     task.exception?.message?.let { showAlertDialog(context.resources.getString(R.string.login_error), it, false) }
@@ -84,12 +85,15 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
     override fun registerUser() {
         if (validateEntries()) {
             view.manageProgressBar(View.VISIBLE)
-            auth.createUserWithEmailAndPassword(view.getUserEmail(), view.getUserPassword()).addOnCompleteListener { task: Task<AuthResult> ->
+            auth.createUserWithEmailAndPassword(view.getUserEmail(), view.getUserPassword())
+                    .addOnCompleteListener { task: Task<AuthResult> ->
                 view.manageProgressBar(View.GONE)
                 if (task.isSuccessful) {
-                    Toast.makeText(view.getContext(), R.string.register_successful, Toast.LENGTH_SHORT).show()
+                    FabToast.makeText(context, context.resources.getString(R.string.register_successful),
+                            FabToast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_DEFAULT).show()
                     showMainActivity()
                 } else {
+
                     Toast.makeText(view.getContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -108,15 +112,11 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
     }
 
     private fun showMainActivity() {
-        if (sharedPrefHelper.firstLaunch) {
-            context.startActivity(Intent(context, IntroActivity::class.java))
-        } else {
-            context.startActivity(Intent(context, MainActivity::class.java))
-        }
         view.finishActivity()
+        context.startActivity(Intent(context, MainActivity::class.java))
     }
 
-    fun showAlertDialog(title: String?, message: String, startFunciotn: Boolean) {
+    fun showAlertDialog(title: String?, message: String, startFunction: Boolean) {
         val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.DialogTheme))
         with(builder)
         {
@@ -124,7 +124,7 @@ class LoginActivityPresenter :LoginActivityMVP.Presenter {
             setMessage(message)
             setPositiveButton(context.resources.getString(R.string.ok)) { dialogInterface, i ->
                 run {
-                    if (startFunciotn) {
+                    if (startFunction) {
                         resetPassword()
                     }
                 }

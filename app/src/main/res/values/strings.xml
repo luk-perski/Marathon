@@ -60,7 +60,7 @@
     <string name="ok">Ok</string>
     <string name="chose_exercises">Wybierz ćwiczenia</string>
     <string name="welcome">Witaj w aplikacji</string>
-    <string name="permission_needed">Aby aplikacja mogła działać potrzebuje paru uprawnień</string>
+    <string name="permission_needed">Musisz majpierw się zalogować\ni nadać uprawnienia aplikacji</string>
     <string name="persmission_to_storage">Uprawnień do pamięci,
         aby przechowywać ćwiczenia</string>
     <string name="persmission_to_voice">Uprawnień do nagrywania dźwięku,
@@ -73,7 +73,7 @@
     <string name="chooseEvening">Zmień wieczorne ćwiczenia</string>
     <string name="chooseMorning">Zmień poranne ćwiczenia </string>
     <string name="logut_successful">Nastąpiło wylogowanie.</string>
-    <string name="grant">Przyznaj</string>
+    <string name="grant">Przyznaj i zaloguj</string>
     <string name="define_your_own_exercises_group">Dodaj własną grupę ćwiczeń\n+</string>
     <string name="chooseTitle">Wybierz tytuł grupy</string>
     <string name="title_hint">Wprowadź tytuł</string>
@@ -130,5 +130,9 @@
     <string name="exercise_sheet_save">Karta ćwiczeń została wygenerowana. Sprawdź folder Maraton</string>
     <string name="exercise_title">Tytuł ćwiczenia</string>
     <string name="timer_end">Czas minął.</string>
+    <string name="welcome_message">Aplikacja ma za zadanie pomóc Tobie w wykonywaniu\nćwiczeń logopedystycznych podczas terapii wymowy!</string>
+    <string name="re_grant">Zapytaj ponownie</string>
+    <string name="close_app">Zamknij aplikację</string>
+    <string name="permissions_explain">Nadanie uprawnień jest wymagane,\naby aplikacja była w stanie działać</string>
     Nie jest zalecane jej używanie - spróbuj zainstalować ponownie.
 </resources>

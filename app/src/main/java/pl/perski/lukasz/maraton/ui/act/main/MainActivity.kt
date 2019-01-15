@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.content_main.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import android.view.animation.AlphaAnimation
+import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
 import pl.perski.lukasz.maraton.ui.act.calendar.CalendarActivity
 import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
@@ -29,11 +30,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     var presenter = MainActivityPresenter()
     private val buttonClick = AlphaAnimation(1f, 0.8f)
+    lateinit var sharedPrefHelper : SharedPrefHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        sharedPrefHelper = SharedPrefHelper(this)
         presenter.setView(this)
+        if (sharedPrefHelper.firstLaunch) {
+            finish()
+            startActivity(Intent(this, IntroActivity::class.java))
+        } else if (!presenter.checkAuth()){
+            finish()
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
         setControls()
         setEvents()
     }
@@ -124,15 +134,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
-    }
-
-    override fun onStart() {
-        super.onStart()
-        //TODO: Przenieś to do presentera
-        if (!presenter.checkAuth()) {
-            finish()
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
     }
 
     override fun onBackPressed() {

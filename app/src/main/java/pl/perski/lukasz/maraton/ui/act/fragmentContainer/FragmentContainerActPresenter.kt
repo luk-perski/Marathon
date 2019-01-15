@@ -47,10 +47,6 @@ class FragmentContainerActPresenter(var manager : FragmentManager)  : FragmentCo
             RECORDS -> fragment = VoiceRecFragment()
             EXERCISE -> fragment =  ExerciseBaseFragment.newInstance(exercise)
         }
-
         FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_container, fragment!!)
     }
-
-
-
 }
