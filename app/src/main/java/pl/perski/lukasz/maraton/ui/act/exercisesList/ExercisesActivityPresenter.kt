@@ -17,7 +17,7 @@ class ExercisesActivityPresenter : ExercisesListActivityMVP.Presenter {
     private lateinit var context: Context
     private  var customTrainingString = String()
     private var groupsCodes: MutableList<Int> = ArrayList()
-    private val STRING_SEPARATOR = "^"
+    private val STRING_SEPARATOR = ";"
     private var customTrainingExerciesSet = mutableSetOf<String>()
     private var titles: MutableList<MutableList<String>> = ArrayList()
     lateinit var sharedPrefHelper: SharedPrefHelper

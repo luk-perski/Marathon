@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_exercise_type_three.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
+import pl.perski.lukasz.maraton.ui.fragments.stopwatch.StopwatchFragment
 
 class ExerciseFragmentTypeSeven : ExerciseBaseFragment() {
 
@@ -16,6 +17,11 @@ class ExerciseFragmentTypeSeven : ExerciseBaseFragment() {
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val childFragment = StopwatchFragment()
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.child_fragment_container, childFragment).commit()
+    }
     override fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData {
         return ExerciseDoneData(
                 exercise!!.recId,
@@ -23,8 +29,8 @@ class ExerciseFragmentTypeSeven : ExerciseBaseFragment() {
                 exercise!!.exerciseGroupId,
                 exercise!!.exerciseTypeId,
                 isDone,
-                null,
-                null,
+                repeatAmount,
+                timeAmount,
                 null,
                 null
         )

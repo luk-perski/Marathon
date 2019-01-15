@@ -26,7 +26,6 @@ import java.io.Serializable
                  5 -> fragment = ExerciseFragmentTypeFive()
                  6 -> fragment = ExerciseFragmentTypeSix()
                  7 -> fragment = ExerciseFragmentTypeSeven()
-                 8 -> fragment = ExerciseFragmentTypeEight()
              }
              fragment?.arguments = args
              return fragment!!
