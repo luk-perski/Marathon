@@ -3,6 +3,7 @@ package pl.perski.lukasz.maraton.ui.act.training
 import android.content.Context
 import android.content.Intent
 import pl.perski.lukasz.maraton.data.model.ExerciseData
+import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 
 
 interface TrainingActivityMVP {
@@ -33,8 +34,8 @@ interface TrainingActivityMVP {
 
     interface Model
     {
-        fun getExercisesFromDB(context : Context) : List<ExerciseData>?
         fun getExercisesFromDBByTitles(context: Context, intent: Intent): List<ExerciseData>?
         fun getTrainingEnd(intent: Intent): Int
+        fun saveToDB(listToSave: ArrayList<ExerciseDoneData>, context : Context)
     }
 }

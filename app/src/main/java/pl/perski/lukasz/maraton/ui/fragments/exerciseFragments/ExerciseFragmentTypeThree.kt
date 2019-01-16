@@ -30,7 +30,7 @@ class ExerciseFragmentTypeThree : ExerciseBaseFragment() {
                 isDone,
                 repeatAmount,
                 timeAmount,
-                pickerMaxRep.value.toInt(),
+                pickerMaxRepeat.value.let {  pickerMaxRepeat.value.toInt()},
                 null
         )
     }

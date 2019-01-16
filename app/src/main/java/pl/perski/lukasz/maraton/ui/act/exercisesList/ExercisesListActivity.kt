@@ -19,8 +19,7 @@ class ExercisesListActivity : AppCompatActivity(), ExercisesListActivityMVP.View
         setContentView(R.layout.activity_exercises_list)
         presenter.setView(this)
         presenter.setExpandableLV()
-        title = getString(R.string.actExerciseList_title) //TODO: Przenieś to, jeżeli działa
-
+        title = getString(R.string.actExerciseList_title)
 
         btnDefineExercises.setOnClickListener {
             btnDefineExercises.startAnimation(buttonClick)

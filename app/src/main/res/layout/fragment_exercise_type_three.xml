@@ -32,7 +32,7 @@
         android:textColor="@color/White"
         android:textSize="15sp"
         app:autoSizeMinTextSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/pickerMaxRep"
+        app:layout_constraintBottom_toTopOf="@+id/pickerMaxRepeat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -43,7 +43,7 @@
         app:lib_unCheckedDrawable="@drawable/ic_unchecked_img" />
 
     <pl.polak.clicknumberpicker.ClickNumberPickerView
-        android:id="@+id/pickerMaxRep"
+        android:id="@+id/pickerMaxRepeat"
         android:layout_height="42dp"
         android:layout_width="256dp"
         android:layout_marginStart="75dp"
@@ -60,5 +60,7 @@
         app:value_text_color="@color/White"
         app:value_text_size="10sp"
         app:min_value="1"
-        app:max_value="99"/>
+        app:max_value="99"
+        app:value="1"/>
+
 </android.support.constraint.ConstraintLayout>

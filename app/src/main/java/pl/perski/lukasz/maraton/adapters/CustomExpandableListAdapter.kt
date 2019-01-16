@@ -51,7 +51,6 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
                 expandableListView.collapseGroup(groupPosition)
             else
                 expandableListView.expandGroup(groupPosition)
-            Toast.makeText(context, getGroup(groupPosition),Toast.LENGTH_SHORT).show()
         }
         return convertView
     }
@@ -79,7 +78,6 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
         ///////START SINGLE EXERCISE
         title?.setOnClickListener {
             startSingleExercise(getChild(groupPosition,childPosition))
-            Toast.makeText(context, getChild(groupPosition,childPosition),Toast.LENGTH_SHORT).show()
         }
         return convertView
     }

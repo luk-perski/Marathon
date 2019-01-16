@@ -94,6 +94,5 @@ class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View {
     fun saveDataAndFinish(mood: Int) {
         presenter.saveDataAndFinish(mood)
     }
-
 }
 

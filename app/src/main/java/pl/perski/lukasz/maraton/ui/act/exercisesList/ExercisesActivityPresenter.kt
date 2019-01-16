@@ -9,6 +9,8 @@ import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
 import pl.perski.lukasz.maraton.data.enums.ExerciseGroup
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository
+import spencerstudios.com.fab_toast.FabToast
+
 //TODO : porządek - porobić funkjce, poprzenosić co trzeba do modelu
 class ExercisesActivityPresenter : ExercisesListActivityMVP.Presenter {
 
@@ -97,22 +99,28 @@ return model.getExercisesGroupFromDB(view.getContext(), groupId)!!
                 selectedList.remove(Integer.valueOf(which))
             }
         }
-        builder.setPositiveButton(R.string.ok) { dialogInterface, i ->
-
-            for (j in selectedList.indices) {
-                selectedStrings.add(items[selectedList[j]])
-                customTrainingString += if(j == 0)
-                {
-                    items[selectedList[j]]
-                } else {
-                    (STRING_SEPARATOR + items[selectedList[j]])
+        builder .setPositiveButton(R.string.ok) { dialogInterface, i ->
+            if (selectedList.isNotEmpty()) {
+                for (j in selectedList.indices) {
+                    selectedStrings.add(items[selectedList[j]])
+                    customTrainingString += if (j == 0) {
+                        items[selectedList[j]]
+                    } else {
+                        (STRING_SEPARATOR + items[selectedList[j]])
+                    }
                 }
+                customTrainingNames?.add(customTrainingTitle)
+                customTrainingExerciesSet.add(customTrainingString)
+                sharedPrefHelper.customTrainingNames = customTrainingNames!!.toMutableSet()
+                sharedPrefHelper.customTrainingExerciesSet = customTrainingExerciesSet
             }
-            customTrainingNames?.add(customTrainingTitle)
-            customTrainingExerciesSet.add(customTrainingString)
-            sharedPrefHelper.customTrainingNames = customTrainingNames!!.toMutableSet()
-            sharedPrefHelper.customTrainingExerciesSet = customTrainingExerciesSet
+            else {
+                FabToast.makeText(context, context.resources.getString(R.string.no_exercises_chosen),
+                        FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_TOP).show()
+                builder.show()
+            }
         }
+                .setNegativeButton(R.string.cancel, null)
         builder.show()
     }
 

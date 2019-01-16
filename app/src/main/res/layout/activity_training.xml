@@ -111,7 +111,9 @@
         app:value_animation_up="true"
         app:value_background_color="?colorPrimaryDark"
         app:value_text_color="?colorAccent"
-        app:value_text_size="10sp" />
+        app:value_text_size="10sp"
+        app:min_value="1"
+        app:max_value="99"/>
 
 
     <android.support.constraint.ConstraintLayout

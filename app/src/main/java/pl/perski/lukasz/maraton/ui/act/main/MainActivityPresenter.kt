@@ -48,10 +48,11 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
             }
         }
         builder.setPositiveButton(R.string.ok) { dialogInterface, i ->
+            if (selectedList.isNotEmpty()) {
             for (j in selectedList.indices) {
                 selectedStrings.add(items[selectedList[j]])
             }
-            if (selectedStrings.isNotEmpty()) {
+
                 when (mode) {
                     1 -> {
                         exercisesMorningTitles = selectedStrings.toTypedArray()
@@ -69,7 +70,6 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
             } else {
                 FabToast.makeText(context, context.resources.getString(R.string.no_exercises_chosen),
                         FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_TOP).show()
-
                 builder.show()
             }
         }

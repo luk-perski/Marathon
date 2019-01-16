@@ -50,7 +50,8 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
         }
         exercise = exercisesList.get(counter)
         fragment = ExerciseBaseFragment.newInstance(exercise)
-        FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_exercise_container, fragment!!)
+        FragmentUtils.replaceFragmentToActivity(manager,
+                R.id.fragment_exercise_container, fragment!!)
         setControls()
     }
 
@@ -166,7 +167,7 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
 
     fun saveDataAndFinish() {
         getDataFromFragment()
-        model.saveToDB(exerciseDoneList)
+        model.saveToDB(exerciseDoneList, context)
         view.finishAct()
         startMainAct()
     }
