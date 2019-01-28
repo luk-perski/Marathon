@@ -56,6 +56,7 @@
     <string name="toast_recording_finish">Nagranie zapisane do</string>
     <string name="record">Nagranie</string>
     <string name="skip">Pomiń</string>
+    <string name="back">Wstecz</string>
     <string name="title_activity_intro">IntroActivity</string>
     <string name="ok">Ok</string>
     <string name="chose_exercises">Wybierz ćwiczenia</string>
@@ -115,7 +116,7 @@
     <string name="login_error">Wystąpił błąd podczas logowania:</string>
     <string name="set_reminder">Ustaw\nprzypomnienie</string>
     <string name="delete_reminder">Usuń\nprzypomnienie</string>
-    <string name="actually_alarm_info">Aktualnie masz ustawiony alarm na godzinę</string>
+    <string name="actually_alarm_info">Masz ustawiony alarm na godzinę:</string>
     <string name="default_notification_channel_id">channel_id</string>
     <string name="default_notification_channel_title">channel_1</string>
     <string name="evening_exercises_reminder">Przypomnienie o wieczornych ćwiczeniach</string>
@@ -134,5 +135,7 @@
     <string name="re_grant">Zapytaj ponownie</string>
     <string name="close_app">Zamknij aplikację</string>
     <string name="permissions_explain">Nadanie uprawnień jest wymagane,\naby aplikacja była w stanie działać</string>
+    <string name="no_reminder">Nie masz ustawionego przypomnienia.</string>
+    <string name="reminder_cancel">Przypomnienie zostało usunięte.</string>
     Nie jest zalecane jej używanie - spróbuj zainstalować ponownie.
 </resources>

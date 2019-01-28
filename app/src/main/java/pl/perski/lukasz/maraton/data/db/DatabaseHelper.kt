@@ -30,6 +30,8 @@ object DatabaseHelper {
 //    }
 
     fun copyDataBase(context: Context) {
+
+
         if (checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
             try {

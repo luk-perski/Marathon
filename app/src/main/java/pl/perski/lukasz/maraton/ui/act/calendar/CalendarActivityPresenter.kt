@@ -38,7 +38,7 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
     override fun setView(view: CalendarActivityMVP.View) {
         this.view = view
         context = view.getContext()
-    }
+}
 
 
     override fun getExercises(month: String, day: String) {

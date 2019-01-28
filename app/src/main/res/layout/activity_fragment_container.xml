@@ -7,6 +7,34 @@
     android:orientation="vertical"
     tools:context=".ui.act.fragmentContainer.FragmentContainerActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.subsub.library.BeautyButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/bg_round_30dp_primary_white"
+            android:text="@string/back"
+            android:textColor="#FF2C3E50"
+            android:textSize="15sp"
+            app:shadowColor="@color/colorDefaultShadowColor"
+            app:shadowPercentHeight="1"
+            app:shadowPercentWidth="0.95"
+            app:shadowRadius="40dp"
+            app:shadowYOffset="5" />
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

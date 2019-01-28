@@ -5,7 +5,7 @@ import android.support.v7.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.widget.EditText
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
+import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import pl.perski.lukasz.maraton.data.enums.ExerciseGroup
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository

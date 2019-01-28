@@ -10,6 +10,11 @@
         <item name="android:navigationBarColor">@android:color/holo_green_dark</item>
     </style>
 
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 
     <style name="TimePickerTheme" parent="AppTheme">
         <!-- Customize your theme here. -->

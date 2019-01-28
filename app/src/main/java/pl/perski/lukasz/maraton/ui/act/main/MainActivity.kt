@@ -15,12 +15,12 @@ import kotlinx.android.synthetic.main.content_main.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import android.view.animation.AlphaAnimation
-import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
+import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import pl.perski.lukasz.maraton.ui.act.calendar.CalendarActivity
 import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 import pl.perski.lukasz.maraton.ui.act.fragmentContainer.FragmentContainerActivity
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
-import pl.perski.lukasz.maraton.ui.reminder.ReminderActivity
+import pl.perski.lukasz.maraton.ui.act.reminder.ReminderActivity
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.FRAGMENT
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.RECORDS
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.STOPWATCH
@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         sharedPrefHelper = SharedPrefHelper(this)
         presenter.setView(this)
         if (sharedPrefHelper.firstLaunch) {
@@ -145,6 +146,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun reloadActivity() {
+        //TODO: zmnień to na użycie on resume albo pobranie z tytulów
         finish()
         val intent = Intent(applicationContext, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)

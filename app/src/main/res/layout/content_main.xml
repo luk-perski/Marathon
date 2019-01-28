@@ -25,9 +25,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shadowColor="@color/colorDefaultShadowColor"
-        app:shadowPercentHeight="0.7"
-        app:shadowPercentWidth="0.6"
-        app:shadowRadius="30dp"
+        app:shadowPercentHeight="1.05"
+        app:shadowPercentWidth="0.95"
+        app:shadowRadius="40dp"
         app:shadowYOffset="10" />
 
     <com.subsub.library.BeautyButton

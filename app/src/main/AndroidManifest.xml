@@ -23,6 +23,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".ui.act.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar.TEST">
             <intent-filter>
@@ -30,25 +32,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.act.exercisesList.ExercisesListActivity" />
-        <activity android:name=".ui.act.training.TrainingActivity" />
-        <activity android:name=".ui.act.fragmentContainer.FragmentContainerActivity" />
-        <activity android:name=".ui.act.MyOnboardingActivity" />
-        <activity android:name=".ui.act.intro.IntroActivity" />
-        <activity
-            android:name=".ui.act.LoginActivity"
-            android:label="@string/title_activity_login" />
+        <activity android:name=".ui.act.exercisesList.ExercisesListActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".ui.act.training.TrainingActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".ui.act.fragmentContainer.FragmentContainerActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".ui.act.intro.IntroActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+
         <activity android:name=".ui.act.login.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar.TEST"/>
-        <activity android:name=".ui.act.exercisePicker.ExercisePicker" />
-        <activity android:name=".ui.act.exercisePicker.exercisePickerActivity" />
+            android:theme="@style/AppTheme.NoActionBar.TEST"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+
         <activity android:name=".ui.act.calendar.CalendarActivity"
-            android:theme="@style/AppTheme.NoActionBar.TEST"/>
-        <activity android:name=".ui.reminder.ReminderActivity" />
-        <receiver android:name=".services.ReminderReceiver" />
-        <service
-            android:name=".services.RingtoneSevice"
-            android:enabled="false" />
+            android:theme="@style/AppTheme.NoActionBar.TEST"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="pl.perski.lukasz.maraton.ui.act.reminder.ReminderActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <receiver android:name=".services.ReminderReceiver"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
     </application>
 
 </manifest>

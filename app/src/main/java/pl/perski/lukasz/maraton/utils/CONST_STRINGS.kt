@@ -13,6 +13,7 @@ class CONST_STRINGS {
         const val EXERCISE = "exercise"
         const val EXERCISE_TITLE = "exercise_title"
         const val ALARM_STATE = "alarm_state"
+        const val SHOW_BACK_BTN = "show_back_btn"
     }
 
 }

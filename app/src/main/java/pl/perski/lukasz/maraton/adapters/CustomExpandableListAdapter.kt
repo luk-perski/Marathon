@@ -15,6 +15,7 @@ import pl.perski.lukasz.maraton.utils.CONST_STRINGS
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE_TITLE
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.FRAGMENT
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.SHOW_BACK_BTN
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.TRAINING_ENTER_DATA
 
 
@@ -101,6 +102,7 @@ class CustomExpandableListAdapter(var context: Context, var expandableListView :
         val intent = Intent(context , FragmentContainerActivity::class.java)
         intent.putExtra(EXERCISE_TITLE, exercisesTitle)
         intent.putExtra(FRAGMENT, EXERCISE)
+        intent.putExtra(SHOW_BACK_BTN, true);
         context.startActivity(intent)
     }
 }

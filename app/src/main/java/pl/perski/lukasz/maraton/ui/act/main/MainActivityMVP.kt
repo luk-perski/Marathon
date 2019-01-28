@@ -1,7 +1,7 @@
 package pl.perski.lukasz.maraton.ui.act.main
 
 import android.content.Context
-import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
+import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import java.util.ArrayList
 
 interface MainActivityMVP {

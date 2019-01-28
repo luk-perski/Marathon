@@ -9,6 +9,7 @@ import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE
 import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.FRAGMENT
+import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.SHOW_BACK_BTN
 
 class FragmentContainerActivity : AppCompatActivity(), FragmentContainerActMVP.View {
 
@@ -19,7 +20,24 @@ class FragmentContainerActivity : AppCompatActivity(), FragmentContainerActMVP.V
         setContentView(R.layout.activity_fragment_container)
         presenter.setView(this)
         presenter.showFragment(intent)
-        btnEndExercise.setOnClickListener { finish() }
+        setControls()
+        setEvents()
+    }
+
+    private fun setControls() {
+        if (intent.getBooleanExtra(SHOW_BACK_BTN, false)) {
+            btnBack.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setEvents() {
+        btnEndExercise.setOnClickListener {
+            finish()
+        }
+
+        btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     override fun getContext(): Context {
@@ -33,6 +51,4 @@ class FragmentContainerActivity : AppCompatActivity(), FragmentContainerActMVP.V
             btnEndExercise.visibility = View.INVISIBLE
         }
     }
-
-
 }

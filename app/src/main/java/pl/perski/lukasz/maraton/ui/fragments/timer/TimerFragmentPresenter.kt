@@ -34,6 +34,7 @@ class TimerFragmentPresenter : TimerFragmentMVP.Presenter {
         pickedMin = view.getMinuteValue()
         pickedSec = view.getSecondsValue()
         timerEndTime = convertTime(pickedMin, pickedSec)
+        pickedSec = timerEndTime / 1000
         view.setTimerValue(String.format("%02d", pickedMin)
                 + ":"
                 + String.format("%02d", pickedSec))
@@ -73,8 +74,8 @@ class TimerFragmentPresenter : TimerFragmentMVP.Presenter {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime
             updatedTime = timeTemp + timeInMilliseconds
 
-            var seconds = (pickedSec - (updatedTime / 1000)).toInt()
-            val minutes = pickedMin - (seconds / 60)
+            var seconds = (pickedSec - ( updatedTime / 1000)).toInt()
+            val minutes = seconds / 60
             seconds %= 60
 
             var string = ""

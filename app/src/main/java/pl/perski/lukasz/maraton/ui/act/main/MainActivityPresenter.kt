@@ -6,7 +6,7 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.view.ContextThemeWrapper
 import com.google.firebase.auth.FirebaseAuth
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.adapters.SharedPrefHelper
+import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
 import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
