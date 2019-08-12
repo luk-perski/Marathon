@@ -11,8 +11,8 @@ import android.widget.TextView
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 
-class ExerciseDoneListAdapter(private var activity: Activity, private var items: ArrayList<ExerciseDoneData>): BaseAdapter() {
-
+class ExerciseDoneListAdapter(private var activity: Activity, private var items: ArrayList<ExerciseDoneData): BaseAdapter() {
+    >
     private class ViewHolder(row: View?) {
         var tvTitle: TextView? = null
         var tvAmountQue : TextView? = null
@@ -23,14 +23,13 @@ class ExerciseDoneListAdapter(private var activity: Activity, private var items:
         var ivDone: ImageView? = null
 
         init {
-            this.tvTitle = row?.findViewById<TextView>(R.id.tvTitleItem)
-            this.tvAmountQue = row?.findViewById<TextView>(R.id.tvAmountQue)
-            this.tvAmountAns = row?.findViewById<TextView>(R.id.tvAmountAns)
-            this.tvMaxQue = row?.findViewById<TextView>(R.id.tvMaxQue)
-            this.tvMaxAns = row?.findViewById<TextView>(R.id.tvMaxAns)
+            this.tvTitle = row?.findViewById(R.id.tvTitleItem)
+            this.tvAmountQue = row?.findViewById(R.id.tvAmountQue)
+            this.tvAmountAns = row?.findViewById(R.id.tvAmountAns)
+            this.tvMaxQue = row?.findViewById(R.id.tvMaxQue)
+            this.tvMaxAns = row?.findViewById(R.id.tvMaxAns)
             this.tvSkipped = row?.findViewById(R.id.tvExerciseWasSkipped)
-            this.ivDone = row?.findViewById<ImageView>(R.id.ivDone)
-
+            this.ivDone = row?.findViewById(R.id.ivDone)
         }
     }
 
@@ -88,7 +87,6 @@ class ExerciseDoneListAdapter(private var activity: Activity, private var items:
             viewHolder.tvMaxAns!!.visibility = View.INVISIBLE
             viewHolder.tvSkipped!!.visibility = View.VISIBLE
         }
-
         return view as View
     }
 

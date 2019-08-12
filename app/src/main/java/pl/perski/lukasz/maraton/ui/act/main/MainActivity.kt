@@ -9,12 +9,12 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import android.view.animation.AlphaAnimation
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import pl.perski.lukasz.maraton.ui.act.calendar.CalendarActivity
 import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity

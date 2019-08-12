@@ -19,10 +19,11 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
     var model = MainModel()
     private lateinit var view: MainActivityMVP.View
     private lateinit var context: Context
+    private lateinit var auth: FirebaseAuth
     lateinit var sharedPrefHelper: SharedPrefHelper
     lateinit var exercisesMorningTitles: Array<String>
     lateinit var exercisesEveningTitles: Array<String>
-    private lateinit var auth: FirebaseAuth
+
 
     override fun setView(view: MainActivityMVP.View) {
         this.view = view

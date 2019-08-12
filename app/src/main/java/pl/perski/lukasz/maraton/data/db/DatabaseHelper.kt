@@ -13,8 +13,8 @@ import spencerstudios.com.fab_toast.FabToast
 object DatabaseHelper {
 
 
-    const val EXT_DATABASE_NAME = "marathon.db"
-   const val DATABASE_PATH = "marathon.db"
+    private const val EXT_DATABASE_NAME = "marathon.db"
+   private const val DATABASE_PATH = "marathon.db"
 
 
 //    fun checkDataBase(): Boolean {
