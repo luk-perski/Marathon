@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
+    tools:context=".ui.act.main.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-</android.support.constraint.ConstraintLayout>
+
+    <com.libRG.CustomTextView
+        android:id="@+id/btnMorningTraining"
+        android:layout_width="220dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/bg_round_30dp_primary"
+        android:elevation="10dp"
+        android:textAlignment="center"
+        android:text="@string/btn_morning_exercies"
+        android:textColor="@android:color/background_light"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEveningTraining"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shadowColor="@color/colorDefaultShadowColor"
+        app:shadowPercentHeight="1.05"
+        app:shadowPercentWidth="0.95"
+        app:shadowRadius="40dp"
+        app:shadowYOffset="10" />
+
+    <com.libRG.CustomTextView
+        android:id="@+id/btnEveningTraining"
+        android:layout_width="220dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginBottom="131dp"
+        android:background="@drawable/bg_round_30dp_primary"
+        android:elevation="10dp"
+        android:textAlignment="center"
+        android:text="@string/btn_evening_exercie"
+        android:textColor="@android:color/background_light"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:shadowYOffset="10"
+        app:shadowColor="@color/colorDefaultShadowColor"
+        app:shadowPercentHeight="1.05"
+        app:shadowPercentWidth="0.95"
+        app:shadowRadius="40dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

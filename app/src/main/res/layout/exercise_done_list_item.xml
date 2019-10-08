@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:clickable="false"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvTitleItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="Tytuł ćwiczenia"
+        app:layout_constraintStart_toEndOf="@+id/ivDone"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/ivDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAmountQue"
+        android:textSize="13sp"
+        android:textColor="@color/White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/amount_question"
+        app:layout_constraintStart_toEndOf="@+id/ivDone"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMaxQue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/max_question"
+        android:textSize="13sp"
+        android:textColor="@color/White"
+        app:layout_constraintStart_toEndOf="@+id/ivDone"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmountQue" />
+
+    <TextView
+        android:id="@+id/tvAmountAns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:textStyle="bold"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/tv_backgroud_white"
+        android:text="99"
+        android:textColor="@color/Red"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvMaxAns"
+        android:paddingStart="5dp"
+        android:paddingTop="3dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/tv_backgroud_white"
+        android:text="9"
+        android:textColor="@color/Red"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAmountAns"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvExerciseWasSkipped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/tv_backgroud_white"
+        android:text="@string/exercise_was_skipped"
+        android:textAlignment="center"
+        android:textColor="@color/Red"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/ivDone"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleItem" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,10 +3,31 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@android:color/holo_green_light</item>
+        <item name="colorPrimaryDark">@android:color/holo_green_dark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/holo_green_dark</item>
+        <item name="android:navigationBarColor">@android:color/holo_green_dark</item>
     </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="TimePickerTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/holo_green_light</item>
+        <item name="colorPrimaryDark">@android:color/holo_green_dark</item>
+        <item name="colorAccent">@color/pomegranate</item>
+        <item name="android:statusBarColor">@android:color/holo_green_dark</item>
+        <item name="android:navigationBarColor">@android:color/holo_green_dark</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/pomegranate</item>
+
+    </style>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -16,5 +37,77 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TEST" parent="AppTheme">
+        <item name="android:windowBackground">@color/grey</item>
+        <item name="android:colorBackground">@color/grey</item>
+        <item name="colorPrimaryDark">@color/pomegranate</item>
+        <item name="colorPrimary">@color/fbutton_color_alizarin</item>
+        <item name="android:navigationBarColor">@color/Black</item>
+        <item name="android:statusBarColor">@color/pomegranate</item>
+        <item name="android:colorForeground">@color/AliceBlue</item>
+        <item name="android:textColorPrimary">@color/Azure</item>
+        <item name="android:textColorPrimaryInverse">@color/Silver</item>
+        <item name="colorAccent">@color/White</item>
+        <item name="android:textColorSecondary">@color/White</item>
+        <item name="android:textColorSecondaryInverse">@color/Azure</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.TEST" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/fbutton_color_alizarin</item>
+        <item name="colorPrimaryDark">@color/pomegranate</item>
+        <item name="android:colorBackground">@color/grey</item>
+        <item name="android:statusBarColor">@color/pomegranate</item>
+        <item name="android:navigationBarColor">@color/Black</item>
+        <item name="actionMenuTextColor">@color/grey</item>
+        <item name="android:actionMenuTextColor">@color/grey</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textColorSecondary">@color/White</item>
+        <item name="colorAccent">@color/White</item>
+
+    </style>
+
+    <style name="PopUpMenu">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:colorBackground">@color/white</item>
+
+    </style>
+
+    <style name="TEST.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TEST.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="TEST.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="DialogTheme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:textColorPrimary">@color/White</item> <!-- nagłówek -->
+        <item name="android:textColorSecondary">@color/pomegranate</item> <!-- ramki checkboxów -->
+        <item name="android:background">@color/grey</item> <!-- tło -->
+        <item name="colorAccent">@android:color/white</item> <!-- przyciski -->
+        <item name="android:textAppearance">@layout/list_item</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="textColorAlertDialogListItem">@color/White</item><!-- nagłówek i przyciski-->
+    </style>
+
+    <style name="CalenderViewCustom" parent="TEST">
+        <item name="colorAccent">@color/Red</item>
+        <item name="android:weekNumberColor">@color/White</item>
+    </style>
+
+    <style name="CalenderViewWhite" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/White</item>
+    </style>
+
 
 </resources>
