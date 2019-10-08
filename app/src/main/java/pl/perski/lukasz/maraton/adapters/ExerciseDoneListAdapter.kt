@@ -11,8 +11,8 @@ import android.widget.TextView
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 
-class ExerciseDoneListAdapter(private var activity: Activity, private var items: ArrayList<ExerciseDoneData): BaseAdapter() {
-    >
+class ExerciseDoneListAdapter(private var activity: Activity, private var items: ArrayList<ExerciseDoneData>): BaseAdapter() {
+
     private class ViewHolder(row: View?) {
         var tvTitle: TextView? = null
         var tvAmountQue : TextView? = null

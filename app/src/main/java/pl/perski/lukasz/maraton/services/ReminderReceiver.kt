@@ -12,8 +12,8 @@ import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.ALARM_STATE
 import android.R.attr.name
 import android.app.NotificationChannel
 import android.media.RingtoneManager
-import android.support.v4.app.NotificationCompat
-import android.support.v4.app.TaskStackBuilder
+import androidx.core.app.NotificationCompat
+import androidx.core.app.TaskStackBuilder
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.main.MainActivity
 

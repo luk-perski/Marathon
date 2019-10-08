@@ -58,7 +58,7 @@ tools:context=".ui.act.login.LoginActivity">
             android:textColorHint="?android:colorBackground"
             android:textColorHighlight="?android:colorBackground"/>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="16dp">
@@ -85,7 +85,7 @@ tools:context=".ui.act.login.LoginActivity">
                 android:textColor="?android:colorBackground"  />
 
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <TextView

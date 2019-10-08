@@ -3,13 +3,13 @@ package pl.perski.lukasz.maraton.ui.act.intro
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.FragmentActivity
-import android.support.v7.app.AlertDialog
-import android.support.v7.view.ContextThemeWrapper
+import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.view.ContextThemeWrapper
 import com.kotlinpermissions.KotlinPermissions
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.utils.SharedPrefHelper
-import pl.perski.ehc.ui.login.LoginActivity
+import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
 
 class IntroActivityPresenter : IntroActivityMVP.Presenter {
 

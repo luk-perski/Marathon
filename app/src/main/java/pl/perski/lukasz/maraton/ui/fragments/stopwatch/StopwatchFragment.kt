@@ -2,12 +2,12 @@ package pl.perski.lukasz.maraton.ui.fragments.stopwatch
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import pl.perski.lukasz.maraton.R
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.animation.AlphaAnimation
 import kotlinx.android.synthetic.main.fragment_stopwatch.view.*
 

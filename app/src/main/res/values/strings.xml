@@ -137,5 +137,7 @@
     <string name="permissions_explain">Nadanie uprawnień jest wymagane,\naby aplikacja była w stanie działać</string>
     <string name="no_reminder">Nie masz ustawionego przypomnienia.</string>
     <string name="reminder_cancel">Przypomnienie zostało usunięte.</string>
+    <string name="btn_morning_exercies">Ćwiczenia poranne</string>
+    <string name="btn_evening_exercie">Ćwiczenia wieczorne</string>
     Nie jest zalecane jej używanie - spróbuj zainstalować ponownie.
 </resources>

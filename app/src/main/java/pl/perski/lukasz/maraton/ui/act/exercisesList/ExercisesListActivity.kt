@@ -2,7 +2,7 @@ package pl.perski.lukasz.maraton.ui.act.exercisesList
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.animation.AlphaAnimation
 import kotlinx.android.synthetic.main.activity_exercises_list.*
 import pl.perski.lukasz.maraton.R

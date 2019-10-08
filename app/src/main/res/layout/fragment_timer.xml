@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,6 +31,7 @@
 
 
     <com.libRG.CustomTextView
+        android:textAlignment="center"
         android:id="@+id/tvMinutes"
         android:layout_width="79dp"
         android:layout_height="wrap_content"
@@ -39,7 +40,6 @@
         android:padding="10dp"
         android:elevation="10dp"
         android:text="@string/minutes"
-        android:textAlignment="center"
         android:textColor="@color/White"
         android:textSize="15sp"
         app:autoSizeMinTextSize="30sp"
@@ -115,7 +115,8 @@
         app:wheelItemCount="5"
         app:wrapSelectorWheel="true" />
 
-    <com.subsub.library.BeautyButton
+    <com.libRG.CustomTextView
+        android:textAlignment="center"
         android:id="@+id/btnStartTimer"
         android:layout_width="90dp"
         android:layout_height="50dp"
@@ -140,4 +141,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

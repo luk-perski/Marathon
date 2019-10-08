@@ -5,7 +5,7 @@ import java.io.File
 import java.io.FileOutputStream
 import android.content.Context
 import android.content.pm.PackageManager
-import android.support.v4.content.PermissionChecker.checkSelfPermission
+import androidx.core.content.PermissionChecker.checkSelfPermission
 import android.util.Log
 import pl.perski.lukasz.maraton.R
 import spencerstudios.com.fab_toast.FabToast

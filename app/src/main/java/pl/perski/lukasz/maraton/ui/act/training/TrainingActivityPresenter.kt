@@ -2,10 +2,10 @@ package pl.perski.lukasz.maraton.ui.act.training
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.FragmentManager
-import android.support.v4.content.ContextCompat.startActivity
-import android.support.v7.app.AlertDialog
-import android.support.v7.view.ContextThemeWrapper
+import androidx.fragment.app.FragmentManager
+import androidx.core.content.ContextCompat.startActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.view.ContextThemeWrapper
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.adapters.FragmentDialog
 import pl.perski.lukasz.maraton.data.model.ExerciseData

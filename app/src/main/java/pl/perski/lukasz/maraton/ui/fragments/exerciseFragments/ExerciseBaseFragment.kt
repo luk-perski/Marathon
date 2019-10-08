@@ -2,7 +2,7 @@ package pl.perski.lukasz.maraton.ui.fragments.exerciseFragments
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 import java.io.Serializable

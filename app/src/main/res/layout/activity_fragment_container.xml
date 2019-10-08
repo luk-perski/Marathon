@@ -19,7 +19,8 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <com.subsub.library.BeautyButton
+        <com.libRG.CustomTextView
+        android:textAlignment="center"
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +43,8 @@
         android:layout_weight="1"
         android:layout_marginBottom="64dp"/>
 
-    <com.subsub.library.BeautyButton
+    <com.libRG.CustomTextView
+        android:textAlignment="center"
         android:id="@+id/btnEndExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

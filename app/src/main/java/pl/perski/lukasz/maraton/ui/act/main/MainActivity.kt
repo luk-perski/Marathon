@@ -2,11 +2,12 @@ package pl.perski.lukasz.maraton.ui.act.main
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import pl.perski.lukasz.maraton.R
@@ -35,7 +36,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         sharedPrefHelper = SharedPrefHelper(this)
         presenter.setView(this)
         if (sharedPrefHelper.firstLaunch) {

@@ -2,8 +2,8 @@ package pl.perski.lukasz.maraton.ui.act.login
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AlertDialog
-import android.support.v7.view.ContextThemeWrapper
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.view.ContextThemeWrapper
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View

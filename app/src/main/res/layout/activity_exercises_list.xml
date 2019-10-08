@@ -8,7 +8,8 @@
     android:orientation="vertical"
     tools:context=".ui.act.exercisesList.ExercisesListActivity">
 
-    <com.subsub.library.BeautyButton
+    <com.libRG.CustomTextView
+        android:textAlignment="center"
         android:id="@+id/btnDefineExercises"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

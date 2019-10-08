@@ -2,13 +2,12 @@ package pl.perski.lukasz.maraton.ui.act.login
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AlphaAnimation
 import kotlinx.android.synthetic.main.activity_login.*
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.ui.act.intro.IntroActivity
 
 class LoginActivity : AppCompatActivity(), LoginActivityMVP.View {
 

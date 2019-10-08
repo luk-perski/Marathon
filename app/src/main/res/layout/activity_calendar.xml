@@ -8,7 +8,7 @@
     tools:context=".ui.act.calendar.CalendarActivity">
 
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCalendar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -34,7 +34,7 @@
         app:mcv_weekDayTextAppearance="@color/pomegranate"
         app:mcv_headerTextAppearance="@color/pomegranate" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="7 "
@@ -74,7 +74,7 @@
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp"></ListView>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

@@ -2,8 +2,8 @@ package pl.perski.lukasz.maraton.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.FragmentContainer
-import android.support.v4.content.ContextCompat.startActivity
+import androidx.fragment.app.FragmentContainer
+import androidx.core.content.ContextCompat.startActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
