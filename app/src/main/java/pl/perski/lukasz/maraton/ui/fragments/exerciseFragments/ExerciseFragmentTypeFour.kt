@@ -11,15 +11,15 @@ import pl.perski.lukasz.maraton.data.repositories.RhymesRepository
 
 class ExerciseFragmentTypeFour : ExerciseBaseFragment() {
 
-    private lateinit var root : View
+    private lateinit var root: View
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        root =  inflater.inflate(R.layout.fragment_exercise_type_four,container,false)
+        root = inflater.inflate(R.layout.fragment_exercise_type_four, container, false)
         getDataFromArg(this)
         setControls()
         return root
     }
 
-    override fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData {
+    override fun getData(isDone: Boolean, repeatAmount: Int?, timeAmount: Int?): ExerciseDoneData {
         return ExerciseDoneData(
                 exercise!!.recId,
                 exercise!!.title,
@@ -33,9 +33,8 @@ class ExerciseFragmentTypeFour : ExerciseBaseFragment() {
         )
     }
 
-    fun setControls()
-    {
+    fun setControls() {
         val repository = RhymesRepository(activity!!.applicationContext)
-       root.tvRhyme.text = repository.getRhymes(exercise!!.recId)
+        root.tvRhyme.text = repository.getRhymes(exercise!!.recId)
     }
 }

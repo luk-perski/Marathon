@@ -1,22 +1,19 @@
 package pl.perski.lukasz.maraton.data.db
 
 
-import java.io.File
-import java.io.FileOutputStream
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.core.content.PermissionChecker.checkSelfPermission
 import android.util.Log
+import androidx.core.content.PermissionChecker
+import androidx.core.content.PermissionChecker.checkSelfPermission
 import pl.perski.lukasz.maraton.R
 import spencerstudios.com.fab_toast.FabToast
+import java.io.File
+import java.io.FileOutputStream
 
 object DatabaseHelper {
-
-
     private const val EXT_DATABASE_NAME = "marathon.db"
-   private const val DATABASE_PATH = "marathon.db"
-
-
+    private const val DATABASE_PATH = "marathon.db"
 //    fun checkDataBase(): Boolean {
 //        var checkDB = false
 //        try {
@@ -30,12 +27,8 @@ object DatabaseHelper {
 //    }
 
     fun copyDataBase(context: Context) {
-
-
-        if (checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
+        if (checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PermissionChecker.PERMISSION_GRANTED) {
             try {
-
                 val file = File(context.getDatabasePath(DATABASE_PATH).path)
                 file.parentFile.mkdirs()
                 file.createNewFile()

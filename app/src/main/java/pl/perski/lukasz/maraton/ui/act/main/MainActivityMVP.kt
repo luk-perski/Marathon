@@ -2,11 +2,11 @@ package pl.perski.lukasz.maraton.ui.act.main
 
 import android.content.Context
 import pl.perski.lukasz.maraton.utils.SharedPrefHelper
-import java.util.ArrayList
+import java.util.*
 
 interface MainActivityMVP {
 
-    interface View{
+    interface View {
 
         fun getContext(): Context
         fun startIntroActivity()
@@ -19,13 +19,12 @@ interface MainActivityMVP {
         fun onFirstLaunch()
         fun morningTraining()
         fun eveningTraining()
-        fun chooser(mode : Int)
-        fun checkAuth() : Boolean
+        fun chooser(mode: Int)
+        fun checkAuth(): Boolean
         fun logoutUser()
     }
 
-    interface Model
-    {
-        fun saveChoice(titles : ArrayList<String>, mode : Int, sharedPrefHelper: SharedPrefHelper)
+    interface Model {
+        fun saveChoice(titles: ArrayList<String>, mode: Int, sharedPrefHelper: SharedPrefHelper)
     }
 }

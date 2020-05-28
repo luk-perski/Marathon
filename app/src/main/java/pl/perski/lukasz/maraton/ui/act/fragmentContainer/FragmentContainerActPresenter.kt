@@ -11,41 +11,41 @@ import pl.perski.lukasz.maraton.ui.fragments.exerciseFragments.ExerciseBaseFragm
 import pl.perski.lukasz.maraton.ui.fragments.stopwatch.StopwatchFragment
 import pl.perski.lukasz.maraton.ui.fragments.timer.TimerFragment
 import pl.perski.lukasz.maraton.ui.fragments.voiceRecorder.VoiceRecFragment
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.EXERCISE_TITLE
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.RECORDS
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.STOPWATCH
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.TIMER
+import pl.perski.lukasz.maraton.utils.ConstStrings
+import pl.perski.lukasz.maraton.utils.ConstStrings.Companion.EXERCISE
+import pl.perski.lukasz.maraton.utils.ConstStrings.Companion.EXERCISE_TITLE
+import pl.perski.lukasz.maraton.utils.ConstStrings.Companion.RECORDS
+import pl.perski.lukasz.maraton.utils.ConstStrings.Companion.STOPWATCH
+import pl.perski.lukasz.maraton.utils.ConstStrings.Companion.TIMER
 import pl.perski.lukasz.maraton.utils.FragmentUtils
 
-class FragmentContainerActPresenter(var manager : FragmentManager)  : FragmentContainerActMVP.Presenter{
+class FragmentContainerActPresenter(var manager: FragmentManager) : FragmentContainerActMVP.Presenter {
 
 
     var fragment: Fragment? = null
     private lateinit var context: Context
     lateinit var repository: ExercisesRepository
-    private lateinit var view : FragmentContainerActMVP.View
-    private lateinit var exercise : ExerciseData
+    private lateinit var view: FragmentContainerActMVP.View
+    private lateinit var exercise: ExerciseData
 
     override fun setView(view: FragmentContainerActMVP.View) {
         this.view = view
         context = view.getContext()
     }
-    override fun showFragment(intent : Intent) {
+
+    override fun showFragment(intent: Intent) {
 
         val exerciseTitle = intent.getStringExtra(EXERCISE_TITLE)
-        if (!exerciseTitle.isNullOrEmpty())
-        {
+        if (!exerciseTitle.isNullOrEmpty()) {
             view.setBtnEndExercise(true)
             repository = ExercisesRepository(context)
             exercise = repository.getExerciseByTitle(exerciseTitle)!!
         }
-        when (intent.getStringExtra(CONST_STRINGS.FRAGMENT)){
+        when (intent.getStringExtra(ConstStrings.FRAGMENT)) {
             STOPWATCH -> fragment = StopwatchFragment()
             TIMER -> fragment = TimerFragment()
             RECORDS -> fragment = VoiceRecFragment()
-            EXERCISE -> fragment =  ExerciseBaseFragment.newInstance(exercise)
+            EXERCISE -> fragment = ExerciseBaseFragment.newInstance(exercise)
         }
         FragmentUtils.replaceFragmentToActivity(manager, R.id.fragment_container, fragment!!)
     }

@@ -5,13 +5,13 @@ import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 
 class ReminderModel : ReminderActivityMVP.Model {
 
-    override fun getReminderInfo(context: Context): String? {
-        val sharedPrefHelper = SharedPrefHelper(context)
+    override fun getReminderInfo(contex: Context): String? {
+        val sharedPrefHelper = SharedPrefHelper(contex)
         return sharedPrefHelper.reminderDate
     }
 
-    override fun setReminderInfo(date: String, context: Context) {
-        val sharedPrefHelper = SharedPrefHelper(context)
+    override fun setReminderInfo(date: String, contex: Context) {
+        val sharedPrefHelper = SharedPrefHelper(contex)
         sharedPrefHelper.reminderDate = date
     }
 }

@@ -18,7 +18,7 @@ data class RhymesData(
 
         @ColumnInfo(name = "exerciseRecId")
         @SerializedName("exerciseRecId")
-        val exerciseRecId : String) {
+        val exerciseRecId: String) {
 
     override fun toString(): String {
         return body

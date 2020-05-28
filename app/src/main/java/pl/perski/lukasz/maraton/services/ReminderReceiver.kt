@@ -1,44 +1,41 @@
 package pl.perski.lukasz.maraton.services
 
-import android.app.Notification
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS.Companion.ALARM_STATE
-import android.R.attr.name
-import android.app.NotificationChannel
 import android.media.RingtoneManager
 import androidx.core.app.NotificationCompat
 import androidx.core.app.TaskStackBuilder
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.ui.act.main.MainActivity
+import pl.perski.lukasz.maraton.utils.ConstStrings.Companion.ALARM_STATE
 
 
 class ReminderReceiver : BroadcastReceiver() {
+    private val NOTIFICATION_ID = 234
+    private val CHANNEL_ID = "my_channel_01"
+    private val NAME = "my_channel"
+    private val DESCRIPTION = "This is my channel"
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
         if (intent!!.getBooleanExtra(ALARM_STATE, false)) {
-            val NOTIFICATION_ID = 234
-            val CHANNEL_ID = "my_channel_01"
-            val name = "my_channel"
-            val Description = "This is my channel"
+
 
             val notificationManager = context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 val importance = NotificationManager.IMPORTANCE_HIGH
-                val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
-                mChannel.description = Description
+                val mChannel = NotificationChannel(CHANNEL_ID, NAME, importance)
+                mChannel.description = DESCRIPTION
                 mChannel.enableLights(true)
                 mChannel.enableVibration(true)
                 notificationManager.createNotificationChannel(mChannel)
             }
 
-            val builder = NotificationCompat.Builder(context!!, CHANNEL_ID)
+            val builder = NotificationCompat.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.mipmap.ic_launcher) //TODO: tutaj ikonka aplikacji
                     .setContentTitle(context.resources.getString(R.string.evening_exercises_reminder))
                     .setContentText(context.resources.getString(R.string.tap_to_start))

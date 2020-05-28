@@ -12,7 +12,6 @@ import pl.perski.lukasz.maraton.data.repositories.HintsRepository
 
 class ExerciseFragmentTypeFive : ExerciseBaseFragment() {
 
-
     private lateinit var root: View
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = inflater.inflate(R.layout.fragment_exercise_type_five, container, false)
@@ -41,6 +40,5 @@ class ExerciseFragmentTypeFive : ExerciseBaseFragment() {
                 activity!!.applicationContext,
                 R.layout.list_item,
                 repository.getAll(exercise!!.recId))
-
     }
 }

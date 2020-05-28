@@ -9,7 +9,7 @@ import java.io.Serializable
 @Entity(tableName = "exercises")
 data class ExerciseData(
 
-       @PrimaryKey
+        @PrimaryKey
         @SerializedName("recId")
         val recId: Int,
 
@@ -19,7 +19,7 @@ data class ExerciseData(
 
         @ColumnInfo(name = "exerciseGroupId")
         @SerializedName("exerciseGroupId")
-        val exerciseGroupId : Int,
+        val exerciseGroupId: Int,
 
         @ColumnInfo(name = "exerciseTypeId")
         @SerializedName("exerciseTypeId")
@@ -33,15 +33,13 @@ data class ExerciseData(
         @SerializedName("picName")
         val picName: String?,
 
-       @ColumnInfo(name = "isMorning")
-       @SerializedName("isMorning")
-       val isMorning: Boolean?,
+        @ColumnInfo(name = "isMorning")
+        @SerializedName("isMorning")
+        val isMorning: Boolean?,
 
-       @ColumnInfo(name = "isEvening")
-           @SerializedName("isEvening")
-           val isEvening: Boolean?) : Serializable
-
-{
+        @ColumnInfo(name = "isEvening")
+        @SerializedName("isEvening")
+        val isEvening: Boolean?) : Serializable {
     override fun toString(): String {
         return title
     }

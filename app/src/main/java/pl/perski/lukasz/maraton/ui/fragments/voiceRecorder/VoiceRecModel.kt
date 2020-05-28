@@ -1,4 +1,3 @@
 package pl.perski.lukasz.maraton.ui.fragments.voiceRecorder
 
-class VoiceRecModel : VoiceRecFragmentMVP.Model{
-}
+class VoiceRecModel : VoiceRecFragmentMVP.Model

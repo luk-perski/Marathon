@@ -50,7 +50,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'androidx.room:room-runtime:2.0.0'
-    compile "com.subsub.libs:buttoncustomshadow:1.1.1"
+    implementation "com.subsub.libs:buttoncustomshadow:1.1.1"
     implementation 'com.github.polok:clicknumberpicker:0.1.2'
     implementation 'com.libRG:customtextview:1.6'
     implementation 'com.super_rabbit.wheel_picker:NumberPicker:1.0.1'

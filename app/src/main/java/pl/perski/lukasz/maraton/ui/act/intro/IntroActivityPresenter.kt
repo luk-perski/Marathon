@@ -3,13 +3,13 @@ package pl.perski.lukasz.maraton.ui.act.intro
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import androidx.fragment.app.FragmentActivity
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.fragment.app.FragmentActivity
 import com.kotlinpermissions.KotlinPermissions
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
+import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 
 class IntroActivityPresenter : IntroActivityMVP.Presenter {
 
@@ -38,30 +38,29 @@ class IntroActivityPresenter : IntroActivityMVP.Presenter {
                     sharedPrefHelper.firstLaunch = false
                     view.finishActivity()
                     context.startActivity(Intent(context, LoginActivity::class.java))
-                }//TODO: obsłużenie, gdy użytkownik odmówi tylko na dźwięk
+                }//TODO: handle if user denied only AUDIO permission
                 .onDenied {
                     showAlertDialog()
                 }
                 .onForeverDenied {
-                showAlertDialog()
+                    showAlertDialog()
                 }
                 .ask()
     }
 
 
-    fun showAlertDialog()
-    {
+    private fun showAlertDialog() {
         val builder = AlertDialog.Builder(ContextThemeWrapper(context, R.style.DialogTheme))
         with(builder)
         {
             setTitle(context.resources.getString(R.string.permissions_explain))
-            setPositiveButton(context.resources.getString(R.string.re_grant)) { dialogInterface, i ->
+            setPositiveButton(context.resources.getString(R.string.re_grant)) { _, _ ->
                 run {
                     grantPermissions()
                 }
             }
             setNegativeButton(context.resources.getString(R.string.close_app))
-            { dialogInterface, i ->
+            { _, _ ->
                 run {
                     view.finishActivity()
                 }

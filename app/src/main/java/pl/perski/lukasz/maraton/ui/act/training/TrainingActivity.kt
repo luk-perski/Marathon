@@ -2,17 +2,12 @@ package pl.perski.lukasz.maraton.ui.act.training
 
 
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_training.*
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.adapters.FragmentDialog
-import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
-import pl.perski.lukasz.maraton.ui.act.main.MainActivity
 
 class TrainingActivity : AppCompatActivity(), TrainingActivityMVP.View {
 

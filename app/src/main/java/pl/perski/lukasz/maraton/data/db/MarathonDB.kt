@@ -1,9 +1,9 @@
 package pl.perski.lukasz.maraton.data.db
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import android.content.Context
 import pl.perski.lukasz.maraton.data.model.ConsonantsCombinationData
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.RhymesData

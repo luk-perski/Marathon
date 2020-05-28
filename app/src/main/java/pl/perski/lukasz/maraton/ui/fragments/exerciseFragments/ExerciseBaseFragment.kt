@@ -7,11 +7,10 @@ import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 import java.io.Serializable
 
-abstract class ExerciseBaseFragment : Fragment()  {
+abstract class ExerciseBaseFragment : Fragment() {
 
-    //TODO: companion?
     companion object {
-        val EXERCISE = "exercise"
+        private const val EXERCISE = "exercise"
         var exercise: ExerciseData? = null
         fun newInstance(exercise: ExerciseData): ExerciseBaseFragment {
             val args = Bundle()
@@ -39,5 +38,5 @@ abstract class ExerciseBaseFragment : Fragment()  {
         }
     }
 
-    abstract  fun getData(isDone : Boolean, repeatAmount : Int?, timeAmount: Int?): ExerciseDoneData
+    abstract fun getData(isDone: Boolean, repeatAmount: Int?, timeAmount: Int?): ExerciseDoneData
 }

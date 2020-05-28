@@ -13,8 +13,7 @@ data class ConsonantsCombinationData(
 
         @ColumnInfo(name = "body")
         @SerializedName("body")
-        val body: String)
-{
+        val body: String) {
     override fun toString(): String {
         return body
     }

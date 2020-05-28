@@ -6,10 +6,9 @@ import android.content.Context
 import android.content.Intent
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.services.ReminderReceiver
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS
+import pl.perski.lukasz.maraton.utils.ConstStrings
 import spencerstudios.com.fab_toast.FabToast
 import java.util.*
-
 
 
 class ReminderActivityPresenter : ReminderActivityMVP.Presenter {
@@ -18,7 +17,7 @@ class ReminderActivityPresenter : ReminderActivityMVP.Presenter {
     }
 
     override fun setReminderInfo(date: String) {
-model.setReminderInfo(date, context)
+        model.setReminderInfo(date, context)
     }
 
 
@@ -27,7 +26,7 @@ model.setReminderInfo(date, context)
     lateinit var alarmManager: AlarmManager
     lateinit var calendar: Calendar
     lateinit var pi: PendingIntent
-    lateinit var intent : Intent
+    lateinit var intent: Intent
     val model = ReminderModel()
 
     override fun setView(view: ReminderActivityMVP.View) {
@@ -45,12 +44,12 @@ model.setReminderInfo(date, context)
         calendar.set(Calendar.MINUTE, min)
         calendar.set(Calendar.SECOND, 0)
         calendar.set(Calendar.MILLISECOND, 0)
-        intent.putExtra(CONST_STRINGS.ALARM_STATE, true)
+        intent.putExtra(ConstStrings.ALARM_STATE, true)
         pi = PendingIntent.getBroadcast(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT)
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pi)
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
-                24*60*60*1000, pi)
+                24 * 60 * 60 * 1000, pi)
         FabToast.makeText(context, context.resources.getString(R.string.reminder_set),
                 FabToast.LENGTH_LONG, FabToast.SUCCESS, FabToast.POSITION_TOP).show()
         val date = "$hour : $min"
@@ -59,7 +58,7 @@ model.setReminderInfo(date, context)
     }
 
     override fun cancelReminder() {
-        intent.putExtra(CONST_STRINGS.ALARM_STATE, false)
+        intent.putExtra(ConstStrings.ALARM_STATE, false)
         pi = PendingIntent.getBroadcast(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT)
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pi)

@@ -6,11 +6,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import com.google.firebase.auth.FirebaseAuth
 import pl.perski.lukasz.maraton.R
-import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import pl.perski.lukasz.maraton.data.repositories.ExercisesRepository
 import pl.perski.lukasz.maraton.ui.act.login.LoginActivity
 import pl.perski.lukasz.maraton.ui.act.training.TrainingActivity
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS
+import pl.perski.lukasz.maraton.utils.ConstStrings
+import pl.perski.lukasz.maraton.utils.SharedPrefHelper
 import spencerstudios.com.fab_toast.FabToast
 import java.util.*
 
@@ -41,18 +41,18 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
 
         builder.setTitle(R.string.chose_exercises)
         builder.setMultiChoiceItems(items, null
-        ) { dialog, which, isChecked ->
+        ) { _, which, isChecked ->
             if (isChecked) {
                 selectedList.add(which)
             } else if (selectedList.contains(which)) {
                 selectedList.remove(Integer.valueOf(which))
             }
         }
-        builder.setPositiveButton(R.string.ok) { dialogInterface, i ->
+        builder.setPositiveButton(R.string.ok) { _, _ ->
             if (selectedList.isNotEmpty()) {
-            for (j in selectedList.indices) {
-                selectedStrings.add(items[selectedList[j]])
-            }
+                for (j in selectedList.indices) {
+                    selectedStrings.add(items[selectedList[j]])
+                }
 
                 when (mode) {
                     1 -> {
@@ -84,7 +84,7 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
         {
             setTitle(context.resources.getString(R.string.lets_begin))
             setMessage(context.resources.getString(R.string.chooser_info_message) + " " + timeOfTheDay)
-            setPositiveButton(context.resources.getString(R.string.ok)) { dialogInterface, i ->
+            setPositiveButton(context.resources.getString(R.string.ok)) { _, _ ->
                 run {
                     chooser(mode)
                 }
@@ -98,7 +98,7 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
             showInfoDialog(context.resources.getString(R.string.atMorning), 1)
 
         } else {
-            startTraining(sharedPrefHelper.morningExercises.toTypedArray(), 1)
+            startTraining(sharedPrefHelper.morningExercises!!.toTypedArray(), 1)
         }
     }
 
@@ -106,7 +106,7 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
         if (sharedPrefHelper.firstEvening && !sharedPrefHelper.checkIfExists(SharedPrefHelper.EVENING_EXERCISES)) {
             showInfoDialog(context.resources.getString(R.string.atEvening), 2)
         } else {
-            startTraining(sharedPrefHelper.eveningExercises.toTypedArray(), 2)
+            startTraining(sharedPrefHelper.eveningExercises!!.toTypedArray(), 2)
         }
     }
 
@@ -131,8 +131,8 @@ class MainActivityPresenter : MainActivityMVP.Presenter {
 
     private fun startTraining(exercisesTitles: Array<String>, mode: Int) {
         val intent = Intent(context, TrainingActivity::class.java)
-        intent.putExtra(CONST_STRINGS.TRAINING_ENTER_DATA, exercisesTitles)
-        intent.putExtra(CONST_STRINGS.TRAINING_END, mode)
+        intent.putExtra(ConstStrings.TRAINING_ENTER_DATA, exercisesTitles)
+        intent.putExtra(ConstStrings.TRAINING_END, mode)
         context.startActivity(intent)
         view.finishAct()
     }

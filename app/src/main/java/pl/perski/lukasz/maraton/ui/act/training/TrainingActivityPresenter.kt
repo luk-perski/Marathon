@@ -2,22 +2,20 @@ package pl.perski.lukasz.maraton.ui.act.training
 
 import android.content.Context
 import android.content.Intent
-import androidx.fragment.app.FragmentManager
-import androidx.core.content.ContextCompat.startActivity
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.fragment.app.FragmentManager
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.adapters.FragmentDialog
 import pl.perski.lukasz.maraton.data.model.ExerciseData
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
-import pl.perski.lukasz.maraton.ui.act.exercisesList.ExercisesListActivity
 import pl.perski.lukasz.maraton.ui.act.main.MainActivity
 import pl.perski.lukasz.maraton.ui.fragments.exerciseFragments.ExerciseBaseFragment
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS
+import pl.perski.lukasz.maraton.utils.ConstStrings
 import pl.perski.lukasz.maraton.utils.FragmentUtils
 
 
-class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivityMVP.Presenter {
+class TrainingActivityPresenter(var manager: FragmentManager) : TrainingActivityMVP.Presenter {
 
     var model = TrainingModel()
     private lateinit var view: TrainingActivityMVP.View
@@ -25,10 +23,10 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
     private lateinit var context: Context
     var counter = 0
     lateinit var exercise: ExerciseData
-    var countOfExercises: Int = -1
+    private var countOfExercises: Int = -1
     var fragment: ExerciseBaseFragment? = null
-    var exerciseDoneList = ArrayList<ExerciseDoneData>()
-    var trainingEndMode: Int = 0
+    private var exerciseDoneList = ArrayList<ExerciseDoneData>()
+    private var trainingEndMode: Int = 0
 
     override fun setView(view: TrainingActivityMVP.View) {
         this.view = view
@@ -80,7 +78,7 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
             with(builder)
             {
                 setTitle(context.resources.getString(R.string.end_training_question))
-                setPositiveButton(context.resources.getString(R.string.end)) { dialogInterface, i ->
+                setPositiveButton(context.resources.getString(R.string.end)) { _, _ ->
                     run {
                         endTraining()
                     }
@@ -94,12 +92,12 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
             {
                 setTitle(context.resources.getString(R.string.end_and_save_training_question))
                 //setMessage(context.resources.getString(R.string.chooser_info_message))
-                setNegativeButton(context.resources.getString(R.string.save)) { dialogInterface, i ->
+                setNegativeButton(context.resources.getString(R.string.save)) { _, _ ->
                     run {
                         endTraining()
                     }
                 }
-                setPositiveButton(context.resources.getString(R.string.only_end)) { dialogInterface, i ->
+                setPositiveButton(context.resources.getString(R.string.only_end)) { _, _ ->
                     run {
                         trainingEndMode = 3
                         endTraining()
@@ -173,7 +171,7 @@ class TrainingActivityPresenter(var manager : FragmentManager) : TrainingActivit
     }
 
     fun saveDataAndFinish(mood: Int) {
-        exerciseDoneList.add(ExerciseDoneData(-100, CONST_STRINGS.MOOD, mood))
+        exerciseDoneList.add(ExerciseDoneData(-100, ConstStrings.MOOD, mood))
         saveDataAndFinish()
     }
 

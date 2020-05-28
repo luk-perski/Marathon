@@ -3,17 +3,14 @@ package pl.perski.lukasz.maraton.ui.fragments.timer
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
-import kotlinx.android.synthetic.main.fragment_stopwatch.view.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_timer.view.*
-
 import pl.perski.lukasz.maraton.R
-
 
 class TimerFragment : Fragment(), TimerFragmentMVP.View {
 

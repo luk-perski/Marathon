@@ -24,7 +24,7 @@ interface TrainingActivityMVP {
 
 
     interface Presenter {
-        fun setView(view: TrainingActivityMVP.View)
+        fun setView(view: View)
         fun setControls()
         fun startTraining(intent: Intent)
         fun getExercises(intent: Intent)
@@ -32,10 +32,9 @@ interface TrainingActivityMVP {
     }
 
 
-    interface Model
-    {
+    interface Model {
         fun getExercisesFromDBByTitles(context: Context, intent: Intent): List<ExerciseData>?
         fun getTrainingEnd(intent: Intent): Int
-        fun saveToDB(listToSave: ArrayList<ExerciseDoneData>, context : Context)
+        fun saveToDB(listToSave: ArrayList<ExerciseDoneData>, context: Context)
     }
 }

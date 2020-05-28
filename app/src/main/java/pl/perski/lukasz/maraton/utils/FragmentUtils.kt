@@ -1,6 +1,5 @@
 package pl.perski.lukasz.maraton.utils
 
-
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.common.base.Preconditions.checkNotNull

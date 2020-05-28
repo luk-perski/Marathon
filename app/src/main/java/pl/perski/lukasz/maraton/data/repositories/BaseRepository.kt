@@ -7,13 +7,13 @@ import pl.perski.lukasz.maraton.data.db.MarathonDB
 
 abstract class BaseRepository {
 
-         var mDb: MarathonDB? = null
-         lateinit var mDbWorkerThread: DbWorkerThread
+    var mDb: MarathonDB? = null
+    lateinit var mDbWorkerThread: DbWorkerThread
 
-         fun prepareDbWorker(context: Context) {
-            mDb = MarathonDB.getInstance(context)
-            mDbWorkerThread = DbWorkerThread("dbWorkerThread")
-            mDbWorkerThread.start()
-        }
+    fun prepareDbWorker(context: Context) {
+        mDb = MarathonDB.getInstance(context)
+        mDbWorkerThread = DbWorkerThread("dbWorkerThread")
+        mDbWorkerThread.start()
     }
+}
 

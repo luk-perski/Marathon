@@ -1,17 +1,16 @@
 package pl.perski.lukasz.maraton.ui.act.calendar
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_calendar.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.adapters.ExerciseDoneListAdapter
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
-import spencerstudios.com.fab_toast.FabToast
 
 class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
 
@@ -28,37 +27,23 @@ class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
 
     fun setControls() {
         setSupportActionBar(toolbarCalendar)
-
-        // Now get the support action bar
         val actionBar = supportActionBar
-
-        // Set toolbar title/app
         actionBar!!.title = resources.getString(R.string.calendar)
-
-        // Set action bar/toolbar sub title
-        //actionBar.subtitle = resources.getString(R.string.tap_menu_to_generate_card)
-
-        // Set action bar elevation
         actionBar.elevation = 4.0F
-
-        // Display the app icon in action bar/toolbar
         actionBar.setDisplayShowHomeEnabled(true)
     }
-
 
     override fun getContext(): Context {
         return this
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu to use in the action bar
         val inflater = menuInflater
         inflater.inflate(R.menu.calendar_toolbar_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle presses on the action bar menu items
         when (item.itemId) {
             R.id.generate_pdf -> {
                 presenter.generateExerciseSheet(calendarView.currentDate)
@@ -71,7 +56,7 @@ class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
     override fun setList(exerciseDoneList: ArrayList<ExerciseDoneData>) {
         val adapter = ExerciseDoneListAdapter(this, exerciseDoneList)
         lvCalendar?.adapter = adapter
-        //TODO: clear listy
+        //TODO: clear lists
         adapter.notifyDataSetChanged()
     }
 
@@ -97,7 +82,7 @@ class CalendarActivity : AppCompatActivity(), CalendarActivityMVP.View {
 
     fun setEvents() {
 
-        this.calendarView.setOnDateChangedListener { widget, date, selected ->
+        this.calendarView.setOnDateChangedListener { _, date, _ ->
             val normalizedMonth = date.month + 1
             presenter.getExercises("$normalizedMonth-${date.year}", "${date.day}-$normalizedMonth-${date.year}")
 

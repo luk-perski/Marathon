@@ -4,13 +4,12 @@ package pl.perski.lukasz.maraton.ui.fragments.voiceRecorder
 import android.content.Context
 import android.os.Bundle
 import android.os.SystemClock
-import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_voice_recorder.view.*
-
 import pl.perski.lukasz.maraton.R
 
 class VoiceRecFragment : Fragment(), VoiceRecFragmentMVP.View {

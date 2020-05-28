@@ -2,15 +2,13 @@ package pl.perski.lukasz.maraton.data.repositories
 
 import android.content.Context
 
-class HintsRepository (var context : Context) : BaseRepository() {
+class HintsRepository(var context: Context) : BaseRepository() {
 
-    fun getAll(recId : Int) : List<String>?
-    {
+    fun getAll(recId: Int): List<String>? {
         prepareDbWorker(context)
-        return if (recId == 36){
+        return if (recId == 36) {
             mDb?.marathonDataDao()?.getAllTwoVowelsWords()
-        }
-        else{
+        } else {
             mDb?.marathonDataDao()?.getAllConstCombWords()
         }
     }

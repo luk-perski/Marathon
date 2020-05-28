@@ -59,7 +59,7 @@ class StopwatchFragmentPresenter : StopwatchFragmentMVP.Presenter {
 
     private val updateTimerThread = object : Runnable {
         override fun run() {
-            //TODO: Dla "6 i luz" zrób specjalny tryb 5-3-7
+            //TODO: for "6 i luz" make special mode 5-3-7
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime
             updatedTime = timeTemp + timeInMilliseconds
 

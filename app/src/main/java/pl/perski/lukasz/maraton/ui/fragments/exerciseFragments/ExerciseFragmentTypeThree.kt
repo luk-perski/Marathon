@@ -10,7 +10,6 @@ import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
 import pl.perski.lukasz.maraton.data.repositories.RhymesRepository
 
-
 class ExerciseFragmentTypeThree : ExerciseBaseFragment() {
 
     private lateinit var root: View
@@ -30,7 +29,7 @@ class ExerciseFragmentTypeThree : ExerciseBaseFragment() {
                 isDone,
                 repeatAmount,
                 timeAmount,
-                pickerMaxRepeat.value.let {  pickerMaxRepeat.value.toInt()},
+                pickerMaxRepeat.value.let { pickerMaxRepeat.value.toInt() },
                 null
         )
     }

@@ -3,7 +3,6 @@ package pl.perski.lukasz.maraton.ui.fragments.timer
 import android.content.Context
 import android.os.Handler
 import android.os.SystemClock
-import android.widget.Toast
 import pl.perski.lukasz.maraton.R
 import spencerstudios.com.fab_toast.FabToast
 import java.util.concurrent.TimeUnit
@@ -53,7 +52,7 @@ class TimerFragmentPresenter : TimerFragmentMVP.Presenter {
                 + String.format("%02d", 0))
         view.changeStartColor(true)
         view.changeStartState(true)
-        //TODO: odtworzenie dźwięku
+        //TODO: add sounds
         if (timerEndTime > 0L) {
             FabToast.makeText(context, context.resources.getString(R.string.timer_end),
                     FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_CENTER).show()
@@ -61,7 +60,7 @@ class TimerFragmentPresenter : TimerFragmentMVP.Presenter {
     }
 
     override fun resetTimer() {
-        //TODO: resetowanie Timera
+        //TODO: reset timer
     }
 
     override fun convertTime(minutes: Long, seconds: Long): Long {
@@ -74,7 +73,7 @@ class TimerFragmentPresenter : TimerFragmentMVP.Presenter {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime
             updatedTime = timeTemp + timeInMilliseconds
 
-            var seconds = (pickedSec - ( updatedTime / 1000)).toInt()
+            var seconds = (pickedSec - (updatedTime / 1000)).toInt()
             val minutes = seconds / 60
             seconds %= 60
 

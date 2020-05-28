@@ -1,7 +1,6 @@
 package pl.perski.lukasz.maraton.ui.fragments.voiceRecorder
 
 import android.content.Context
-import pl.perski.lukasz.maraton.ui.fragments.timer.TimerFragmentMVP
 
 interface VoiceRecFragmentMVP {
 
@@ -9,7 +8,7 @@ interface VoiceRecFragmentMVP {
         fun getContext(): Context
         fun setToolbarTittle(title: String, subtitle: String)
         fun changeChronometerState(state: Boolean)
-        fun changeBtnIcon(state : Boolean)
+        fun changeBtnIcon(state: Boolean)
         fun changeBtnVisibility()
     }
 
@@ -17,12 +16,12 @@ interface VoiceRecFragmentMVP {
         fun setControls()
         fun setView(view: View)
         fun onRecord(start: Boolean)
-        fun  startRecording()
+        fun startRecording()
         fun setFileNameAndPath()
         fun stopRecording()
-        fun getPatchSet() : String
+        fun getPatchSet(): String
     }
 
-    interface Model{}
+    interface Model
 
 }

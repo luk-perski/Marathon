@@ -10,7 +10,6 @@ import pl.perski.lukasz.maraton.ui.fragments.voiceRecorder.VoiceRecFragment
 
 class ExerciseFragmentTypeTwo : ExerciseBaseFragment() {
 
-
     var recordPatch: String? = null
     private lateinit var childFragment: VoiceRecFragment
 

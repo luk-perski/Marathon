@@ -8,7 +8,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-//TODO: zrób zapis info o nagraniu do bazy danych
+//TODO: add saving to db recording info
 
 class VoiceRecFragmentPresenter : VoiceRecFragmentMVP.Presenter {
 
@@ -29,19 +29,19 @@ class VoiceRecFragmentPresenter : VoiceRecFragmentMVP.Presenter {
 
     override fun setFileNameAndPath() {
         val time = cal.time!!
-        var date = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.GERMANY).format(time)!!
-        //TODO: Zrób generacje tytuły w zależności od ćwiczenia
-   mFileName = view.getContext().resources.getString(R.string.record) + "_$date"
+        val date = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.GERMANY).format(time)!!
+        //TODO: add record name depends on exercise title
+        mFileName = view.getContext().resources.getString(R.string.record) + "_$date"
         mFilePath = Environment.getExternalStorageDirectory().absolutePath + "/" +
-               view.getContext().resources.getString(R.string.app_name) + "/" +
+                view.getContext().resources.getString(R.string.app_name) + "/" +
                 view.getContext().resources.getString(R.string.records)
         val f = File(mFilePath)
-        if (!f.exists()){
+        if (!f.exists()) {
             f.mkdirs()
         }
     }
 
-    override fun startRecording() { //TODO: Czy tutaj czegoś nie powienien robić Model?
+    override fun startRecording() {
         setFileNameAndPath()
 
         mRecorder = MediaRecorder()
@@ -57,13 +57,12 @@ class VoiceRecFragmentPresenter : VoiceRecFragmentMVP.Presenter {
         mStartingTimeMillis = System.currentTimeMillis()
     }
 
-  override fun stopRecording()
-    {
+    override fun stopRecording() {
         mRecorder.stop()
         mElapsedMillis = System.currentTimeMillis() - mStartingTimeMillis
         mRecorder.release()
         mFilePatchSet += mFilePath
-        Toast.makeText(view.getContext(), view.getContext().resources.getString(R.string.toast_recording_finish)+ mFilePath, Toast.LENGTH_LONG).show()
+        Toast.makeText(view.getContext(), view.getContext().resources.getString(R.string.toast_recording_finish) + mFilePath, Toast.LENGTH_LONG).show()
         view.changeBtnVisibility()
 
     }
@@ -80,12 +79,11 @@ class VoiceRecFragmentPresenter : VoiceRecFragmentMVP.Presenter {
         }
     }
 
-    override fun getPatchSet() : String
-    {
+    override fun getPatchSet(): String {
         return mFilePatchSet
     }
+
     override fun setControls() {
-        //TODO: zmień na R.string
-        view.setToolbarTittle("Nagrania", "")
+        view.setToolbarTittle(view.getContext().resources.getString(R.string.records), "")
     }
 }

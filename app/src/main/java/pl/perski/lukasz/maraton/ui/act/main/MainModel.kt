@@ -1,7 +1,7 @@
 package pl.perski.lukasz.maraton.ui.act.main
 
 import pl.perski.lukasz.maraton.utils.SharedPrefHelper
-import java.util.ArrayList
+import java.util.*
 
 class MainModel : MainActivityMVP.Model {
 

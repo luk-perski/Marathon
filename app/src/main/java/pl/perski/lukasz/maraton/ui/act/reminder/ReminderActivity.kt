@@ -1,12 +1,10 @@
 package pl.perski.lukasz.maraton.ui.act.reminder
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_reminder.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.R.string.actually_alarm_info
@@ -16,12 +14,8 @@ import java.util.*
 class ReminderActivity : AppCompatActivity(), ReminderActivityMVP.View {
 
     private val buttonClick = AlphaAnimation(1f, 0.8f)
-    lateinit var alarmManager: AlarmManager
     lateinit var calendar: Calendar
-    lateinit var pi: PendingIntent
     var presenter = ReminderActivityPresenter()
-    private var hour = 0
-    private var min = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +36,8 @@ class ReminderActivity : AppCompatActivity(), ReminderActivityMVP.View {
         }
 
     }
-    fun setControls()
-    {
+
+    fun setControls() {
         tpReminder.setIs24HourView(true)
         tpReminder.currentHour = calendar.get(Calendar.HOUR_OF_DAY)
         tpReminder.currentMinute = calendar.get(Calendar.MINUTE)
@@ -55,10 +49,10 @@ class ReminderActivity : AppCompatActivity(), ReminderActivityMVP.View {
         return this
     }
 
-    override fun setReminderInfo(date : String?) {
-        tvActuallyAlarm.text = if (date != null)
-            "${resources.getString(actually_alarm_info)}\n$date"
-        else  resources.getString(R.string.no_reminder)
+    override fun setReminderInfo(string: String?) {
+        tvActuallyAlarm.text = if (string != null)
+            "${resources.getString(actually_alarm_info)}\n$string"
+        else resources.getString(R.string.no_reminder)
     }
 
 

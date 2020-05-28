@@ -1,6 +1,5 @@
 package pl.perski.lukasz.maraton.data.enums
 
-import android.util.Log
 import java.util.*
 
 enum class ExerciseGroup constructor(val code: Int, val group: String) {
@@ -20,7 +19,7 @@ enum class ExerciseGroup constructor(val code: Int, val group: String) {
     companion object {
         fun getByCode(code: Int): String {
             val exerciseGroup = ArrayList(Arrays.asList(*values()))
-            return exerciseGroup[code-1].group
+            return exerciseGroup[code - 1].group
         }
     }
 }

@@ -1,11 +1,10 @@
 package pl.perski.lukasz.maraton.ui.act.login
 
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AlphaAnimation
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import pl.perski.lukasz.maraton.R
 
@@ -31,12 +30,12 @@ class LoginActivity : AppCompatActivity(), LoginActivityMVP.View {
     }
 
     override fun setEmailError() {
-        etEmail.error = "Nieprawiodłowy mail"
+        etEmail.error = getString(R.string.error_invalid_email)
         etEmail.requestFocus()
     }
 
     override fun setPasswordError() {
-        etPassword.error = "Hasło powinno zawierać min. 6 znaków"
+        etPassword.error = getString(R.string.error_invalid_password)
         etPassword.requestFocus()
     }
 

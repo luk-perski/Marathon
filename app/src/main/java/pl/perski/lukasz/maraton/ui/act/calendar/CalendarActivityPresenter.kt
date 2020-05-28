@@ -2,24 +2,25 @@ package pl.perski.lukasz.maraton.ui.act.calendar
 
 import android.content.Context
 import android.os.Environment
-import android.util.Log
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.itextpdf.text.*
+import com.itextpdf.text.BaseColor
+import com.itextpdf.text.Document
+import com.itextpdf.text.Element
+import com.itextpdf.text.Rectangle
 import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.pdf.PdfWriter
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.data.model.ExerciseDoneData
-import pl.perski.lukasz.maraton.utils.CONST_STRINGS
+import pl.perski.lukasz.maraton.utils.ConstStrings
 import spencerstudios.com.fab_toast.FabToast
 import java.io.File
 import java.io.FileOutputStream
 import java.text.DateFormatSymbols
 import java.text.SimpleDateFormat
-import java.time.format.TextStyle
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -38,7 +39,7 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
     override fun setView(view: CalendarActivityMVP.View) {
         this.view = view
         context = view.getContext()
-}
+    }
 
 
     override fun getExercises(month: String, day: String) {
@@ -50,7 +51,7 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
             colRefDayExercise = db.collection("users/$it/exercises/$month/$day")
         }
 
-        //odczytywanie z bazy wszystkich dokumentów
+        //READ ALL DOCUMENTS FROM DB
         colRefDayExercise.get().addOnSuccessListener { documents ->
             view.manageProgressBar(View.GONE)
             if (documents.isEmpty) {
@@ -65,8 +66,9 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
                     view.changeTvTapInfo(false)
                     view.changeLvExercisesState(true)
                 }
-                val filtered = exercisesDoneList!!.find {
-                    it.title.equals(CONST_STRINGS.MOOD) }
+                val filtered = exercisesDoneList.find {
+                    it.title.equals(ConstStrings.MOOD)
+                }
                 when (filtered?.exerciseGroupId) {
                     0 -> FabToast.makeText(context, context.resources.getString(R.string.bad_mood),
                             FabToast.LENGTH_LONG, FabToast.ERROR, FabToast.POSITION_CENTER).show()
@@ -87,7 +89,7 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
 
 
     override fun generateExerciseSheet(date: CalendarDay) {
-        // PRZYGOTOWANIE DOKUMENTU
+        // PREPARE DOCUMENT
         val cal = Calendar.getInstance()!!
         val time = cal.time!!
         val dateNow = SimpleDateFormat("yyyy_M_dd_HH_mm_ss",
@@ -109,11 +111,11 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
 
         val file = File("$filePath/" +
                 "${context.resources.getString(R.string.exercises_sheet)} " +
-                "${monthName.toUpperCase()} ($dateNow).pdf")
+                "${monthName.toUpperCase(Locale.getDefault())} ($dateNow).pdf")
         file.createNewFile()
 
         val exercisesCells = Array(55) { "" }
-        //POBRANIE Z DANYCH Z FIRESTORE
+        //FETCH DATA FROM FIRESTORE
         auth.uid?.let {
             colRefDayExercise = db.collection("users/$it/exercisesCard/$year/$month")
 
@@ -131,28 +133,28 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
                         }
                     }
                 }
-                fillDocument(file, exercisesCells, monthName.toUpperCase())
+                fillDocument(file, exercisesCells, monthName.toUpperCase(Locale.getDefault()))
             }
         }
     }
 
 
-    private fun fillDocument(file: File, exercisesCells: Array<String>, month : String) {
-        //1470 x 500 DAJE ŁADNY, DWUSTRONNY DOKUMENT
-        //1470 x 1040 DAJE ŁADNY, JEDNOSTRONNY DOKUMENT
-        var model = CalendarModel()
+    private fun fillDocument(file: File, exercisesCells: Array<String>, month: String) {
+        //1470 x 500 GIVES ONE PAGE DOCUMENT
+        //1470 x 1040 GIVES TWO PAGE DOCUMENT
+        val model = CalendarModel()
         val pageSize = Rectangle(1470f, 570f)
         val document = Document(pageSize, 0f, 1f,
                 32f, 32f)
 
-        //ROZMIAR TABELI
+        //TABLE SIZE
         val table = PdfPTable(floatArrayOf
         (9f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f,
                 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f))
         table.defaultCell.horizontalAlignment = Element.ALIGN_CENTER
         table.defaultCell.verticalAlignment = Element.ALIGN_CENTER
 
-        //DODANIE NAGŁÓWKÓW
+        //ADD HEADERS
         table.addCell(context.resources.getString(R.string.exercise_title).normalize())
         for (i in 1 until table.numberOfColumns step 1) {
             table.addCell(i.toString())
@@ -165,7 +167,7 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
             it.backgroundColor = BaseColor.GRAY
         }
 
-        //POBRANIE DANYCH Z LOKALNEJ BAZY DANYCH
+        //FETCH DATA FROM LOCAL DB
         val exercises = model.getExercisesFromDB(context)
         exercises.forEach {
             table.addCell(it.title.normalize())
@@ -179,13 +181,13 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
             }
         }
 
-        val x = DateFormatSymbols(Locale.getDefault()).months
+        DateFormatSymbols(Locale.getDefault()).months
         val tableName = PdfPTable(floatArrayOf(1f))
         tableName.defaultCell.horizontalAlignment = Element.ALIGN_CENTER
         tableName.defaultCell.verticalAlignment = Element.ALIGN_CENTER
         tableName.addCell(month.normalize())
 
-        //ZAPISANIE DOKUMENTU
+        //SAVING DOCUMENT
         if (file.isFile) {
             PdfWriter.getInstance(document, FileOutputStream(file, false))
             document.open()
@@ -197,10 +199,9 @@ class CalendarActivityPresenter : CalendarActivityMVP.Presenter {
         }
     }
 
-//TODO: znaormalizuj pozsotałe
     private fun String.normalize(): String {
-        val original = arrayOf("ą", "ć", "ę", "ł", "ń", "ó", "ś", "ź", "ż", "Ń" ,"Ś")
-        val normalized = arrayOf("a", "c", "e", "l", "n", "o", "s", "z", "z","N" , "S")
+        val original = arrayOf("ą", "ć", "ę", "ł", "ń", "ó", "ś", "ź", "ż", "Ń", "Ś")
+        val normalized = arrayOf("a", "c", "e", "l", "n", "o", "s", "z", "z", "N", "S")
 
         return this.map { it ->
             val index = original.indexOf(it.toString())

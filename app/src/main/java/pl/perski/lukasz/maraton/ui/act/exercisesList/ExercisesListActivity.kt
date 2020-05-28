@@ -2,8 +2,8 @@ package pl.perski.lukasz.maraton.ui.act.exercisesList
 
 import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.animation.AlphaAnimation
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_exercises_list.*
 import pl.perski.lukasz.maraton.R
 import pl.perski.lukasz.maraton.adapters.CustomExpandableListAdapter
@@ -37,6 +37,6 @@ class ExercisesListActivity : AppCompatActivity(), ExercisesListActivityMVP.View
     }
 
     override fun notifyDataSetChanged() {
-//TODO:
+//TODO
     }
 }
